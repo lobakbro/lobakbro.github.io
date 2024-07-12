@@ -1,0 +1,11 @@
+---
+title: "About"
+---
+
+Hi! My name is Kevin Ong and this is my personal blog. 
+
+My professional interests are in deep learning!
+
+My other interests include classical music ♫♬ (Rachmaninoff, Sibelius, and Mahler), plants 🌱, a perfect bowl of beef noodle soup (bun bo & lanzhou la mian) 
+
+This page is built on Quarto.
