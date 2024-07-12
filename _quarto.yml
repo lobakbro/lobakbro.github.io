@@ -12,7 +12,9 @@ website:
 
 format:
   html:
-    theme: cosmo
+    theme: 
+      light: lux
+      dark: quartz
     css: styles.css
     toc: true
 

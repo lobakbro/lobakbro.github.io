@@ -2,5 +2,5 @@
 title: "Kevin M Ong"
 ---
 
-This is Kevin Ong's personal blog. It is built on Quarto.
+This is Kevin Ong's personal blog. 
 

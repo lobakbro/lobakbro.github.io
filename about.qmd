@@ -2,10 +2,10 @@
 title: "About"
 ---
 
-Hi! My name is Kevin Ong and this is my personal blog. 
+Hi! My name is Kevin Ong and this is my personal blog. I'm also known as lobakbro through the interwebs! 
 
-My professional interests are in deep learning!
+I am a machine learning engineer that lives in 🌉 San Francisco, California. My professional interests are in deep learning!
 
-My other interests include classical music ♫♬ (Rachmaninoff, Sibelius, and Mahler), plants 🌱, a perfect bowl of beef noodle soup (bun bo & lanzhou la mian) 
+My other interests include classical music ♫♬ (Rachmaninoff, Sibelius, and Mahler), plants 🌱, a perfect 🍜 bowl of beef noodle soup (bun bo & lanzhou la mian) 
 
-This page is built on Quarto.
+This blog is built with <3 with Quarto.
