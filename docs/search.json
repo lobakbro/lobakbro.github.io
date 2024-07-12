@@ -1,0 +1,16 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Kevin M Ong",
+    "section": "",
+    "text": "This is Kevin Ong’s personal blog. It is built on Quarto."
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "Hi! My name is Kevin Ong and this is my personal blog.\nMy professional interests are in deep learning!\nMy other interests include classical music ♫♬ (Rachmaninoff, Sibelius, and Mahler), plants 🌱, a perfect bowl of beef noodle soup (bun bo & lanzhou la mian)\nThis page is built on Quarto."
+  }
+]
