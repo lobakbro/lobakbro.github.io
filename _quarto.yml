@@ -1,6 +1,9 @@
 project:
   type: website
   output-dir: docs
+  preview: 
+    port: 4200
+
 
 website:
   title: "lobakbro"
@@ -9,6 +12,7 @@ website:
       - href: index.qmd
         text: Home
       - about.qmd
+      
 
 format:
   html:

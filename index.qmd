@@ -1,6 +1,15 @@
 ---
 title: "Kevin M Ong"
+listing:
+  contents: posts
+  sort: "date desc"
+  type: default
+  categories: true
+  sort-ui: false
+  filter-ui: false
+page-layout: full
+title-block-banner: true
 ---
+# Blog posts
 
-This is Kevin Ong's personal blog. 
-
+My blog posts.
