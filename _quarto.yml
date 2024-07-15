@@ -6,7 +6,7 @@ project:
 
 
 website:
-  title: "lobakbro"
+  title: "KMO"
   navbar:
     left:
       - href: index.qmd

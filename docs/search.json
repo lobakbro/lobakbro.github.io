@@ -1,23 +1,30 @@
 [
   {
-    "objectID": "posts/art_of_ml.html",
-    "href": "posts/art_of_ml.html",
-    "title": "The Art in Machine Learning",
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Kevin M Ong",
     "section": "",
-    "text": "I would argue most people would compare today’s machine learning engineers to the Space Race’s rocket scientists. Certainly, your impression of a rocket engine engineer to be of slide rulers galore book nerd, but in actuality, as much as they were scientists and engineers, they were also artists.\nThe rockets that brought us to the moon, the Saturn V, each had 5 Rocketdyne F-1 engines. Each of these engines had more than three times the thrust of the much more advanced Space Shuttle main engines. These were the largest rocket engines ever manufactured and still hold that title, and they almost ended the entirety of the moon program. Hundreds of engineers had poured over the design of these engines on paper following theory (to the best they knew it at the time, this was bleeding edge tech), and the day they took to test firing the engines, they exploded. The thrust chamber of the engine was so large that combustion instability led to catastrophic failure of the engine. Without good engines, the Saturn V was doomed to fail without even leaving the launch pad. With little time left to bring man to the moon by the end of the decade, engineers resorted to “doing it live”; they would make design changes, build the engines, and throw them onto the test bench to see what would happen. Much of this process relied less on theory but rather the engineers’ intuitions and experiences.\nLike back then, the hardest problem today’s machine learning engineers face is artisnal: how much data do you need for a “good” model? How do you know if your model is trained properly? …what can you do about it?\nThe simple take aways are fail often and fail fast. Make mistakes and learn from them."
+    "text": "Blog posts\nMy blog posts.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nThe Art in Machine Learning\n\n\n\n\n\n\nml\n\n\n\ndescription\n\n\n\n\n\nJun 12, 2024\n\n\nKevin Ong\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "about.html",
     "href": "about.html",
     "title": "About",
     "section": "",
-    "text": "Hi! My name is Kevin Ong and this is my personal blog. I’m also known as lobakbro through the interwebs!\nI am a machine learning engineer that lives in 🌉 San Francisco, California. My professional interests are in deep learning!\nMy other interests include classical music ♫♬ (Rachmaninoff, Sibelius, and Mahler), plants 🌱, a perfect 🍜 bowl of beef noodle soup (bun bo & lanzhou la mian)\nThis blog is built with &lt;3 with Quarto."
+    "text": "Hi! My name is Kevin Ong and this is my personal blog. I’m also known as lobakbro through the interwebs!\nI am a machine learning engineer that lives in 🌉 San Francisco, California. My professional interests are in deep learning!\nMy other interests include being an active member of the 🏳️‍🌈 and local asian community, classical music ♫♬ (Rachmaninoff, Sibelius, and Mahler), plants 🌱, a perfect 🍜 bowl of beef noodle soup (bun bo & lanzhou la mian)\nThis blog is built with &lt;3 with Quarto."
   },
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Kevin M Ong",
+    "objectID": "posts/art_of_ml.html",
+    "href": "posts/art_of_ml.html",
+    "title": "The Art in Machine Learning",
     "section": "",
-    "text": "Blog posts\nMy blog posts.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nThe Art in Machine Learning\n\n\n\n\n\n\nml\n\n\n\ndescription\n\n\n\n\n\nJul 11, 2024\n\n\nKevin Ong\n\n\n\n\n\n\nNo matching items"
+    "text": "Rocket Science\nI would argue most people would compare today’s machine learning engineers to the Space Race’s rocket scientists. Certainly, your impression of a rocket engine engineer to be of slide rulers galore book nerd, but in actuality, as much as they were scientists and engineers, they were also artists.\nThe rockets that brought us to the moon, the Saturn V, each had 5 Rocketdyne F-1 engines. Each of these engines had more than three times the thrust of the much more advanced Space Shuttle main engines. These were the largest rocket engines ever manufactured and still hold that title, and they almost ended the entirety of the moon program. Hundreds of engineers had poured over the design of these engines on paper following theory (to the best they knew it at the time, this was bleeding edge tech), and the day they took to test firing the engines, they exploded. The thrust chamber of the engine was so large that combustion instability led to catastrophic failure of the engine. Without good engines, the Saturn V was doomed to fail without even leaving the launch pad. With little time left to bring man to the moon by the end of the decade, engineers resorted to “doing it live”; they would make design changes, build the engines, and throw them onto the test bench to see what would happen. Much of this process relied less on theory but rather the engineers’ intuitions and experiences.\nLike back then, the hardest problem today’s machine learning engineers face is artisnal: how much data do you need for a “good” model? How do you know if your model is trained properly? …what can you do about it?\nThe art in ML\n\n\nCreating a validation and test set\nThe simple take aways are fail often and fail fast. Make mistakes and learn from them."
+  },
+  {
+    "objectID": "posts/omen.html",
+    "href": "posts/omen.html",
+    "title": "ML for Cyber Security",
+    "section": "",
+    "text": "This post was written for Omen Cyber Security\n\nThe Problem\nThe modern tech company is a monolith with thousands of employees and hundreds of system spread over different teams.\nPossessing a secret is not a problem. A secret is a risk\ninline math: risk = likelihood*severity of damage\nThe art in ML\n\n\nThe Data\n\n\nCreating a validation and test set\nThe simple take aways are fail often and fail fast. Make mistakes and learn from them."
   }
 ]

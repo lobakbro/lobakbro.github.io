@@ -1,12 +1,14 @@
 ---
-title: "The Art in Machine Learning"
-description: "description"
+title: "Prepping for the Machine Learning Interview"
+description: "My personal journey to become a SF big-tech ML engineer and what you can learn"
 author: "Kevin Ong"
 date: "06/12/24"
 date-modified: "07/14/24"
 categories: 
   - ml
 ---
+In this blog post, I'll go through my personal journey and methodology, 
+
 # Rocket Science
 I would argue most people would compare today's machine learning engineers to the Space Race's rocket scientists. Certainly, your impression of a rocket engine engineer to be of slide rulers galore book nerd, but in actuality, as much as they were scientists and engineers, they were also artists. 
 

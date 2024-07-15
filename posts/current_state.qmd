@@ -1,0 +1,29 @@
+---
+title: "DL 2024 Review"
+description: "A meta review of the state of DL field from a industry engineer's perspective"
+author: "Kevin Ong"
+date: "07/13/24"
+draft: true
+categories: 
+  - ml
+  - nlp
+  - cybersecurity
+
+---
+***This post was written for Omen Cyber Security***
+
+A small team of machine learning and cyber security experts got together to develop a new tool to protect the modern digital company from the catastrophic consequences of . That company is called Omen Cyber Security. This is their story.
+
+# The Problem
+The modern tech company is a monolith with thousands of employees and hundreds of system spread over different teams.
+
+Possessing a secret is not a problem. A secret is a risk
+
+$$risk = likelihood*severity of damage $$
+
+The art in ML
+
+# The Data
+# Creating a validation and test set
+
+The simple take aways are fail often and fail fast. Make mistakes and learn from them.
