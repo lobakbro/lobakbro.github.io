@@ -1,7 +1,7 @@
 ---
-title: "Kevin M Ong"
+title: "Hobbies"
 listing:
-  contents: posts
+  contents: hobbies
   sort: "date desc"
   type: default
   categories: true
@@ -10,5 +10,6 @@ listing:
 page-layout: full
 title-block-banner: true
 ---
-# Tech Talks
-My tech related blog posts.
+# Hobby posts
+
+Unrelated to technical matters and just as interesting.

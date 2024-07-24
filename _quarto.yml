@@ -4,6 +4,8 @@ project:
   preview: 
     port: 4200
 
+execute:
+  freeze: true 
 
 website:
   title: "KMO"
@@ -11,8 +13,13 @@ website:
     left:
       - href: index.qmd
         text: Home
+      - projects.qmd
+      - resume.qmd
+      - hobbies.qmd
       - about.qmd
-      
+  announcement: 
+    content: "⚠️ **New** - this website is under construction 🚧 as of July 2024." 
+    position: below-navbar       
 
 format:
   html:
@@ -21,6 +28,5 @@ format:
       dark: quartz
     css: styles.css
     toc: true
-
 
 

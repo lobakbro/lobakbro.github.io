@@ -4,6 +4,7 @@ description: "My personal journey to become a SF big-tech ML engineer and what y
 author: "Kevin Ong"
 date: "06/12/24"
 date-modified: "07/14/24"
+draft: true
 categories: 
   - ml
 ---
