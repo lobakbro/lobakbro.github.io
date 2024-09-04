@@ -4,14 +4,14 @@
     "href": "posts/art_of_ml.html",
     "title": "The Art in Machine Learning",
     "section": "",
-    "text": "Rocket Science\nI would argue most people would compare today’s machine learning engineers to the Space Race’s rocket scientists. Certainly, your impression of a rocket engine engineer to be of slide rulers galore book nerd, but in actuality, as much as they were scientists and engineers, they were also artists.\nThe rockets that brought us to the moon, the Saturn V, each had 5 Rocketdyne F-1 engines. Each of these engines had more than three times the thrust of the much more advanced Space Shuttle main engines. These were the largest rocket engines ever manufactured and still hold that title, and they almost ended the entirety of the moon program. Hundreds of engineers had poured over the design of these engines on paper following theory (to the best they knew it at the time, this was bleeding edge tech), and the day they took to test firing the engines, they exploded. The thrust chamber of the engine was so large that combustion instability led to catastrophic failure of the engine. Without good engines, the Saturn V was doomed to fail without even leaving the launch pad. With little time left to bring man to the moon by the end of the decade, engineers resorted to “doing it live”; they would make design changes, build the engines, and throw them onto the test bench to see what would happen. Much of this process relied less on theory but rather the engineers’ intuitions and experiences.\nLike back then, the hardest problem today’s machine learning engineers face is artisnal: how much data do you need for a “good” model? How do you know if your model is trained properly? …what can you do about it?\nThe art in ML\n\n\nCreating a validation and test set\nThe simple take aways are fail often and fail fast. Make mistakes and learn from them."
+    "text": "The art in ML\n\nCreating a validation and test set\nCrafting your test sets by cleanign data\n\n\nUsing Data\n\n\nOut Liers\nThe simple take aways are fail often and fail fast. Make mistakes and learn from them."
   },
   {
     "objectID": "index.html",
     "href": "index.html",
     "title": "Kevin M Ong",
     "section": "",
-    "text": "Tech Talks\nMy tech related blog posts.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nDL 2024 Review\n\n\n\n\n\n\nml\n\n\nnlp\n\n\ncybersecurity\n\n\n\nA meta review of the state of DL field from a industry engineer’s perspective\n\n\n\n\n\nJul 13, 2024\n\n\nKevin Ong\n\n\n\n\n\n\n\n\n\n\n\n\nML for Cyber Security\n\n\n\n\n\n\nml\n\n\nnlp\n\n\ncybersecurity\n\n\n\nMy personal experience with building a robust machine learning cyber security product from scratch\n\n\n\n\n\nJul 13, 2024\n\n\nKevin Ong\n\n\n\n\n\n\n\n\n\n\n\n\nPrepping for the Machine Learning Interview\n\n\n\n\n\n\nml\n\n\n\nMy personal journey to become a SF big-tech ML engineer and what you can learn\n\n\n\n\n\nJun 12, 2024\n\n\nKevin Ong\n\n\n\n\n\n\n\n\n\n\n\n\nThe Art in Machine Learning\n\n\n\n\n\n\nml\n\n\n\ndescription\n\n\n\n\n\nJun 12, 2024\n\n\nKevin Ong\n\n\n\n\n\n\nNo matching items"
+    "text": "Tech Talks\nMy tech related blog posts.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nThe Art in Machine Learning\n\n\n\n\n\n\nml\n\n\n\ndescription\n\n\n\n\n\nJun 12, 2024\n\n\nKevin Ong\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "about.html",
@@ -25,13 +25,34 @@
     "href": "hobbies.html",
     "title": "Hobbies",
     "section": "",
-    "text": "Hobby posts\nUnrelated to technical matters and just as interesting.\n\n\n\n\n\n\n\n\n\n\nNo matching items"
+    "text": "Hobby posts\nUnrelated to technical matters and just as interesting.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nThe Unanswered Question\n\n\n\n\n\n\nclassical music\n\n\n\ndescription\n\n\n\n\n\nJul 24, 2024\n\n\nKevin Ong\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "projects.html",
     "href": "projects.html",
     "title": "Projects",
     "section": "",
-    "text": "Project posts\nMy blog posts.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nDL 2024 Review\n\n\n\n\n\n\nml\n\n\nnlp\n\n\ncybersecurity\n\n\n\nA meta review of the state of DL field from a industry engineer’s perspective\n\n\n\n\n\nJul 13, 2024\n\n\nKevin Ong\n\n\n\n\n\n\n\n\n\n\n\n\nML for Cyber Security\n\n\n\n\n\n\nml\n\n\nnlp\n\n\ncybersecurity\n\n\n\nMy personal experience with building a robust machine learning cyber security product from scratch\n\n\n\n\n\nJul 13, 2024\n\n\nKevin Ong\n\n\n\n\n\n\n\n\n\n\n\n\nPrepping for the Machine Learning Interview\n\n\n\n\n\n\nml\n\n\n\nMy personal journey to become a SF big-tech ML engineer and what you can learn\n\n\n\n\n\nJun 12, 2024\n\n\nKevin Ong\n\n\n\n\n\n\n\n\n\n\n\n\nThe Art in Machine Learning\n\n\n\n\n\n\nml\n\n\n\ndescription\n\n\n\n\n\nJun 12, 2024\n\n\nKevin Ong\n\n\n\n\n\n\nNo matching items"
+    "text": "Project posts\nMy blog posts. hat we call a language model is a model that has been trained to guess what the next word in a text is (having read the ones before). This kind of task is called self-supervised learning: we do not need to give labels to our model, just feed it lots and lots of texts. It has a process to automatically get labels from the data, and this task isn’t trivial: to properly guess the next word in a sentence, the model will have to develop an understanding of the English (or other) language. Self-supervised learning can also be used in other domains; for instance, see “Self-Supervised Learning and Computer Vision” for an introduction to vision applications. Self-supervised learning is not usually used for the model that is trained directly, but instead is used for pretraining a model used for transfer learning.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nThe Art in Machine Learning\n\n\n\n\n\n\nml\n\n\n\ndescription\n\n\n\n\n\nJun 12, 2024\n\n\nKevin Ong\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "hobbies/music_language.html",
+    "href": "hobbies/music_language.html",
+    "title": "The Unanswered Question",
+    "section": "",
+    "text": "The Unanswered Question is a musical work by American Composer Charles Ives in which a solo trumpet screams into the void only for the void to scream back. It is the name of a series of 6 lectures by the esteemed Leonard Bernstein who referenced this piece in his discussion of the nature and future of classical music. This blog post summarizes and expands on Bernstein’s theories on linguistics and music."
+  },
+  {
+    "objectID": "posts/acing_ml_interview.html",
+    "href": "posts/acing_ml_interview.html",
+    "title": "Prepping for the Machine Learning Interview",
+    "section": "",
+    "text": "In this blog post, I’ll go through my personal journey and methodology,\nThe AI autodidact degree.\nPick three:\n\nTop 20 in an ML competition\nA published paper\nAn ML consulting gig/job\n50k AI readers, 30k video views, etc\nAn ML tool, 100 users/week\nMaster part one of Goodfellow’s DL book\nA PR to TF, PyTorch, etc The art in ML\n\n\nCreating a validation and test set\nThe simple take aways are fail often and fail fast. Make mistakes and learn from them."
+  },
+  {
+    "objectID": "Project/mermaid.html",
+    "href": "Project/mermaid.html",
+    "title": "KMO",
+    "section": "",
+    "text": "erDiagram PROXY ||–|{ SERVER_MANAGER : “Manages” PROXY ||–|{ PLAYER_MANAGER : “Manages” SERVER_MANAGER ||–|{ SERVER : “Monitors and Routes to” PLAYER_MANAGER ||–|{ PLAYER : “Tracks and Manages” PLAYER ||–o{ SERVER : “Connected to” COSMOSDB ||–|{ PLAYER : “StoresData” COSMOSDB ||–|{ DLC_INFO : “StoresInformation” PLAYER ||–|{ DLC_INFO : “Has Access to”\nLOAD_BALANCER }o--|| PROXY : \"Directs Traffic to\"\n\nCLIENT }o--|| PROXY : \"Connects to\"\n\nSERVER }o--|| PLAYER : \"Sends\\nGame Data\"\nPLAYER }o--|| SERVER : \"Sends\\nPlayer Actions\"\n\n%% Internet -- LOAD_BALANCER\n\n\nPROXY {\n    ServerManager *ServerManager\n    PlayerManager *HumanManager   \n}\n\nSERVER_MANAGER {\n    Servers map[string]*mcs.Server\n    PlayerServerMap sync.Map  \n}\n\nSERVER {\n    IP string\n    MaxPlayers int\n    Players map[string]Human\n    %% mu sync.Mutex\n}\n\n%% PLAYER {\n\n\n%% }\n\nCOSMOSDB {\n    +PlayerData: *PlayerData\n    +DLCInfo: *DLCInfo\n}\n\nDLC_INFO {\n    DLCName string\n    DLCProgress int\n}\n\nCLIENT {\n    Connects to PROXY\n}\n```"
   }
 ]

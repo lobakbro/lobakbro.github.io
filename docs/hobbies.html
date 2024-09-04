@@ -80,9 +80,9 @@ ul.task-list li input[type="checkbox"] {
     }
 
     const options = {
-      valueNames: ['listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
+      valueNames: ['listing-date','listing-title','listing-author','listing-image','listing-description','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
       
-      searchColumns: ["listing-categories"],
+      searchColumns: ["listing-date","listing-title","listing-author","listing-image","listing-description","listing-categories"],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
@@ -209,7 +209,7 @@ window.Quarto = {
   <li><a href="#hobby-posts" id="toc-hobby-posts" class="nav-link active" data-scroll-target="#hobby-posts">Hobby posts</a></li>
   </ul>
 </nav>
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(0)</span></div></div></div>
+    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(1)</span></div><div class="category" data-category="classical music">classical music <span class="quarto-category-count">(1)</span></div></div></div>
 <!-- main -->
 <main class="content quarto-banner-title-block column-page-left" id="quarto-document-content">
 
@@ -227,7 +227,39 @@ window.Quarto = {
 
 <div class="quarto-listing quarto-listing-container-default" id="listing-listing">
 <div class="list quarto-listing-default">
-
+<div class="quarto-post image-right" data-index="0" data-categories="classical music" data-listing-date-sort="1721804400000" data-listing-file-modified-sort="1722454745410" data-listing-date-modified-sort="1720940400000" data-listing-reading-time-sort="1" data-listing-word-count-sort="71">
+<div class="thumbnail">
+<p><a href="./hobbies/music_language.html" class="no-external"></a></p><a href="./hobbies/music_language.html" class="no-external">
+<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
+</a><p><a href="./hobbies/music_language.html" class="no-external"></a></p>
+</div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="./hobbies/music_language.html" class="no-external">The Unanswered Question</a>
+</h3>
+<div class="listing-subtitle">
+<a href="./hobbies/music_language.html" class="no-external"></a>
+</div>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('classical music'); return false;">
+classical music
+</div>
+</div>
+<div class="listing-description">
+<a href="./hobbies/music_language.html" class="no-external">description</a>
+</div>
+</div>
+<div class="metadata">
+<a href="./hobbies/music_language.html" class="no-external">
+<div class="listing-date">
+Jul 24, 2024
+</div>
+<div class="listing-author">
+Kevin Ong
+</div>
+</a>
+</div>
+</div>
 </div>
 <div class="listing-no-matching d-none">
 No matching items

@@ -1,0 +1,42 @@
+---
+title: "Symphony- Classical Music GenAi"
+description: "A personal project implementing new ideas in multimodal architectures"
+author: "Kevin Ong"
+date: "07/31/24"
+draft: true
+categories: 
+  - ml
+  - genai
+  - project
+
+---
+
+Many use cases require a mixure of data modalities such as healthcare and robotics. Intuitively, having a model 
+that learns from more than one data modality should perform better than a model that learns only from one type.
+
+Classical music is represented in several ways, video recordings, audio recordings, midi files, and sheet music.
+There is also a variety of scholarly articles describing and analyzing the text. The data explains what instruments
+are playing what note and when.
+
+Text generation has dominated recently. The rise of ChatGPT 3 
+
+Generative models are divided
+
+The end goal is to create a model that can generate classical music, particularly symphonies. Specifically, the model should be able to produce sheet music, audio recordings, and midi files.
+
+The inputs:
+Sheet music is widely available but in the form of images or pdfs. Additionally, sheet music is available as scores with notation for several instruments at once or seperately per instrument.
+
+Audio recordings are also widely available, but the cocktail party problem makes it difficult to separate the instruments, especially in symphonies. Music is unique in that the sum of the parts is greater than the whole yet the model should understand the individual parts in context of the whole.
+
+Midi files are a digital representation of sheet music. They are a sequence of notes with timing information. Midi files are the most machine readable format of the three.
+
+The model should be able to take in any of the three inputs and generate the other two. The model should also be able to take in a mix of the three inputs and generate the other two.
+
+The model should also be able to take in scholarly articles, many of them analyzing the styles of a particular composer or a deep analysis of particular pieces. The model should be able to generate structured music from text descriptions.
+
+This is a multi-post series on the EarWorm project. The end goal is to create a crossmodal model that can generate classical music using sheet music, audio recordings, and midi files.
+
+Post 1: Introduction to the project and the data
+- I also build a model to remove noise from audio recordings
+Post 2: The model architecture
