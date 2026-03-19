@@ -1,0 +1,35 @@
+---
+interface Props {
+  categories: string[];
+  currentCategory?: string;
+}
+
+const { categories, currentCategory } = Astro.props;
+---
+
+<nav class="flex flex-wrap gap-2 mb-8">
+  <a
+    href="/essays/"
+    class:list={[
+      'px-4 py-2 rounded-full text-sm font-medium transition-colors',
+      !currentCategory
+        ? 'bg-(--color-primary) text-white dark:bg-(--color-primary-dark) dark:text-(--color-bg-dark)'
+        : 'bg-(--color-bg-secondary) dark:bg-(--color-bg-secondary-dark) text-(--color-text-muted) dark:text-(--color-text-muted-dark) hover:bg-(--color-border) dark:hover:bg-(--color-border-dark)',
+    ]}
+  >
+    All
+  </a>
+  {categories.map((cat) => (
+    <a
+      href={`/essays/${cat}/`}
+      class:list={[
+        'px-4 py-2 rounded-full text-sm font-medium transition-colors capitalize',
+        currentCategory === cat
+          ? 'bg-(--color-primary) text-white dark:bg-(--color-primary-dark) dark:text-(--color-bg-dark)'
+          : 'bg-(--color-bg-secondary) dark:bg-(--color-bg-secondary-dark) text-(--color-text-muted) dark:text-(--color-text-muted-dark) hover:bg-(--color-border) dark:hover:bg-(--color-border-dark)',
+      ]}
+    >
+      {cat}
+    </a>
+  ))}
+</nav>

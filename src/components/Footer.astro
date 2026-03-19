@@ -1,0 +1,14 @@
+---
+const year = new Date().getFullYear();
+---
+
+<footer class="border-t border-(--color-border) dark:border-(--color-border-dark) mt-16">
+  <div class="max-w-5xl mx-auto px-4 sm:px-6 py-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-(--color-text-muted) dark:text-(--color-text-muted-dark)">
+    <p>&copy; {year} Kevin Ong. Built with Astro.</p>
+    <div class="flex gap-4">
+      <a href="https://github.com/lobakbro" class="hover:text-(--color-text) dark:hover:text-(--color-text-dark) transition-colors">GitHub</a>
+      <a href="https://www.linkedin.com/in/kevinmacong/" class="hover:text-(--color-text) dark:hover:text-(--color-text-dark) transition-colors">LinkedIn</a>
+      <a href="/rss.xml" class="hover:text-(--color-text) dark:hover:text-(--color-text-dark) transition-colors">RSS</a>
+    </div>
+  </div>
+</footer>

@@ -1,0 +1,32 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ProjectCard from '../../components/ProjectCard.astro';
+
+const projects = await getCollection('projects', ({ data }) => {
+  return import.meta.env.PROD ? !data.draft : true;
+});
+const sorted = projects.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+---
+
+<BaseLayout title="Projects" description="ML and software projects by Kevin Ong.">
+  <div class="max-w-5xl mx-auto px-4 sm:px-6 py-12">
+    <h1 class="text-3xl font-bold mb-2">Projects</h1>
+    <p class="text-(--color-text-muted) dark:text-(--color-text-muted-dark) mb-8">
+      Things I've built — from ML pipelines to creative experiments.
+    </p>
+
+    <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      {sorted.map((project) => (
+        <ProjectCard
+          title={project.data.title}
+          description={project.data.description}
+          tech={project.data.tech}
+          status={project.data.status}
+          slug={project.id}
+          heroImage={project.data.heroImage}
+        />
+      ))}
+    </div>
+  </div>
+</BaseLayout>

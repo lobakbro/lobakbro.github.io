@@ -11,4 +11,9 @@ categories:
   - project
 
 ---
-Many of the most important tasks that a law firm must do to try a case is clerical work. Any mistake, even a small one, can have the case be dismissed or you may even lose the case outright. For a civil case to be tried in court, requires a good understanding of the Code of Civil Procedure, California Rules of Court and local court rules. Now try to do this for 1500 active cases your law firm is actively pursuing. 
+Many of the most important tasks that a law firm must do to try a case is clerical work. 
+Any mistake, even a small one, can have the case be dismissed or you may even lose the case outright. 
+For a civil case to be tried in court, requires a good understanding of the Code of Civil Procedure, 
+California Rules of Court and local court rules. Now try to do this for 1500 active cases your law firm is actively pursuing. 
+
+The problem can be broken down to finding the right rules, understanding which ones apply, and calculating the deadlines.

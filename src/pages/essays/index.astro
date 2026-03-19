@@ -1,0 +1,36 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import EssayCard from '../../components/EssayCard.astro';
+import CategoryNav from '../../components/CategoryNav.astro';
+
+const allEssays = await getCollection('essays', ({ data }) => {
+  return import.meta.env.PROD ? !data.draft : true;
+});
+const sorted = allEssays.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+const categories = [...new Set(allEssays.map((e) => e.data.category))].sort();
+---
+
+<BaseLayout title="Essays" description="Writing on ML, music, philosophy, and life.">
+  <div class="max-w-5xl mx-auto px-4 sm:px-6 py-12">
+    <h1 class="text-3xl font-bold mb-2">Essays</h1>
+    <p class="text-(--color-text-muted) dark:text-(--color-text-muted-dark) mb-8">
+      Writing on machine learning, classical music, philosophy, and whatever else is on my mind.
+    </p>
+
+    <CategoryNav categories={categories} />
+
+    <div class="grid gap-4 sm:grid-cols-2">
+      {sorted.map((essay) => (
+        <EssayCard
+          title={essay.data.title}
+          description={essay.data.description}
+          date={essay.data.date}
+          category={essay.data.category}
+          slug={essay.id}
+          readingTime={essay.data.readingTime}
+        />
+      ))}
+    </div>
+  </div>
+</BaseLayout>

@@ -1,0 +1,60 @@
+---
+import { getCollection, render } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+export async function getStaticPaths() {
+  const essays = await getCollection('essays');
+  return essays.map((essay) => ({
+    params: { slug: essay.id },
+    props: { essay },
+  }));
+}
+
+const { essay } = Astro.props;
+const { Content } = await render(essay);
+
+const formattedDate = essay.data.date.toLocaleDateString('en-US', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+});
+---
+
+<BaseLayout title={essay.data.title} description={essay.data.description} image={essay.data.heroImage}>
+  <article class="max-w-3xl mx-auto px-4 sm:px-6 py-12">
+    <header class="mb-10">
+      <div class="flex items-center gap-3 mb-4 text-sm">
+        <a
+          href={`/essays/${essay.data.category}/`}
+          class="category-pill bg-(--color-bg-secondary) dark:bg-(--color-bg-secondary-dark) text-(--color-text-muted) dark:text-(--color-text-muted-dark) hover:text-(--color-primary) dark:hover:text-(--color-primary-dark) capitalize"
+        >
+          {essay.data.category}
+        </a>
+        <time class="text-(--color-text-muted) dark:text-(--color-text-muted-dark)" datetime={essay.data.date.toISOString()}>
+          {formattedDate}
+        </time>
+        {essay.data.readingTime && (
+          <span class="text-(--color-text-muted) dark:text-(--color-text-muted-dark)">{essay.data.readingTime}</span>
+        )}
+      </div>
+      <h1 class="text-3xl sm:text-4xl font-bold leading-tight">
+        {essay.data.title}
+      </h1>
+      {essay.data.description && (
+        <p class="mt-4 text-lg text-(--color-text-muted) dark:text-(--color-text-muted-dark)">
+          {essay.data.description}
+        </p>
+      )}
+    </header>
+
+    {essay.data.draft && (
+      <div class="mb-8 p-4 rounded-lg bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800 text-amber-800 dark:text-amber-200 text-sm">
+        This essay is a draft and not yet published.
+      </div>
+    )}
+
+    <div class="prose mx-auto">
+      <Content />
+    </div>
+  </article>
+</BaseLayout>

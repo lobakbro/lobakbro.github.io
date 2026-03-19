@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <text x="2" y="26" font-size="28" font-family="system-ui, sans-serif" font-weight="bold">K</text>
+  <style>
+    text { fill: #1e293b; }
+    @media (prefers-color-scheme: dark) {
+      text { fill: #e2e8f0; }
+    }
+  </style>
+</svg>

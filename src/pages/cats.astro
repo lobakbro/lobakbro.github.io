@@ -1,0 +1,29 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Cats" description="Cat gallery. Because personality matters.">
+  <div class="max-w-5xl mx-auto px-4 sm:px-6 py-12">
+    <h1 class="text-3xl font-bold mb-2">Cats</h1>
+    <p class="text-(--color-text-muted) dark:text-(--color-text-muted-dark) mb-8">
+      Every engineer needs a cat page. Photos coming soon.
+    </p>
+
+    <div class="grid grid-cols-2 sm:grid-cols-3 gap-4">
+      <!-- Cat photos go here — add images to public/images/cats/ -->
+      <div class="aspect-square rounded-lg bg-(--color-bg-secondary) dark:bg-(--color-bg-secondary-dark) flex items-center justify-center text-4xl">
+        🐱
+      </div>
+      <div class="aspect-square rounded-lg bg-(--color-bg-secondary) dark:bg-(--color-bg-secondary-dark) flex items-center justify-center text-4xl">
+        😺
+      </div>
+      <div class="aspect-square rounded-lg bg-(--color-bg-secondary) dark:bg-(--color-bg-secondary-dark) flex items-center justify-center text-4xl">
+        😸
+      </div>
+    </div>
+
+    <p class="mt-8 text-sm text-(--color-text-muted) dark:text-(--color-text-muted-dark) italic">
+      Add your cat photos to <code class="text-xs bg-(--color-bg-secondary) dark:bg-(--color-bg-secondary-dark) px-1.5 py-0.5 rounded">/public/images/cats/</code> and they'll show up here.
+    </p>
+  </div>
+</BaseLayout>

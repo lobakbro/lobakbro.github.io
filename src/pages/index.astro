@@ -1,0 +1,101 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import FeaturedPost from '../components/FeaturedPost.astro';
+import EssayCard from '../components/EssayCard.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+
+const allEssays = await getCollection('essays', ({ data }) => {
+  return import.meta.env.PROD ? !data.draft : true;
+});
+const sortedEssays = allEssays.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+const featured = sortedEssays.filter((e) => e.data.featured);
+const recent = sortedEssays.filter((e) => !e.data.featured).slice(0, 6);
+
+const allProjects = await getCollection('projects', ({ data }) => {
+  return import.meta.env.PROD ? !data.draft : true;
+});
+const featuredProjects = allProjects
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+  .slice(0, 3);
+---
+
+<BaseLayout title="KMO">
+  <div class="max-w-5xl mx-auto px-4 sm:px-6">
+    <!-- Hero -->
+    <section class="py-16 sm:py-24">
+      <h1 class="text-4xl sm:text-5xl font-bold tracking-tight">
+        Kevin M. Ong
+      </h1>
+      <p class="mt-4 text-lg sm:text-xl text-(--color-text-muted) dark:text-(--color-text-muted-dark) max-w-2xl">
+        ML engineer in San Francisco. I write about deep learning, classical music, philosophy, and whatever else catches my attention.
+      </p>
+    </section>
+
+    <!-- Featured Essays -->
+    {featured.length > 0 && (
+      <section class="mb-16">
+        <div class="grid gap-6">
+          {featured.map((essay) => (
+            <FeaturedPost
+              title={essay.data.title}
+              description={essay.data.description}
+              date={essay.data.date}
+              category={essay.data.category}
+              slug={essay.id}
+              heroImage={essay.data.heroImage}
+            />
+          ))}
+        </div>
+      </section>
+    )}
+
+    <!-- Recent Essays -->
+    {recent.length > 0 && (
+      <section class="mb-16">
+        <div class="flex items-center justify-between mb-6">
+          <h2 class="text-2xl font-bold">Recent Writing</h2>
+          <a href="/essays/" class="text-sm font-medium text-(--color-primary) dark:text-(--color-primary-dark) hover:underline">
+            View all &rarr;
+          </a>
+        </div>
+        <div class="grid gap-4 sm:grid-cols-2">
+          {recent.map((essay) => (
+            <EssayCard
+              title={essay.data.title}
+              description={essay.data.description}
+              date={essay.data.date}
+              category={essay.data.category}
+              slug={essay.id}
+              readingTime={essay.data.readingTime}
+            />
+          ))}
+        </div>
+      </section>
+    )}
+
+    <!-- Projects -->
+    {featuredProjects.length > 0 && (
+      <section class="mb-16">
+        <div class="flex items-center justify-between mb-6">
+          <h2 class="text-2xl font-bold">Projects</h2>
+          <a href="/projects/" class="text-sm font-medium text-(--color-primary) dark:text-(--color-primary-dark) hover:underline">
+            View all &rarr;
+          </a>
+        </div>
+        <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {featuredProjects.map((project) => (
+            <ProjectCard
+              title={project.data.title}
+              description={project.data.description}
+              tech={project.data.tech}
+              status={project.data.status}
+              slug={project.id}
+              heroImage={project.data.heroImage}
+            />
+          ))}
+        </div>
+      </section>
+    )}
+  </div>
+</BaseLayout>
