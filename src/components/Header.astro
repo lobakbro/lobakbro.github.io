@@ -10,23 +10,22 @@ const navLinks = [
 const currentPath = Astro.url.pathname;
 ---
 
-<header class="border-b border-(--color-border) dark:border-(--color-border-dark) bg-(--color-bg) dark:bg-(--color-bg-dark)">
-  <nav class="max-w-5xl mx-auto px-4 sm:px-6 py-4 flex items-center justify-between">
-    <a href="/" class="text-xl font-bold tracking-tight hover:text-(--color-primary) dark:hover:text-(--color-primary-dark) transition-colors">
+<header style="border-bottom: 1px solid var(--color-border-dark); background-color: var(--color-bg-dark);" class="backdrop-blur-sm bg-opacity-80">
+  <nav class="max-w-5xl mx-auto px-4 sm:px-6 py-6 flex items-center justify-between">
+    <a href="/" class="text-xl font-display font-semibold tracking-tight text-primary hover:opacity-80 transition-opacity">
       KMO
     </a>
 
     <!-- Desktop nav -->
-    <div class="hidden sm:flex items-center gap-6">
+    <div class="hidden sm:flex items-center gap-8">
       {navLinks.map(({ href, label }) => (
         <a
           href={href}
-          class:list={[
-            'text-sm font-medium transition-colors',
+          class={`text-sm font-medium transition-opacity font-body ${
             currentPath.startsWith(href)
-              ? 'text-(--color-primary) dark:text-(--color-primary-dark)'
-              : 'text-(--color-text-muted) dark:text-(--color-text-muted-dark) hover:text-(--color-text) dark:hover:text-(--color-text-dark)',
-          ]}
+              ? 'text-primary opacity-100'
+              : 'text-muted hover:opacity-100'
+          }`}
         >
           {label}
         </a>
@@ -34,7 +33,7 @@ const currentPath = Astro.url.pathname;
       <button
         id="theme-toggle"
         aria-label="Toggle dark mode"
-        class="p-2 rounded-lg hover:bg-(--color-bg-secondary) dark:hover:bg-(--color-bg-secondary-dark) transition-colors"
+        class="p-2 rounded-lg hover:bg-black/40 transition-colors text-muted hover:text-primary"
       >
         <svg class="w-5 h-5 dark:hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
           <path stroke-linecap="round" stroke-linejoin="round" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />

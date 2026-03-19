@@ -1,18 +1,18 @@
 ---
 title: "Symphony — Classical Music GenAI"
-description: "A personal project implementing new ideas in multimodal architectures for classical music generation"
+description: "Exploring multimodal architecture challenges through classical music generation—where sheet music, audio, and MIDI must compose as unified understanding."
 date: 2024-07-31
-tech: [Python, PyTorch, Multimodal, MIDI, Audio Processing]
+tech: [Python, PyTorch, Multimodal, MIDI, Audio Processing, Transformer]
 status: in-progress
 featured: true
-draft: true
+draft: false
 ---
 
-Many use cases require a mixture of data modalities such as healthcare and robotics. Intuitively, having a model that learns from more than one data modality should perform better than a model that learns only from one type.
+Classical music exists in multiple representations simultaneously: the conductor reads a score while musicians play from parts while the audience hears the acoustic result. Each modality contains information the others lack, yet they're aspects of the same underlying musical structure.
 
-Classical music is represented in several ways: video recordings, audio recordings, MIDI files, and sheet music. There is also a variety of scholarly articles describing and analyzing the text. The data explains what instruments are playing what note and when.
+This is the core challenge I'm exploring with Symphony: building models that understand music the way humans do—across modalities, with awareness of both individual voices and their harmonic relationships.
 
-Generative models are divided across modalities. The end goal is to create a model that can generate classical music, particularly symphonies. Specifically, the model should be able to produce sheet music, audio recordings, and MIDI files.
+The technical problem mirrors broader questions in multimodal AI: how do we create unified understanding from disparate data types? Classical music provides an ideal testbed because the relationships between modalities are well-defined musically and theoretically grounded.
 
 ## The Inputs
 

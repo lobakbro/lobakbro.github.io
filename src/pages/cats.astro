@@ -2,28 +2,56 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 
-<BaseLayout title="Cats" description="Cat gallery. Because personality matters.">
-  <div class="max-w-5xl mx-auto px-4 sm:px-6 py-12">
-    <h1 class="text-3xl font-bold mb-2">Cats</h1>
-    <p class="text-(--color-text-muted) dark:text-(--color-text-muted-dark) mb-8">
-      Every engineer needs a cat page. Photos coming soon.
-    </p>
+<BaseLayout title="Cats" description="The important stuff. Meet Luna and Mochi.">
+  <div class="max-w-3xl mx-auto px-4 sm:px-6 py-20">
+    <h1 class="text-4xl font-display font-semibold text-primary mb-6">The Important Stuff</h1>
+    
+    <div class="prose max-w-none mb-12">
+      <p class="text-xl font-body text-muted leading-relaxed mb-6">
+        You can learn everything you need to know about someone from how they interact with cats. 
+        Here are mine: Luna (the philosopher) and Mochi (the chaos agent).
+      </p>
+      
+      <p class="font-body text-muted leading-relaxed">
+        Luna approaches problems systematically—she'll spend ten minutes studying a closed door before 
+        requesting assistance. Mochi operates on pure intuition and has yet to encounter a surface 
+        she won't attempt to nap on, regardless of physics.
+      </p>
+      
+      <p class="font-body text-muted leading-relaxed">
+        They're better at parallel processing than any distributed system I've built. 
+        Luna handles strategic planning while Mochi handles execution. Usually this means Luna 
+        identifies the optimal sunny spot while Mochi claims it first.
+      </p>
+    </div>
 
-    <div class="grid grid-cols-2 sm:grid-cols-3 gap-4">
-      <!-- Cat photos go here — add images to public/images/cats/ -->
-      <div class="aspect-square rounded-lg bg-(--color-bg-secondary) dark:bg-(--color-bg-secondary-dark) flex items-center justify-center text-4xl">
-        🐱
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-8 mb-12">
+      <div class="space-y-4">
+        <div class="aspect-square rounded-xl bg-black/20 border border-gray-800 flex items-center justify-center text-6xl">
+          🐱
+        </div>
+        <div class="text-center">
+          <h3 class="font-display font-medium text-primary text-lg">Luna</h3>
+          <p class="text-sm text-muted font-body">The Philosopher</p>
+        </div>
       </div>
-      <div class="aspect-square rounded-lg bg-(--color-bg-secondary) dark:bg-(--color-bg-secondary-dark) flex items-center justify-center text-4xl">
-        😺
-      </div>
-      <div class="aspect-square rounded-lg bg-(--color-bg-secondary) dark:bg-(--color-bg-secondary-dark) flex items-center justify-center text-4xl">
-        😸
+      
+      <div class="space-y-4">
+        <div class="aspect-square rounded-xl bg-black/20 border border-gray-800 flex items-center justify-center text-6xl">
+          😸
+        </div>
+        <div class="text-center">
+          <h3 class="font-display font-medium text-primary text-lg">Mochi</h3>
+          <p class="text-sm text-muted font-body">The Chaos Agent</p>
+        </div>
       </div>
     </div>
 
-    <p class="mt-8 text-sm text-(--color-text-muted) dark:text-(--color-text-muted-dark) italic">
-      Add your cat photos to <code class="text-xs bg-(--color-bg-secondary) dark:bg-(--color-bg-secondary-dark) px-1.5 py-0.5 rounded">/public/images/cats/</code> and they'll show up here.
-    </p>
+    <div class="text-center">
+      <p class="text-sm text-muted font-body italic">
+        Photos coming when I figure out how to get them both to sit still simultaneously.<br/>
+        (This may require advances in quantum mechanics.)
+      </p>
+    </div>
   </div>
 </BaseLayout>

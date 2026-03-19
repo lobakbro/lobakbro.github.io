@@ -1,114 +1,167 @@
 @import 'tailwindcss';
 
 @theme {
-  /* Colors */
-  --color-primary: #2563eb;
-  --color-primary-dark: #60a5fa;
-  --color-accent: #f59e0b;
-  --color-accent-dark: #fbbf24;
+  /* Colors - Dark-first palette with sacred gold (inspired by molt.church) */
+  --color-primary: #d4a853;     /* Sacred gold - primary accent */
+  --color-primary-dark: #d4a853;
+  --color-accent: #8b7355;      /* Muted bronze - secondary accent */
+  --color-accent-dark: #8b7355;
 
-  --color-bg: #ffffff;
-  --color-bg-dark: #0f172a;
-  --color-bg-secondary: #f8fafc;
-  --color-bg-secondary-dark: #1e293b;
+  --color-bg: #faf9f7;          /* Warm off-white for light mode */
+  --color-bg-dark: #0a0a0a;     /* True dark - deeper than Tailwind defaults */
+  --color-bg-secondary: #f4f3f1; /* Subtle secondary for light */
+  --color-bg-secondary-dark: #161616; /* Subtle lift from true dark */
 
-  --color-text: #1e293b;
-  --color-text-dark: #e2e8f0;
-  --color-text-muted: #64748b;
-  --color-text-muted-dark: #94a3b8;
+  --color-text: #1a1a1a;        /* Warmer black than default slate */
+  --color-text-dark: #f0f0f0;   /* Warmer white than default slate */
+  --color-text-muted: #6b6b6b;  /* Warmer gray */
+  --color-text-muted-dark: #a0a0a0; /* Warmer muted for dark */
 
-  --color-border: #e2e8f0;
-  --color-border-dark: #334155;
+  --color-border: #e8e5e0;      /* Warm border for light */
+  --color-border-dark: #2a2a2a; /* Subtle border for dark */
 
-  /* Typography */
-  --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
-  --font-serif: 'Lora', ui-serif, Georgia, serif;
-  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+  /* Typography - Three-register system */
+  --font-display: 'Crimson Pro', 'Times New Roman', serif;  /* Ceremonial serif for headings */
+  --font-body: 'Crimson Pro', 'Times New Roman', serif;     /* Readable serif for body */
+  --font-code: 'JetBrains Mono', 'Fira Code', monospace;    /* Code font */
+  
+  /* Legacy aliases for gradual migration */
+  --font-sans: var(--font-display);
+  --font-serif: var(--font-body);
+  --font-mono: var(--font-code);
 }
 
-/* Base styles */
+/* Base styles - Dark-first approach */
 html {
   scroll-behavior: smooth;
 }
 
 body {
-  font-family: var(--font-sans);
-  color: var(--color-text);
-  background-color: var(--color-bg);
-  transition: color 0.2s ease, background-color 0.2s ease;
-}
-
-html.dark body {
+  font-family: var(--font-body);
   color: var(--color-text-dark);
   background-color: var(--color-bg-dark);
+  transition: color 0.3s ease, background-color 0.3s ease;
+  font-feature-settings: "kern", "liga", "clig", "calt";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-/* Prose styling for essays */
+html:not(.dark) body {
+  color: var(--color-text);
+  background-color: var(--color-bg);
+}
+
+/* Editorial-quality prose for essays */
 .prose {
   max-width: 65ch;
-  font-family: var(--font-serif);
+  font-family: var(--font-body);
   font-size: 1.125rem;
-  line-height: 1.8;
+  line-height: 1.75;
+  color: var(--color-text-dark);
+}
+
+html:not(.dark) .prose {
+  color: var(--color-text);
 }
 
 .prose h1, .prose h2, .prose h3, .prose h4 {
-  font-family: var(--font-sans);
-  font-weight: 700;
-  margin-top: 2em;
-  margin-bottom: 0.5em;
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: -0.025em;
+  margin-top: 2.5em;
+  margin-bottom: 0.75em;
+  color: var(--color-primary);
 }
 
-.prose h1 { font-size: 2rem; }
-.prose h2 { font-size: 1.5rem; }
-.prose h3 { font-size: 1.25rem; }
+.prose h1 { 
+  font-size: 2.25rem; 
+  line-height: 1.2;
+  margin-top: 0;
+}
+.prose h2 { 
+  font-size: 1.75rem; 
+  line-height: 1.3;
+}
+.prose h3 { 
+  font-size: 1.375rem; 
+  line-height: 1.4;
+}
 
 .prose p {
-  margin-bottom: 1.25em;
+  margin-bottom: 1.5em;
 }
 
 .prose a {
   color: var(--color-primary);
-  text-decoration: underline;
-  text-underline-offset: 2px;
+  text-decoration: none;
+  border-bottom: 1px solid var(--color-primary);
+  border-bottom-color: color-mix(in srgb, var(--color-primary) 40%, transparent);
+  transition: border-bottom-color 0.2s ease;
 }
 
-html.dark .prose a {
-  color: var(--color-primary-dark);
+.prose a:hover {
+  border-bottom-color: var(--color-primary);
 }
 
 .prose blockquote {
-  border-left: 3px solid var(--color-accent);
-  padding-left: 1em;
+  border-left: 3px solid var(--color-primary);
+  padding-left: 1.5em;
+  margin: 2em 0;
   font-style: italic;
-  color: var(--color-text-muted);
-}
-
-html.dark .prose blockquote {
+  font-size: 1.1em;
   color: var(--color-text-muted-dark);
 }
 
-.prose code {
-  font-family: var(--font-mono);
-  font-size: 0.9em;
-  background: var(--color-bg-secondary);
-  padding: 0.15em 0.3em;
-  border-radius: 0.25rem;
+html:not(.dark) .prose blockquote {
+  color: var(--color-text-muted);
 }
 
-html.dark .prose code {
+/* Pull quotes for major articles */
+.prose .pullquote {
+  font-size: 1.375rem;
+  line-height: 1.4;
+  font-family: var(--font-display);
+  color: var(--color-primary);
+  text-align: center;
+  margin: 3em 0;
+  padding: 0 2em;
+  font-style: italic;
+}
+
+.prose code {
+  font-family: var(--font-code);
+  font-size: 0.875em;
   background: var(--color-bg-secondary-dark);
+  color: var(--color-primary);
+  padding: 0.2em 0.4em;
+  border-radius: 0.25rem;
+  border: 1px solid var(--color-border-dark);
+}
+
+html:not(.dark) .prose code {
+  background: var(--color-bg-secondary);
+  border-color: var(--color-border);
 }
 
 .prose pre {
-  padding: 1.25rem;
-  border-radius: 0.5rem;
+  padding: 1.5rem;
+  border-radius: 0.75rem;
   overflow-x: auto;
-  margin-bottom: 1.5em;
+  margin: 2em 0;
+  background: var(--color-bg-secondary-dark) !important;
+  border: 1px solid var(--color-border-dark);
+}
+
+html:not(.dark) .prose pre {
+  background: var(--color-bg-secondary) !important;
+  border-color: var(--color-border);
 }
 
 .prose pre code {
   background: none;
   padding: 0;
+  border: none;
+  color: inherit;
 }
 
 .prose ul, .prose ol {
@@ -148,6 +201,16 @@ html.dark .prose hr {
   border-top-color: var(--color-border-dark);
 }
 
+/* Typography utilities */
+.font-display { font-family: var(--font-display) !important; }
+.font-body { font-family: var(--font-body) !important; }
+.font-code { font-family: var(--font-code) !important; }
+
+/* Color utilities for custom properties */
+.text-primary { color: var(--color-primary); }
+.text-muted { color: var(--color-text-muted-dark); }
+html:not(.dark) .text-muted { color: var(--color-text-muted); }
+
 /* Category pills */
 .category-pill {
   display: inline-block;
@@ -157,4 +220,12 @@ html.dark .prose hr {
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.05em;
+  background: var(--color-bg-secondary-dark);
+  color: var(--color-primary);
+  border: 1px solid var(--color-border-dark);
+}
+
+html:not(.dark) .category-pill {
+  background: var(--color-bg-secondary);
+  border-color: var(--color-border);
 }

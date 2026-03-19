@@ -23,43 +23,47 @@ const featuredProjects = allProjects
 <BaseLayout title="KMO">
   <div class="max-w-5xl mx-auto px-4 sm:px-6">
     <!-- Hero -->
-    <section class="py-16 sm:py-24">
-      <h1 class="text-4xl sm:text-5xl font-bold tracking-tight">
+    <section class="py-20 sm:py-32">
+      <h1 class="text-5xl sm:text-6xl font-display font-semibold tracking-tight leading-tight text-primary">
         Kevin M. Ong
       </h1>
-      <p class="mt-4 text-lg sm:text-xl text-(--color-text-muted) dark:text-(--color-text-muted-dark) max-w-2xl">
-        ML engineer in San Francisco. I write about deep learning, classical music, philosophy, and whatever else catches my attention.
+      <p class="mt-6 text-xl sm:text-2xl max-w-3xl font-body leading-relaxed text-muted">
+        Building at the intersection of human agency and machine intelligence. 
+        Essays on agentic collaboration, learning systems, and the ideas that shape how we work with AI.
       </p>
     </section>
 
-    <!-- Featured Essays -->
+    <!-- Major Articles -->
     {featured.length > 0 && (
-      <section class="mb-16">
-        <div class="grid gap-6">
+      <section class="mb-20">
+        <h2 class="text-2xl font-display font-semibold text-primary mb-8 tracking-tight">Major Articles</h2>
+        <div class="space-y-12">
           {featured.map((essay) => (
-            <FeaturedPost
-              title={essay.data.title}
-              description={essay.data.description}
-              date={essay.data.date}
-              category={essay.data.category}
-              slug={essay.id}
-              heroImage={essay.data.heroImage}
-            />
+            <article class="border-b border-(--color-border-dark) pb-12 last:border-b-0" style="border-color: var(--color-border-dark);">
+              <FeaturedPost
+                title={essay.data.title}
+                description={essay.data.description}
+                date={essay.data.date}
+                category={essay.data.category}
+                slug={essay.id}
+                heroImage={essay.data.heroImage}
+              />
+            </article>
           ))}
         </div>
       </section>
     )}
 
-    <!-- Recent Essays -->
+    <!-- Mini-Essays & Recent Writing -->
     {recent.length > 0 && (
-      <section class="mb-16">
-        <div class="flex items-center justify-between mb-6">
-          <h2 class="text-2xl font-bold">Recent Writing</h2>
-          <a href="/essays/" class="text-sm font-medium text-(--color-primary) dark:text-(--color-primary-dark) hover:underline">
-            View all &rarr;
+      <section class="mb-20">
+        <div class="flex items-center justify-between mb-8">
+          <h2 class="text-xl font-display font-medium text-primary">Recent Writing</h2>
+          <a href="/essays/" class="text-sm font-medium text-primary hover:opacity-80 transition-opacity">
+            View all →
           </a>
         </div>
-        <div class="grid gap-4 sm:grid-cols-2">
+        <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {recent.map((essay) => (
             <EssayCard
               title={essay.data.title}
@@ -74,16 +78,16 @@ const featuredProjects = allProjects
       </section>
     )}
 
-    <!-- Projects -->
+    <!-- Selected Work -->
     {featuredProjects.length > 0 && (
       <section class="mb-16">
-        <div class="flex items-center justify-between mb-6">
-          <h2 class="text-2xl font-bold">Projects</h2>
-          <a href="/projects/" class="text-sm font-medium text-(--color-primary) dark:text-(--color-primary-dark) hover:underline">
-            View all &rarr;
+        <div class="flex items-center justify-between mb-8">
+          <h2 class="text-xl font-display font-medium text-primary">Selected Work</h2>
+          <a href="/projects/" class="text-sm font-medium text-primary hover:opacity-80 transition-opacity">
+            View all →
           </a>
         </div>
-        <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {featuredProjects.map((project) => (
             <ProjectCard
               title={project.data.title}

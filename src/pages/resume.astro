@@ -4,38 +4,101 @@ import { resume } from '../data/resume';
 ---
 
 <BaseLayout title="Resume" description={`${resume.name} — ${resume.title}`}>
-  <div class="max-w-3xl mx-auto px-4 sm:px-6 py-12">
-    <div class="flex items-start justify-between mb-10">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 py-20">
+    <div class="flex items-start justify-between mb-12">
       <div>
-        <h1 class="text-3xl font-bold">{resume.name}</h1>
-        <p class="text-lg text-(--color-text-muted) dark:text-(--color-text-muted-dark) mt-1">
-          {resume.title} &middot; {resume.location}
+        <h1 class="text-4xl font-display font-semibold text-primary">{resume.name}</h1>
+        <p class="text-lg font-body text-muted mt-3">
+          {resume.title} · {resume.location}
         </p>
+        <div class="flex gap-6 mt-4">
+          <a
+            href={resume.contact.github}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-sm font-medium text-primary hover:opacity-80 transition-opacity"
+          >
+            GitHub
+          </a>
+          <a
+            href={resume.contact.linkedin}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-sm font-medium text-primary hover:opacity-80 transition-opacity"
+          >
+            LinkedIn
+          </a>
+        </div>
       </div>
-      <!-- TODO: Add PDF download link -->
     </div>
 
     {resume.summary && (
-      <section class="mb-10">
-        <p class="text-lg leading-relaxed">{resume.summary}</p>
+      <section class="mb-16">
+        <p class="text-lg font-body text-muted leading-relaxed">{resume.summary}</p>
       </section>
     )}
 
     <!-- Experience -->
-    <section class="mb-10">
-      <h2 class="text-xl font-bold mb-6 pb-2 border-b border-(--color-border) dark:border-(--color-border-dark)">
+    <section class="mb-16">
+      <h2 class="text-2xl font-display font-medium text-primary mb-8">
         Experience
       </h2>
-      <div class="space-y-8">
+      <div class="space-y-10">
         {resume.experience.map((job) => (
+          <div class="border-l-2 border-gray-800 pl-6">
+            <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-3">
+              <h3 class="font-display font-medium text-lg text-primary">{job.role}</h3>
+              <span class="text-sm font-code text-muted">{job.period}</span>
+            </div>
+            <p class="text-muted font-body mb-4">{job.company}</p>
+            <ul class="space-y-2">
+              {job.highlights.map((h) => (
+                <li class="text-sm font-body text-muted leading-relaxed pl-4 relative before:content-['→'] before:absolute before:left-0 before:text-primary">
+                  {h}
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Projects -->
+    <section class="mb-10">
+      <h2 class="text-xl font-bold mb-6 pb-2 border-b border-(--color-border) dark:border-(--color-border-dark)">
+        Projects
+      </h2>
+      <div class="space-y-8">
+        {resume.projects.map((project) => (
           <div>
             <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-2">
-              <h3 class="font-semibold text-lg">{job.role}</h3>
-              <span class="text-sm text-(--color-text-muted) dark:text-(--color-text-muted-dark)">{job.period}</span>
+              <h3 class="font-semibold text-lg">
+                {project.link ? (
+                  <a
+                    href={project.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="hover:text-(--color-accent) dark:hover:text-(--color-accent-dark)"
+                  >
+                    {project.name}
+                  </a>
+                ) : (
+                  project.name
+                )}
+              </h3>
             </div>
-            <p class="text-(--color-text-muted) dark:text-(--color-text-muted-dark) mb-2">{job.company}</p>
+            <p class="text-(--color-text-muted) dark:text-(--color-text-muted-dark) mb-2">
+              {project.description}
+            </p>
+            <div class="flex flex-wrap gap-1.5 mb-3">
+              {project.tech.map((t) => (
+                <span class="text-xs px-2 py-0.5 rounded-full bg-(--color-bg-secondary) dark:bg-(--color-bg-secondary-dark)">
+                  {t}
+                </span>
+              ))}
+            </div>
             <ul class="space-y-1">
-              {job.highlights.map((h) => (
+              {project.highlights.map((h) => (
                 <li class="text-sm pl-4 relative before:content-['–'] before:absolute before:left-0 before:text-(--color-text-muted) dark:before:text-(--color-text-muted-dark)">
                   {h}
                 </li>
@@ -68,23 +131,43 @@ import { resume } from '../data/resume';
     </section>
 
     <!-- Education -->
-    {resume.education.some((e) => e.institution) && (
-      <section class="mb-10">
-        <h2 class="text-xl font-bold mb-6 pb-2 border-b border-(--color-border) dark:border-(--color-border-dark)">
-          Education
-        </h2>
-        <div class="space-y-6">
-          {resume.education.filter((e) => e.institution).map((edu) => (
-            <div>
-              <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-1">
-                <h3 class="font-semibold">{edu.degree}</h3>
-                <span class="text-sm text-(--color-text-muted) dark:text-(--color-text-muted-dark)">{edu.period}</span>
-              </div>
-              <p class="text-(--color-text-muted) dark:text-(--color-text-muted-dark)">{edu.institution}</p>
+    <section class="mb-10">
+      <h2 class="text-xl font-bold mb-6 pb-2 border-b border-(--color-border) dark:border-(--color-border-dark)">
+        Education
+      </h2>
+      <div class="space-y-6">
+        {resume.education.map((edu) => (
+          <div>
+            <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-1">
+              <h3 class="font-semibold">{edu.degree}</h3>
+              <span class="text-sm text-(--color-text-muted) dark:text-(--color-text-muted-dark)">{edu.period}</span>
             </div>
-          ))}
-        </div>
-      </section>
-    )}
+            <p class="text-(--color-text-muted) dark:text-(--color-text-muted-dark)">{edu.institution}</p>
+            {edu.details.length > 0 && (
+              <ul class="mt-1">
+                {edu.details.map((d) => (
+                  <li class="text-sm text-(--color-text-muted) dark:text-(--color-text-muted-dark)">{d}</li>
+                ))}
+              </ul>
+            )}
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Certifications -->
+    <section class="mb-10">
+      <h2 class="text-xl font-bold mb-6 pb-2 border-b border-(--color-border) dark:border-(--color-border-dark)">
+        Certifications
+      </h2>
+      <div class="space-y-3">
+        {resume.certifications.map((cert) => (
+          <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between">
+            <span class="font-medium text-sm">{cert.name}</span>
+            <span class="text-sm text-(--color-text-muted) dark:text-(--color-text-muted-dark)">{cert.issuer}</span>
+          </div>
+        ))}
+      </div>
+    </section>
   </div>
 </BaseLayout>
