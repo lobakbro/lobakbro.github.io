@@ -18,43 +18,75 @@ const formattedDate = essay.data.date.toLocaleDateString('en-US', {
   month: 'long',
   day: 'numeric',
 });
+
+// Determine if this is a major article (featured) vs mini-essay
+const isMajorArticle = essay.data.featured;
 ---
 
 <BaseLayout title={essay.data.title} description={essay.data.description} image={essay.data.heroImage}>
-  <article class="max-w-3xl mx-auto px-4 sm:px-6 py-12">
-    <header class="mb-10">
-      <div class="flex items-center gap-3 mb-4 text-sm">
-        <a
-          href={`/essays/${essay.data.category}/`}
-          class="category-pill bg-(--color-bg-secondary) dark:bg-(--color-bg-secondary-dark) text-(--color-text-muted) dark:text-(--color-text-muted-dark) hover:text-(--color-primary) dark:hover:text-(--color-primary-dark) capitalize"
-        >
+  <article class="max-w-4xl mx-auto px-4 sm:px-6 py-20">
+    <!-- Back navigation -->
+    <nav class="mb-12">
+      <a href="/essays/" class="text-sm font-medium text-muted hover:text-primary transition-opacity inline-flex items-center gap-2">
+        ← Back to Essays
+      </a>
+    </nav>
+
+    <header class={`mb-16 ${isMajorArticle ? 'pb-12 border-b border-gray-800' : ''}`}>
+      <div class="flex items-center gap-4 mb-6 text-sm">
+        <span class="category-pill capitalize">
           {essay.data.category}
-        </a>
-        <time class="text-(--color-text-muted) dark:text-(--color-text-muted-dark)" datetime={essay.data.date.toISOString()}>
+        </span>
+        <time class="text-muted font-medium font-code" datetime={essay.data.date.toISOString()}>
           {formattedDate}
         </time>
         {essay.data.readingTime && (
-          <span class="text-(--color-text-muted) dark:text-(--color-text-muted-dark)">{essay.data.readingTime}</span>
+          <span class="text-muted font-code text-xs">{essay.data.readingTime}</span>
         )}
       </div>
-      <h1 class="text-3xl sm:text-4xl font-bold leading-tight">
+      
+      <h1 class={`font-display font-semibold leading-tight text-primary ${
+        isMajorArticle ? 'text-4xl sm:text-5xl lg:text-6xl mb-8' : 'text-3xl sm:text-4xl mb-6'
+      }`}>
         {essay.data.title}
       </h1>
+      
       {essay.data.description && (
-        <p class="mt-4 text-lg text-(--color-text-muted) dark:text-(--color-text-muted-dark)">
+        <p class={`font-body text-muted leading-relaxed ${
+          isMajorArticle ? 'text-xl sm:text-2xl max-w-4xl' : 'text-lg max-w-3xl'
+        }`}>
           {essay.data.description}
         </p>
       )}
     </header>
 
     {essay.data.draft && (
-      <div class="mb-8 p-4 rounded-lg bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800 text-amber-800 dark:text-amber-200 text-sm">
-        This essay is a draft and not yet published.
+      <div class="mb-12 p-6 rounded-xl bg-amber-900/20 border border-amber-800 text-amber-200 text-sm font-body">
+        <strong class="font-display">Draft:</strong> This essay is still being refined.
       </div>
     )}
 
-    <div class="prose mx-auto">
+    <div class="prose max-w-none">
       <Content />
     </div>
+
+    <!-- Essay footer -->
+    <footer class="mt-20 pt-12 border-t border-gray-800">
+      <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
+        <div>
+          <p class="text-sm font-body text-muted">
+            Published {formattedDate}
+          </p>
+        </div>
+        <div class="flex gap-6">
+          <a href="/essays/" class="text-sm font-medium text-primary hover:opacity-80 transition-opacity">
+            ← More Essays
+          </a>
+          <a href="/about/" class="text-sm font-medium text-primary hover:opacity-80 transition-opacity">
+            About Kevin
+          </a>
+        </div>
+      </div>
+    </footer>
   </article>
 </BaseLayout>

@@ -12,15 +12,16 @@ const categories = [...new Set(allEssays.map((e) => e.data.category))].sort();
 ---
 
 <BaseLayout title="Essays" description="Writing on ML, music, philosophy, and life.">
-  <div class="max-w-5xl mx-auto px-4 sm:px-6 py-12">
-    <h1 class="text-3xl font-bold mb-2">Essays</h1>
-    <p class="text-(--color-text-muted) dark:text-(--color-text-muted-dark) mb-8">
-      Writing on machine learning, classical music, philosophy, and whatever else is on my mind.
+  <div class="max-w-5xl mx-auto px-4 sm:px-6 py-20">
+    <h1 class="text-4xl font-display font-semibold text-primary mb-6">Essays</h1>
+    <p class="text-lg font-body text-muted mb-12 max-w-3xl leading-relaxed">
+      Ideas at the intersection of technology, philosophy, and human experience. 
+      From agentic collaboration to meditation practice, from learning systems to classical music.
     </p>
 
     <CategoryNav categories={categories} />
 
-    <div class="grid gap-4 sm:grid-cols-2">
+    <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
       {sorted.map((essay) => (
         <EssayCard
           title={essay.data.title}

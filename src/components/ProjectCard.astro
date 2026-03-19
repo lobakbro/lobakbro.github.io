@@ -11,8 +11,8 @@ interface Props {
 const { title, description, tech, status, slug, heroImage } = Astro.props;
 ---
 
-<a href={`/projects/${slug}/`} class="group block">
-  <article class="h-full rounded-xl border border-gray-800 hover:border-gray-600 transition-all duration-300 bg-black/20 hover:bg-black/40 overflow-hidden">
+<a href={`/projects/${slug}/`} class="group block no-effect">
+  <article class="h-full rounded-xl border border-gray-800 hover:border-gray-600 transition-all duration-300 bg-black/20 hover:bg-black/40 overflow-hidden card-hover glow-on-hover">
     {heroImage && (
       <img src={heroImage} alt="" class="w-full h-40 object-cover opacity-90 group-hover:opacity-100 transition-opacity" />
     )}

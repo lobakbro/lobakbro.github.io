@@ -229,3 +229,118 @@ html:not(.dark) .category-pill {
   background: var(--color-bg-secondary);
   border-color: var(--color-border);
 }
+
+/* Micro-interactions and animations */
+@keyframes glow-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.6; }
+}
+
+.glow-on-hover {
+  position: relative;
+  overflow: hidden;
+}
+
+.glow-on-hover::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(212, 168, 83, 0.1),
+    transparent
+  );
+  transition: left 0.6s ease;
+}
+
+.glow-on-hover:hover::before {
+  left: 100%;
+}
+
+/* Link hover effects */
+a:not(.no-effect) {
+  position: relative;
+  transition: all 0.2s ease;
+}
+
+/* Smooth focus states */
+*:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+  border-radius: 3px;
+}
+
+/* Custom scrollbar for webkit browsers */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-bg-dark);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-border-dark);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-primary);
+}
+
+/* Selection styling */
+::selection {
+  background: var(--color-primary);
+  color: var(--color-bg-dark);
+}
+
+/* Image hover effects */
+img {
+  transition: all 0.3s ease;
+}
+
+/* Subtle hover animations for cards */
+.card-hover {
+  transition: all 0.3s ease;
+}
+
+.card-hover:hover {
+  transform: translateY(-2px);
+}
+
+/* Code block enhancements */
+pre {
+  position: relative;
+}
+
+pre::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 3px;
+  height: 100%;
+  background: var(--color-primary);
+  border-radius: 0 2px 2px 0;
+}
+
+/* Enhanced blockquote styling */
+.prose blockquote {
+  position: relative;
+}
+
+.prose blockquote::before {
+  content: '"';
+  position: absolute;
+  left: -0.5em;
+  top: -0.2em;
+  font-size: 3em;
+  color: var(--color-primary);
+  opacity: 0.3;
+  font-family: var(--font-display);
+  line-height: 1;
+}

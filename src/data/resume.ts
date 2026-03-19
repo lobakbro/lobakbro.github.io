@@ -3,7 +3,7 @@ export const resume = {
   title: 'Software Engineer',
   location: 'San Francisco, CA',
   summary:
-    'Software engineer building education technology — currently at IvyBee architecting a gamified university learning platform, and independently developing PrepVerified, an adaptive AI tutoring system with Bayesian knowledge tracing, spaced repetition, and LLM-powered evaluation. Background in research-to-production engineering at Desktop Metal (3D printing R&D) and enterprise automation at Palo Alto Networks.',
+    'Engineer at the intersection of learning systems and AI architecture. Currently building adaptive educational technology at IvyBee and developing research on agentic collaboration patterns. Experienced in taking experimental ML systems from research through production deployment, with particular focus on multimodal architectures and human-AI interaction design.',
 
   contact: {
     github: 'https://github.com/lobakbro',

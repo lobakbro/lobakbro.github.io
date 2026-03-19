@@ -7,27 +7,25 @@ interface Props {
 const { categories, currentCategory } = Astro.props;
 ---
 
-<nav class="flex flex-wrap gap-2 mb-8">
+<nav class="flex flex-wrap gap-3 mb-12">
   <a
     href="/essays/"
-    class:list={[
-      'px-4 py-2 rounded-full text-sm font-medium transition-colors',
+    class={`px-4 py-2 rounded-lg text-sm font-medium transition-all font-body ${
       !currentCategory
-        ? 'bg-(--color-primary) text-white dark:bg-(--color-primary-dark) dark:text-(--color-bg-dark)'
-        : 'bg-(--color-bg-secondary) dark:bg-(--color-bg-secondary-dark) text-(--color-text-muted) dark:text-(--color-text-muted-dark) hover:bg-(--color-border) dark:hover:bg-(--color-border-dark)',
-    ]}
+        ? 'bg-primary text-black'
+        : 'bg-black/20 text-muted hover:bg-black/40 hover:text-primary border border-gray-800'
+    }`}
   >
     All
   </a>
   {categories.map((cat) => (
     <a
       href={`/essays/${cat}/`}
-      class:list={[
-        'px-4 py-2 rounded-full text-sm font-medium transition-colors capitalize',
+      class={`px-4 py-2 rounded-lg text-sm font-medium transition-all capitalize font-body ${
         currentCategory === cat
-          ? 'bg-(--color-primary) text-white dark:bg-(--color-primary-dark) dark:text-(--color-bg-dark)'
-          : 'bg-(--color-bg-secondary) dark:bg-(--color-bg-secondary-dark) text-(--color-text-muted) dark:text-(--color-text-muted-dark) hover:bg-(--color-border) dark:hover:bg-(--color-border-dark)',
-      ]}
+          ? 'bg-primary text-black'
+          : 'bg-black/20 text-muted hover:bg-black/40 hover:text-primary border border-gray-800'
+      }`}
     >
       {cat}
     </a>
