@@ -1,16 +1,18 @@
 ---
 import { getCollection, render } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import ReadingProgress from '../../components/ReadingProgress.astro';
+import RelatedEssays from '../../components/RelatedEssays.astro';
 
 export async function getStaticPaths() {
   const essays = await getCollection('essays');
   return essays.map((essay) => ({
     params: { slug: essay.id },
-    props: { essay },
+    props: { essay, allEssays: essays },
   }));
 }
 
-const { essay } = Astro.props;
+const { essay, allEssays } = Astro.props;
 const { Content } = await render(essay);
 
 const formattedDate = essay.data.date.toLocaleDateString('en-US', {
@@ -24,6 +26,7 @@ const isMajorArticle = essay.data.featured;
 ---
 
 <BaseLayout title={essay.data.title} description={essay.data.description} image={essay.data.heroImage}>
+  <ReadingProgress />
   <article class="max-w-4xl mx-auto px-4 sm:px-6 py-20">
     <!-- Back navigation -->
     <nav class="mb-12">
@@ -69,6 +72,9 @@ const isMajorArticle = essay.data.featured;
     <div class="prose max-w-none">
       <Content />
     </div>
+
+    <!-- Related Essays -->
+    <RelatedEssays currentEssay={essay} allEssays={allEssays} />
 
     <!-- Essay footer -->
     <footer class="mt-20 pt-12 border-t border-gray-800">
