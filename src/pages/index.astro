@@ -1,105 +1,233 @@
 ---
 import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
-import FeaturedPost from '../components/FeaturedPost.astro';
 import EssayCard from '../components/EssayCard.astro';
-import ProjectCard from '../components/ProjectCard.astro';
+import { resume } from '../data/resume';
 
 const allEssays = await getCollection('essays', ({ data }) => {
   return import.meta.env.PROD ? !data.draft : true;
 });
 const sortedEssays = allEssays.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
-const featured = sortedEssays.filter((e) => e.data.featured);
-const recent = sortedEssays.filter((e) => !e.data.featured).slice(0, 6);
+const featured = sortedEssays.filter((e) => e.data.featured).slice(0, 2);
+const miniEssays = sortedEssays.filter((e) => !e.data.featured).slice(0, 4);
 
 const allProjects = await getCollection('projects', ({ data }) => {
   return import.meta.env.PROD ? !data.draft : true;
 });
-const featuredProjects = allProjects
-  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
-  .slice(0, 3);
+const topProject = allProjects.find((p) => p.data.title === 'Meridian') || allProjects.find((p) => p.data.title === 'PrepVerified') || allProjects[0];
+
+// Top 3 experience entries for homepage
+const topExperience = resume.experience.slice(0, 3);
 ---
 
 <BaseLayout title="KMO">
-  <div class="max-w-5xl mx-auto px-4 sm:px-6">
-    <!-- Hero -->
-    <section class="py-20 sm:py-32">
-      <h1 class="text-5xl sm:text-6xl font-display font-semibold tracking-tight leading-tight text-primary animate-fade-in">
+  <div class="max-w-3xl mx-auto px-6">
+    <!-- ═══ Hero ═══ -->
+    <section id="about" class="pt-20 sm:pt-28 pb-16">
+      <h1 class="text-5xl sm:text-6xl lg:text-7xl font-display font-extrabold tracking-tight leading-[1.05]" style="color: var(--v8-bone);" data-reveal>
         Kevin M. Ong
       </h1>
-      <p class="mt-6 text-xl sm:text-2xl max-w-3xl font-body leading-relaxed text-muted animate-fade-in-delay">
-        Building at the intersection of human agency and machine intelligence. 
-        Essays on agentic collaboration, learning systems, and the ideas that shape how we work with AI.
+      <p class="mt-4 font-code text-sm" style="color: var(--v8-stone);" data-reveal data-reveal-delay="1">
+        <span style="color: var(--v8-ash);">——</span> software_engineer // san_francisco
       </p>
+
+      <div class="mt-10 relative pl-10" data-reveal data-reveal-delay="2">
+        <span class="absolute left-0 top-0 font-display text-5xl leading-none" style="color: var(--v8-warm); opacity: 0.4;">"</span>
+        <p class="text-xl sm:text-2xl font-display font-medium leading-snug" style="color: var(--v8-bone);">
+          I've been chasing the same question since I was<br/>
+          mapping neurons in a clean room — how does a person<br/>
+          actually get better at something? Now I build the software.
+        </p>
+      </div>
+
+      <p class="mt-8 text-base leading-relaxed max-w-2xl" style="color: var(--v8-stone);" data-reveal data-reveal-delay="3">
+        Research-trained, production-tested. I design systems in uncertain domains — cloud infrastructure, adaptive learning, experimental hardware — and I bring rigor to problems that don't have a playbook yet.
+      </p>
+
+      <div class="mt-8 flex flex-wrap gap-6 font-code text-sm" data-reveal data-reveal-delay="4">
+        <a href={resume.contact.linkedin} target="_blank" rel="noopener noreferrer" class="no-effect hover:opacity-80 transition-opacity" style="color: var(--v8-stone);">linkedin</a>
+        <a href="/resume/" class="no-effect hover:opacity-80 transition-opacity" style="color: var(--v8-stone);">resume</a>
+      </div>
     </section>
 
-    <!-- Major Articles -->
-    {featured.length > 0 && (
-      <section class="mb-20">
-        <h2 class="text-2xl font-display font-semibold text-primary mb-8 tracking-tight">Major Articles</h2>
-        <div class="space-y-12">
+    <div class="gradient-divider"></div>
+
+    <!-- ═══ Story ═══ -->
+    <section class="py-16">
+      <span class="section-label" data-reveal>// the_short_version</span>
+
+      <div class="mt-8 space-y-6 text-base leading-relaxed" style="color: var(--v8-stone);">
+        <p data-reveal>
+          I got into engineering through brain probes — three years in Ed Boyden's lab at UTD and MIT McGovern, building electrode arrays and mapping neurons in 3D as a McDermott Scholar. The ML work there led to a research internship at Citi doing deep learning validation for mortgage stress testing, and that led to Palo Alto Networks where I won a hackathon automating secret detection across production repos.
+        </p>
+        <p data-reveal>
+          At Desktop Metal I joined a tiny R&D team building a 3D printer nobody had made before — scrolling DLP projector, overlap artifacts at the hardware-software boundary, messy Python prototypes becoming production C++ APIs.
+        </p>
+        <div class="pl-6 py-3 my-4" style="border-left: 3px solid var(--v8-warm);" data-reveal>
+          <p style="color: var(--v8-bone);">
+            Now at IvyBee I'm leading backend for a team building educational Minecraft mods — clean room simulations delivered as game experiences. I designed the whole cloud stack: CosmosDB, Kubernetes, a proxy gateway that invisibly routes players between pods with state synchronization in Go.
+          </p>
+        </div>
+        <p data-reveal>
+          The through-line: I keep ending up in rooms where nothing exists yet and someone needs to build the first version. I'm most useful when the problem is ambiguous and the playbook hasn't been written.
+        </p>
+      </div>
+
+      <div class="mt-8 flex flex-wrap gap-4 font-code text-xs" style="color: var(--v8-ash);" data-reveal>
+        {['python', 'go', 'c++', 'typescript', 'kubernetes', 'azure', 'llms', 'signal_processing'].map((t) => (
+          <span>{t}</span>
+        ))}
+      </div>
+    </section>
+
+    <div class="gradient-divider"></div>
+
+    <!-- ═══ Experience ═══ -->
+    <section id="experience" class="py-16">
+      <div class="flex items-center justify-between mb-10" data-reveal>
+        <span class="section-label">// experience</span>
+        <a href="/resume/" class="no-effect font-code text-xs hover:opacity-80 transition-opacity" style="color: var(--v8-warm);">
+          view full resume →
+        </a>
+      </div>
+
+      <div class="space-y-4">
+        {topExperience.map((job, i) => (
+          <div class="v8-card" data-reveal data-reveal-delay={String(i + 1)}>
+            <div class="flex flex-col sm:flex-row sm:items-start gap-4">
+              <span class="font-code text-xs shrink-0 pt-1" style="color: var(--v8-ash);">{job.period.split('–')[0].trim()} →</span>
+              <div class="flex-1">
+                <h3 class="font-display font-semibold" style="color: var(--v8-bone);">{job.role}</h3>
+                <p class="font-code text-xs mt-1" style="color: var(--v8-warm);">{job.company}</p>
+                <p class="text-sm mt-3 leading-relaxed" style="color: var(--v8-stone);">
+                  {job.highlights[0]}
+                </p>
+                {job.highlights.length > 1 && (
+                  <div class="mt-3 flex flex-wrap gap-2">
+                    {job.highlights.slice(1, 3).map((h) => (
+                      <span class="font-code text-xs px-2 py-0.5" style="color: var(--v8-ash); background: var(--v8-warm-dim);">
+                        {h.split(' ').slice(0, 4).join(' ')}...
+                      </span>
+                    ))}
+                  </div>
+                )}
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <div class="gradient-divider"></div>
+
+    <!-- ═══ Projects ═══ -->
+    <section id="projects" class="py-16">
+      <span class="section-label" data-reveal>// projects</span>
+
+      {topProject && (
+        <div class="mt-10 p-8" style="background: var(--v8-surface); border: 1px solid var(--v8-deep); border-left: 3px solid var(--v8-warm);" data-reveal>
+          <div class="flex items-start justify-between mb-4">
+            <h3 class="text-xl font-display font-bold" style="color: var(--v8-bone);">{topProject.data.title}</h3>
+            {topProject.data.repo && (
+              <a href={topProject.data.repo} target="_blank" rel="noopener noreferrer" class="no-effect font-code text-xs hover:opacity-80 transition-opacity" style="color: var(--v8-warm);">
+                view source ↗
+              </a>
+            )}
+          </div>
+          <p class="text-sm leading-relaxed mb-6" style="color: var(--v8-stone);">
+            {topProject.data.description}
+          </p>
+          <div class="flex flex-wrap gap-8 items-end">
+            <div>
+              <span class="text-3xl font-display font-bold" style="color: var(--v8-warm);">68</span>
+              <p class="font-code text-xs mt-1" style="color: var(--v8-ash);">skill_nodes</p>
+            </div>
+            <div>
+              <span class="text-lg font-code font-semibold" style="color: var(--v8-bone);">adaptive</span>
+              <p class="font-code text-xs mt-1" style="color: var(--v8-ash);">skill_targeting</p>
+            </div>
+            <div>
+              <span class="text-lg font-display font-semibold" style="color: var(--v8-bone);">Claude</span>
+              <p class="font-code text-xs mt-1" style="color: var(--v8-ash);">problem_gen</p>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {allProjects.length > 1 && (
+        <div class="mt-4 text-right">
+          <a href="/projects/" class="no-effect font-code text-xs hover:opacity-80 transition-opacity" style="color: var(--v8-warm);">
+            view all projects →
+          </a>
+        </div>
+      )}
+    </section>
+
+    <div class="gradient-divider"></div>
+
+    <!-- ═══ Writing ═══ -->
+    <section id="writing" class="py-16">
+      <span class="section-label" data-reveal>// writing</span>
+
+      {featured.length > 0 && (
+        <div class="mt-10 grid gap-6 sm:grid-cols-2" data-reveal>
           {featured.map((essay) => (
-            <article class="border-b border-(--color-border-dark) pb-12 last:border-b-0" style="border-color: var(--color-border-dark);">
-              <FeaturedPost
-                title={essay.data.title}
-                description={essay.data.description}
-                date={essay.data.date}
-                category={essay.data.category}
-                slug={essay.id}
-                heroImage={essay.data.heroImage}
-              />
-            </article>
+            <a href={`/essays/${essay.id}/`} class="group block no-effect v8-card">
+              <div class="flex items-center gap-2 mb-3">
+                <span class="category-pill">{essay.data.category}</span>
+                <span class="font-code text-xs" style="color: var(--v8-ash);">
+                  {essay.data.readingTime || 'essay'}
+                </span>
+              </div>
+              <h3 class="font-display font-semibold group-hover:opacity-80 transition-opacity" style="color: var(--v8-bone);">
+                {essay.data.title}
+              </h3>
+            </a>
           ))}
         </div>
-      </section>
-    )}
+      )}
 
-    <!-- Mini-Essays & Recent Writing -->
-    {recent.length > 0 && (
-      <section class="mb-20">
-        <div class="flex items-center justify-between mb-8">
-          <h2 class="text-xl font-display font-medium text-primary">Recent Writing</h2>
-          <a href="/essays/" class="text-sm font-medium text-primary hover:opacity-80 transition-opacity">
-            View all →
+      {miniEssays.length > 0 && (
+        <div class="mt-6">
+          <span class="section-label" data-reveal>// mini essays</span>
+          <div class="mt-4 grid gap-3 sm:grid-cols-2" data-reveal>
+            {miniEssays.map((essay) => (
+              <a
+                href={`/essays/${essay.id}/`}
+                class="no-effect group flex items-center gap-3 py-3 px-4 transition-all hover:translate-x-1"
+                style="background: var(--v8-surface); border: 1px solid var(--v8-deep);"
+              >
+                <span class="font-code text-xs shrink-0" style="color: var(--v8-ash);">→</span>
+                <span class="text-sm font-medium group-hover:opacity-80 transition-opacity" style="color: var(--v8-bone);">
+                  {essay.data.title}
+                </span>
+              </a>
+            ))}
+          </div>
+        </div>
+      )}
+
+      <div class="mt-4 text-right">
+        <a href="/essays/" class="no-effect font-code text-xs hover:opacity-80 transition-opacity" style="color: var(--v8-warm);">
+          view all writing →
+        </a>
+      </div>
+    </section>
+
+    <div class="gradient-divider"></div>
+
+    <!-- ═══ Closing ═══ -->
+    <section class="py-16 pb-24">
+      <div class="p-10 text-center" style="background: var(--v8-warm-dim); border: 1px solid var(--v8-warm-glow);" data-reveal>
+        <p class="text-base italic leading-relaxed max-w-2xl mx-auto" style="color: var(--v8-stone);">
+          I want to work where AI makes the person better, not just the output better. If you're building learning tools, capability systems, or something experimental at the boundary of human and machine intelligence — I'd like to talk.
+        </p>
+        <div class="mt-8" data-reveal data-reveal-delay="1">
+          <a href="mailto:kevin@lobakbro.com" class="cta-button no-effect text-base px-8 py-3">
+            [get_in_touch]
           </a>
         </div>
-        <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {recent.map((essay) => (
-            <EssayCard
-              title={essay.data.title}
-              description={essay.data.description}
-              date={essay.data.date}
-              category={essay.data.category}
-              slug={essay.id}
-              readingTime={essay.data.readingTime}
-            />
-          ))}
-        </div>
-      </section>
-    )}
-
-    <!-- Selected Work -->
-    {featuredProjects.length > 0 && (
-      <section class="mb-16">
-        <div class="flex items-center justify-between mb-8">
-          <h2 class="text-xl font-display font-medium text-primary">Selected Work</h2>
-          <a href="/projects/" class="text-sm font-medium text-primary hover:opacity-80 transition-opacity">
-            View all →
-          </a>
-        </div>
-        <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {featuredProjects.map((project) => (
-            <ProjectCard
-              title={project.data.title}
-              description={project.data.description}
-              tech={project.data.tech}
-              status={project.data.status}
-              slug={project.id}
-              heroImage={project.data.heroImage}
-            />
-          ))}
-        </div>
-      </section>
-    )}
+      </div>
+    </section>
   </div>
 </BaseLayout>

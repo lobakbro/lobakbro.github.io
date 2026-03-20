@@ -2,28 +2,13 @@
 const year = new Date().getFullYear();
 ---
 
-<footer style="border-top: 1px solid var(--color-border-dark); margin-top: 4rem;">
-  <div class="max-w-5xl mx-auto px-4 sm:px-6 py-12">
-    <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-8">
-      <div>
-        <p class="text-sm font-body text-muted mb-2">
-          &copy; {year} Kevin Ong
-        </p>
-        <p class="text-xs font-body text-muted">
-          Built with intention. Powered by Astro.
-        </p>
-      </div>
-      <div class="flex flex-col sm:flex-row gap-4 sm:gap-6 text-sm">
-        <a href="https://github.com/lobakbro" target="_blank" rel="noopener noreferrer" class="font-medium text-muted hover:text-primary transition-opacity">
-          GitHub
-        </a>
-        <a href="https://www.linkedin.com/in/kevinmacong/" target="_blank" rel="noopener noreferrer" class="font-medium text-muted hover:text-primary transition-opacity">
-          LinkedIn
-        </a>
-        <a href="/rss.xml" class="font-medium text-muted hover:text-primary transition-opacity">
-          RSS
-        </a>
-      </div>
-    </div>
+<footer class="w-full mt-auto" style="border-top: 1px solid var(--v8-deep);">
+  <div class="max-w-6xl mx-auto px-6 py-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+    <p class="font-code text-xs" style="color: var(--v8-ash);">
+      built with astro. designed in vim at 2am. no frameworks were harmed.
+    </p>
+    <p class="font-code text-xs" style="color: var(--v8-ash);">
+      &copy; {year} kevin_ong // san_francisco
+    </p>
   </div>
 </footer>

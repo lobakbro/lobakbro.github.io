@@ -6,7 +6,7 @@ author: Kevin Ong
 category: philosophy
 tags: [history, strategy, systems, product]
 featured: false
-draft: false
+draft: true
 readingTime: "5 min read"
 ---
 

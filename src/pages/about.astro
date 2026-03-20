@@ -3,57 +3,60 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 
 <BaseLayout title="About" description="On building, thinking, and the space between engineering and wisdom.">
-  <div class="max-w-4xl mx-auto px-4 sm:px-6 py-20">
-    <h1 class="text-4xl sm:text-5xl font-display font-semibold text-primary mb-12 leading-tight">
-      Building at the frontier
+  <div class="max-w-4xl mx-auto px-6 py-20">
+    <span class="section-label">// about</span>
+    <h1 class="text-4xl sm:text-5xl font-display font-bold mt-4 mb-12 leading-tight" style="color: var(--v8-bone);">
+      Building in uncertain domains
     </h1>
 
     <div class="prose max-w-none space-y-8">
-      <p class="text-xl font-body text-muted leading-relaxed">
-        I'm Kevin Ong—an engineer, researcher, and writer working at the intersection 
-        of human agency and machine intelligence. Based in San Francisco, I build systems 
-        that amplify human creativity rather than replace it.
+      <p class="text-xl leading-relaxed" style="color: var(--v8-stone);">
+        I'm Kevin Ong — an engineer based in San Francisco. I started in neural interface
+        research, spent three years building electrode arrays in Ed Boyden's lab, and have
+        been chasing variations of the same question ever since: how does a person actually
+        get better at something?
       </p>
 
-      <p class="font-body text-muted leading-relaxed">
-        My technical work focuses on adaptive learning systems, multimodal AI architectures, 
-        and the evaluation frameworks needed to build AI that actually helps people learn and grow. 
-        I'm particularly interested in agentic collaboration—designing systems where humans and AI 
-        work together as creative partners rather than master and servant.
+      <p class="leading-relaxed" style="color: var(--v8-stone);">
+        That question has pulled me through ML for financial stress testing, automation at
+        Palo Alto Networks, experimental hardware R&D at Desktop Metal, and now cloud
+        infrastructure for educational gaming at IvyBee. The constant isn't the domain — it's
+        the pattern: I end up in rooms where nothing exists yet and someone needs to design
+        the first version.
       </p>
 
-      <p class="font-body text-muted leading-relaxed">
-        This site is where I explore ideas that span technical and philosophical territory. 
-        Essays on learning system evaluation sit alongside reflections on meditation practice. 
-        Deep dives into multimodal architectures coexist with thoughts on Sibelius and winter listening. 
-        The connections between these domains are where the most interesting insights emerge.
+      <p class="leading-relaxed" style="color: var(--v8-stone);">
+        On the side I'm building Meridian, an adaptive interview prep system that maps your
+        knowledge state across a skill graph and generates targeted practice. It grew out of
+        EarWorm, an earlier project where I used a hierarchical VQ-VAE to decompose the skill
+        space of piano performance. Different domains, same architecture of thinking.
       </p>
 
-      <div class="border-l-3 border-primary pl-8 py-4 my-12">
-        <p class="font-body text-muted leading-relaxed italic text-lg">
-          I believe the most important work happens at boundaries—between disciplines, 
-          between human and artificial intelligence, between the technical and the philosophical. 
-          That's where this writing lives.
+      <div class="pl-6 py-4 my-12" style="border-left: 3px solid var(--v8-warm);">
+        <p class="italic text-lg leading-relaxed" style="color: var(--v8-stone);">
+          I'm wide, not deep — but I learn fast, and I deliver. The most useful thing
+          about me is the architecture instinct that comes from building across enough
+          different domains to see the patterns that transfer.
         </p>
       </div>
 
-      <p class="font-body text-muted leading-relaxed">
-        When I'm not building or writing, you'll find me deep in a classical music rabbit hole 
-        (Rachmaninoff, Sibelius, and Mahler form my personal trinity), practicing meditation badly, 
-        or being supervised by Luna and Mochi, my philosophical advisors who happen to be cats.
+      <p class="leading-relaxed" style="color: var(--v8-stone);">
+        This site is where I write about what I'm learning. Essays on adaptive systems sit
+        alongside reflections on meditation practice. Technical dives coexist with thoughts
+        on Sibelius and winter listening. The connections between these domains are where
+        the interesting insights tend to emerge.
       </p>
 
-      <p class="font-body text-muted leading-relaxed">
-        I'm always interested in conversations about adaptive systems, learning design, 
-        consciousness research, or the weird overlaps between technology and wisdom traditions. 
-        The best ideas emerge in dialogue.
+      <p class="leading-relaxed" style="color: var(--v8-stone);">
+        When I'm not building or writing, you'll find me deep in a classical music rabbit hole
+        (Rachmaninoff, Sibelius, and Mahler), practicing meditation badly,
+        or being supervised by Princess, a ragdoll who has strong opinions about my code.
       </p>
 
-      <div class="mt-16 pt-8 border-t border-gray-800">
-        <h2 class="text-xl font-display font-medium text-primary mb-4">This Site</h2>
-        <p class="text-sm font-body text-muted leading-relaxed">
-          Built with Astro, designed for reading, optimized for ideas worth your attention. 
-          The source is available on GitHub for anyone curious about the implementation.
+      <div class="mt-16 pt-8" style="border-top: 1px solid var(--v8-deep);">
+        <span class="section-label">// this_site</span>
+        <p class="text-sm leading-relaxed mt-4" style="color: var(--v8-stone);">
+          Built with Astro, designed for reading, optimized for ideas worth your attention.
         </p>
       </div>
     </div>

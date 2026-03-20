@@ -3,24 +3,22 @@ export const resume = {
   title: 'Software Engineer',
   location: 'San Francisco, CA',
   summary:
-    'Engineer at the intersection of learning systems and AI architecture. Currently building adaptive educational technology at IvyBee and developing research on agentic collaboration patterns. Experienced in taking experimental ML systems from research through production deployment, with particular focus on multimodal architectures and human-AI interaction design.',
+    'I design and build production systems where nothing exists yet. Research foundation in neuroscience and ML, a track record of anticipating engineering problems before they surface, and the architecture instincts that come from building in messy, dynamic environments — experimental hardware, cloud infrastructure, adaptive learning systems. Most useful when the team is small and the playbook hasn\'t been written.',
 
   contact: {
-    github: 'https://github.com/lobakbro',
-    linkedin: 'https://linkedin.com/in/kevinong',
+    linkedin: 'https://www.linkedin.com/in/kevinmacong/',
   },
 
   experience: [
     {
-      company: 'IvyBee (fka Pedigree Studios)',
-      role: 'Software Engineer & Project Lead',
+      company: 'IvyBee',
+      role: 'Software Engineer & Technical Lead',
       period: 'Mar 2024 – Present',
       highlights: [
-        'Architecting a gamified university learning platform where professors deliver collegiate content in gaming format via web app',
-        'Built entire cloud infrastructure and backend from scratch on Azure — CosmosDB, ACR, Azure file shares',
-        'Designed MITM proxy routing users to Kubernetes pods with behavior controls',
-        'Implemented 4-environment Kubernetes infrastructure (prod, QA, dev, canary)',
-        'Backend development in Python and Go',
+        'Leading backend architecture for a team of 5 building educational Minecraft mods — immersive learning environments like clean room simulations delivered as game experiences',
+        'Designed and built all cloud infrastructure from scratch: Azure Functions, CosmosDB, ACR, 4-environment Kubernetes (prod, QA, dev, canary)',
+        'Architected proxy gateway serving as HTTP interface to game pods — handles auth, purchase gating, and seamless pod-to-pod player routing with state synchronization',
+        'Low-latency pipe swapping in Go for invisible player transitions between experiences',
       ],
     },
     {
@@ -29,9 +27,9 @@ export const resume = {
       period: 'Sep 2021 – Mar 2024',
       highlights: [
         'Core member of 2–4 person R&D team building an experimental top-down DLP 3D printer with scrolling non-static projector system',
-        'Solved overlap/artifacting where angled DLP projector regions intersected',
+        'Solved overlap/artifacting where angled DLP projector regions intersected — signal processing at the hardware-software boundary',
         'Segmented layer image files into synchronized video streams for scrolling print process',
-        'Led initiatives moving experimental prototypes (Python) to production systems (C++ API)',
+        'Converted experimental prototypes (Python) into production-ready C++ API for manufacturing hardware',
       ],
     },
     {
@@ -39,10 +37,10 @@ export const resume = {
       role: 'Automation Developer',
       period: 'Aug 2020 – Sep 2021',
       highlights: [
-        'Frontier effort bringing automation (UiPath + conventional) to a rapidly scaling company',
-        'Built workflows automating processes across multiple departments',
-        'Won company-wide hackathon with an automated security tool',
+        'Frontier effort bringing automation to a rapidly scaling security company',
+        'Won company-wide hackathon: built ML pipeline scoring secret exposure risk (leak probability × impact severity) across repos, surfacing production secrets leaking across multiple services',
         'Developed NLP-based form extraction pipeline via GCP',
+        'Built workflows automating processes across multiple departments',
       ],
     },
     {
@@ -54,21 +52,31 @@ export const resume = {
       ],
     },
     {
-      company: 'Citi Bank',
-      role: 'Doctoral Internship',
-      period: 'May – Dec 2019',
+      company: 'Citi',
+      role: 'Graduate Research Intern',
+      period: 'May – Dec 2018',
       highlights: [
-        'ML for mortgage risk modeling',
-        'Migrated legacy Fortran data pipelines to Python',
+        'Evaluated linear regression vs. deep learning validation for CCAR mortgage stress testing',
+        'Built ML automation to streamline the financial modeling pipeline',
+      ],
+    },
+    {
+      company: 'UTD Biomedical Engineering / Boyden Lab',
+      role: 'Research Assistant',
+      period: '2016 – 2019',
+      highlights: [
+        'Neural computer interface research — built and tested electrode arrays (Utah arrays) for brain-computer interfaces',
+        'PCA-based 3D neuron localization from multi-electrode recordings',
+        'Investigated glass transition polymer substrates for implantable probes; tested in vivo at MIT McGovern Institute',
       ],
     },
   ],
 
   projects: [
     {
-      name: 'PrepVerified',
+      name: 'Meridian',
       description:
-        'Full-stack adaptive learning system inspired by ALEKS (McGraw-Hill)',
+        'Adaptive interview prep system that maps your knowledge state across 68 skills and generates targeted practice to close gaps',
       tech: [
         'SvelteKit',
         'TypeScript',
@@ -78,40 +86,23 @@ export const resume = {
         'Claude CLI',
       ],
       highlights: [
-        'Bayesian Knowledge Tracing (BKT) for mastery estimation and FSRS for spaced repetition scheduling',
-        '68-skill graph with 84 prerequisite edges as a validated DAG, loaded from YAML config',
-        'Adaptive engine with 85% success rule, 5-tier recommendation priority, deadline proximity adaptation, leech detection, and calibration tracking',
-        'Claude generates adaptive problems and grades answers via structured JSON prompts with behavioral protocol',
-        '5 rubric types (coding, system design, ML/research, behavioral, CodeSignal) with error taxonomy, confidence calibration, and prediction-vs-actual divergence detection',
-        'Interactive dashboard with Cytoscape.js skill graph, mastery heatmap, live practice sessions, and post-session debriefs',
+        'Interactive skill graph (Cytoscape.js) visualizing mastery progression and prerequisite relationships across 68 skills with 84 edges',
+        'Claude generates problems adapted to current skill level and grades responses via structured JSON with behavioral protocol',
+        'Adaptive engine with 85% success rule, 5-tier recommendation priority, deadline proximity adaptation, and leech detection',
+        '5 rubric types (coding, system design, ML/research, behavioral, CodeSignal) with confidence calibration and prediction-vs-actual divergence detection',
+        'Session debriefs with mastery heatmaps and live practice sessions',
       ],
-      link: 'https://github.com/lobakbro/prepverified',
+      link: 'https://github.com/lobakbro/meridian',
     },
     {
-      name: 'EarWorm / Symphony',
+      name: 'EarWorm',
       description:
-        'Crossmodal music generation — multimodal architecture concept for classical music across sheet music, audio, and MIDI',
-      tech: ['Python', 'PyTorch', 'Audio Processing'],
+        'Hierarchical VQ-VAE trained on the ASAP dataset (professional piano MIDI) to decompose the skill space of piano performance — precursor to Meridian',
+      tech: ['Python', 'VQ-VAE', 'MIDI Processing'],
       highlights: [
-        'Inspired the skill-space decomposition thinking that led to PrepVerified',
-      ],
-    },
-    {
-      name: 'Cardoza Law',
-      description:
-        'Legal RAG pipeline for hierarchical rule precedence in California civil procedure',
-      tech: ['Python', 'LLaMA', 'LangChain'],
-      highlights: [
-        'Lessons on retrieval accuracy directly informed PrepVerified\'s approach to factual reliability',
-      ],
-    },
-    {
-      name: 'Omen Cyber Security',
-      description:
-        'ML pipeline for enterprise exposed secret key detection with NLP risk classification',
-      tech: ['Python', 'NLP', 'ML Pipelines'],
-      highlights: [
-        'Built ML-powered detection and NLP-based risk classification for enterprise secret exposure',
+        'Learned codebook representing discrete skill states from professional piano performances',
+        'Goal: infer a player\'s skill state from how they play (not MIDI synchronization) and generate targeted sheet music drills to close skill gaps',
+        'Skill-space decomposition thinking became the foundation for Meridian\'s adaptive engine',
       ],
     },
   ],
@@ -120,8 +111,12 @@ export const resume = {
     {
       institution: 'University of Texas at Dallas',
       degree: 'BS Electrical Engineering',
-      period: 'May 2020',
-      details: ['Eugene McDermott Scholar'],
+      period: '2016 – 2020',
+      details: [
+        'Eugene McDermott Scholar — one of the most selective undergraduate merit awards in the nation; full scholarship with leadership training and cultural enrichment',
+        'TAMS at UNT (Texas Academy of Math and Science) — early college program; completed BS requirements early, program required graduate coursework and research internships',
+        'Activities: IEEE, Biomedical Engineering Research, Management Consulting',
+      ],
     },
   ],
 
@@ -129,20 +124,12 @@ export const resume = {
     Languages: ['Python', 'Go', 'C++', 'TypeScript', 'SQL'],
     Infrastructure: [
       'Kubernetes',
-      'Azure (CosmosDB, ACR, File Shares)',
+      'Azure (CosmosDB, ACR, Functions)',
       'Docker',
       'GCP',
       'CI/CD',
     ],
-    'AI & ML': [
-      'PyTorch',
-      'LLMs',
-      'RAG',
-      'NLP',
-      'Deep Learning',
-      'Bayesian Knowledge Tracing',
-      'FSRS',
-    ],
+    'AI & ML': ['LLMs', 'NLP', 'Deep Learning', 'Signal Processing'],
     Web: ['SvelteKit', 'Astro', 'TailwindCSS', 'REST APIs'],
   },
 

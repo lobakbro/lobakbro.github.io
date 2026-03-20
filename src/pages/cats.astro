@@ -1,57 +1,64 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+
+const gallery = [
+  { src: '/photos/princess/looking_fab.jpg', caption: 'looking fab' },
+  { src: '/photos/princess/get-up-human.jpg', caption: 'get up, human' },
+  { src: '/photos/princess/derp.jpg', caption: 'derp' },
+  { src: '/photos/princess/you_serious.jpg', caption: 'you serious?' },
+  { src: '/photos/princess/muderous.jpg', caption: 'murderous' },
+  { src: '/photos/princess/petite.jpg', caption: 'petite' },
+  { src: '/photos/princess/sun_kissed.jpg', caption: 'sun kissed' },
+  { src: '/photos/princess/smol.jpg', caption: 'smol' },
+  { src: '/photos/princess/button.jpg', caption: 'button' },
+  { src: '/photos/princess/derp-queen.jpg', caption: 'derp queen' },
+];
+
+const rest = gallery;
 ---
 
-<BaseLayout title="Cats" description="The important stuff. Meet Luna and Mochi.">
-  <div class="max-w-3xl mx-auto px-4 sm:px-6 py-20">
-    <h1 class="text-4xl font-display font-semibold text-primary mb-6">The Important Stuff</h1>
-    
-    <div class="prose max-w-none mb-12">
-      <p class="text-xl font-body text-muted leading-relaxed mb-6">
-        You can learn everything you need to know about someone from how they interact with cats. 
-        Here are mine: Luna (the philosopher) and Mochi (the chaos agent).
-      </p>
-      
-      <p class="font-body text-muted leading-relaxed">
-        Luna approaches problems systematically—she'll spend ten minutes studying a closed door before 
-        requesting assistance. Mochi operates on pure intuition and has yet to encounter a surface 
-        she won't attempt to nap on, regardless of physics.
-      </p>
-      
-      <p class="font-body text-muted leading-relaxed">
-        They're better at parallel processing than any distributed system I've built. 
-        Luna handles strategic planning while Mochi handles execution. Usually this means Luna 
-        identifies the optimal sunny spot while Mochi claims it first.
+<BaseLayout title="Princess" description="The real boss. A ragdoll who runs the show.">
+  <div class="max-w-4xl mx-auto px-6 py-20">
+    <!-- Header -->
+    <span class="section-label">// the important stuff</span>
+    <h1 class="text-4xl sm:text-5xl font-display font-bold mt-4 mb-2" style="color: var(--v8-bone);">
+      Princess
+    </h1>
+    <p class="font-code text-sm mb-12" style="color: var(--v8-stone);">
+      ragdoll // san_francisco // actual boss
+    </p>
+
+    <!-- Intro text -->
+    <div class="text-base leading-relaxed mb-16" style="color: var(--v8-stone);">
+      <p data-reveal>
+        This is Princess. She's a ragdoll. She sits on whatever I'm working on
+        and headbutts the monitor when I've been at it too long.
       </p>
     </div>
 
-    <div class="grid grid-cols-1 sm:grid-cols-2 gap-8 mb-12">
-      <div class="space-y-4">
-        <div class="aspect-square rounded-xl bg-black/20 border border-gray-800 flex items-center justify-center text-6xl">
-          🐱
+    <!-- Gallery -->
+    <span class="section-label" data-reveal>// gallery</span>
+    <div class="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-6">
+      {rest.map((photo, i) => (
+        <div class="group relative" data-reveal data-reveal-delay={String((i % 2) + 1)}>
+          <div class="overflow-hidden" style="border: 1px solid var(--v8-deep);">
+            <img
+              src={photo.src}
+              alt={photo.caption}
+              class="w-full aspect-square object-cover transition-transform duration-700 group-hover:scale-[1.05]"
+              loading="lazy"
+            />
+          </div>
+          <div class="absolute inset-0 flex items-start justify-start p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300" style="background: linear-gradient(to bottom, var(--v8-void), transparent 60%);">
+            <span class="font-code text-sm font-medium" style="color: var(--v8-bone);">{photo.caption}</span>
+          </div>
         </div>
-        <div class="text-center">
-          <h3 class="font-display font-medium text-primary text-lg">Luna</h3>
-          <p class="text-sm text-muted font-body">The Philosopher</p>
-        </div>
-      </div>
-      
-      <div class="space-y-4">
-        <div class="aspect-square rounded-xl bg-black/20 border border-gray-800 flex items-center justify-center text-6xl">
-          😸
-        </div>
-        <div class="text-center">
-          <h3 class="font-display font-medium text-primary text-lg">Mochi</h3>
-          <p class="text-sm text-muted font-body">The Chaos Agent</p>
-        </div>
-      </div>
+      ))}
     </div>
 
-    <div class="text-center">
-      <p class="text-sm text-muted font-body italic">
-        Photos coming when I figure out how to get them both to sit still simultaneously.<br/>
-        (This may require advances in quantum mechanics.)
-      </p>
+    <!-- Closing -->
+    <div class="mt-20 text-center" data-reveal>
+      <div class="gradient-divider mb-8"></div>
     </div>
   </div>
 </BaseLayout>

@@ -6,7 +6,7 @@ author: Kevin Ong
 category: philosophy
 tags: [ai, frontier, uncertainty, building]
 featured: false
-draft: false
+draft: true
 readingTime: "4 min read"
 ---
 
@@ -20,7 +20,7 @@ This is both terrifying and exhilarating.
 
 Traditional project management assumes stable requirements and predictable timelines. But frontier development inverts this: the requirements evolve based on what turns out to be possible, and timelines depend on breakthroughs that can't be scheduled.
 
-I learned this building PrepVerified. I started with a conventional tutoring system design. Then GPT-4 made sophisticated problem generation feasible. Then function calling enabled structured grading. Each capability shift required redesigning not just the implementation, but the fundamental product concept.
+I learned this building Meridian. I started with a conventional tutoring system design. Then GPT-4 made sophisticated problem generation feasible. Then function calling enabled structured grading. Each capability shift required redesigning not just the implementation, but the fundamental product concept.
 
 The planning paradox: you need to plan carefully enough to make progress, but loosely enough to pivot when the ground shifts.
 
@@ -40,7 +40,7 @@ Frontier anxiety manifests emotionally as a constant low-level doubt: Am I build
 
 This doubt is useful when it drives better validation and user research. It becomes paralyzing when it prevents any building at all.
 
-The balance I've found: build things you'd want to exist regardless of the technology. PrepVerified exists because I wanted better learning systems, not because I wanted to play with language models. The AI enables better solutions, but the core problem is technology-independent.
+The balance I've found: build things you'd want to exist regardless of the technology. Meridian exists because I wanted better learning systems, not because I wanted to play with language models. The AI enables better solutions, but the core problem is technology-independent.
 
 ## Temporal Strategy
 

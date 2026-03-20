@@ -21,50 +21,46 @@ const formattedDate = essay.data.date.toLocaleDateString('en-US', {
   day: 'numeric',
 });
 
-// Determine if this is a major article (featured) vs mini-essay
 const isMajorArticle = essay.data.featured;
 ---
 
 <BaseLayout title={essay.data.title} description={essay.data.description} image={essay.data.heroImage}>
   <ReadingProgress />
-  <article class="max-w-4xl mx-auto px-4 sm:px-6 py-20">
-    <!-- Back navigation -->
+  <article class="max-w-4xl mx-auto px-6 py-20">
     <nav class="mb-12">
-      <a href="/essays/" class="text-sm font-medium text-muted hover:text-primary transition-opacity inline-flex items-center gap-2">
-        ← Back to Essays
+      <a href="/essays/" class="no-effect font-code text-sm hover:opacity-80 transition-opacity" style="color: var(--v8-stone);">
+        ← back to essays
       </a>
     </nav>
 
-    <header class={`mb-16 ${isMajorArticle ? 'pb-12 border-b border-gray-800' : ''}`}>
+    <header class={`mb-16 ${isMajorArticle ? 'pb-12' : ''}`} style={isMajorArticle ? `border-bottom: 1px solid var(--v8-deep);` : ''}>
       <div class="flex items-center gap-4 mb-6 text-sm">
-        <span class="category-pill capitalize">
-          {essay.data.category}
-        </span>
-        <time class="text-muted font-medium font-code" datetime={essay.data.date.toISOString()}>
+        <span class="category-pill">{essay.data.category}</span>
+        <time class="font-code text-xs" style="color: var(--v8-ash);" datetime={essay.data.date.toISOString()}>
           {formattedDate}
         </time>
         {essay.data.readingTime && (
-          <span class="text-muted font-code text-xs">{essay.data.readingTime}</span>
+          <span class="font-code text-xs" style="color: var(--v8-ash);">{essay.data.readingTime}</span>
         )}
       </div>
-      
-      <h1 class={`font-display font-semibold leading-tight text-primary ${
+
+      <h1 class={`font-display font-bold leading-tight ${
         isMajorArticle ? 'text-4xl sm:text-5xl lg:text-6xl mb-8' : 'text-3xl sm:text-4xl mb-6'
-      }`}>
+      }`} style="color: var(--v8-bone);">
         {essay.data.title}
       </h1>
-      
+
       {essay.data.description && (
-        <p class={`font-body text-muted leading-relaxed ${
+        <p class={`leading-relaxed ${
           isMajorArticle ? 'text-xl sm:text-2xl max-w-4xl' : 'text-lg max-w-3xl'
-        }`}>
+        }`} style="color: var(--v8-stone);">
           {essay.data.description}
         </p>
       )}
     </header>
 
     {essay.data.draft && (
-      <div class="mb-12 p-6 rounded-xl bg-amber-900/20 border border-amber-800 text-amber-200 text-sm font-body">
+      <div class="mb-12 p-6" style="background: var(--v8-warm-dim); border: 1px solid var(--v8-warm-glow); color: var(--v8-warm);">
         <strong class="font-display">Draft:</strong> This essay is still being refined.
       </div>
     )}
@@ -73,23 +69,19 @@ const isMajorArticle = essay.data.featured;
       <Content />
     </div>
 
-    <!-- Related Essays -->
     <RelatedEssays currentEssay={essay} allEssays={allEssays} />
 
-    <!-- Essay footer -->
-    <footer class="mt-20 pt-12 border-t border-gray-800">
+    <footer class="mt-20 pt-12" style="border-top: 1px solid var(--v8-deep);">
       <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
-        <div>
-          <p class="text-sm font-body text-muted">
-            Published {formattedDate}
-          </p>
-        </div>
+        <p class="font-code text-xs" style="color: var(--v8-ash);">
+          published {formattedDate}
+        </p>
         <div class="flex gap-6">
-          <a href="/essays/" class="text-sm font-medium text-primary hover:opacity-80 transition-opacity">
-            ← More Essays
+          <a href="/essays/" class="no-effect font-code text-sm hover:opacity-80 transition-opacity" style="color: var(--v8-warm);">
+            ← more essays
           </a>
-          <a href="/about/" class="text-sm font-medium text-primary hover:opacity-80 transition-opacity">
-            About Kevin
+          <a href="/about/" class="no-effect font-code text-sm hover:opacity-80 transition-opacity" style="color: var(--v8-warm);">
+            about Kevin
           </a>
         </div>
       </div>

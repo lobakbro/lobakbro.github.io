@@ -6,7 +6,7 @@ author: Kevin Ong
 category: research
 tags: [ai, collaboration, design, agency]
 featured: true
-draft: false
+draft: true
 readingTime: "8 min read"
 ---
 

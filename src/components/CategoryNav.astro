@@ -10,22 +10,30 @@ const { categories, currentCategory } = Astro.props;
 <nav class="flex flex-wrap gap-3 mb-12">
   <a
     href="/essays/"
-    class={`px-4 py-2 rounded-lg text-sm font-medium transition-all font-body ${
+    class={`px-4 py-2 text-sm font-code font-medium transition-all no-effect ${
       !currentCategory
-        ? 'bg-primary text-black'
-        : 'bg-black/20 text-muted hover:bg-black/40 hover:text-primary border border-gray-800'
+        ? ''
+        : 'hover:opacity-80'
     }`}
+    style={!currentCategory
+      ? `background: var(--v8-warm); color: var(--v8-void);`
+      : `background: var(--v8-surface); color: var(--v8-stone); border: 1px solid var(--v8-deep);`
+    }
   >
-    All
+    all
   </a>
   {categories.map((cat) => (
     <a
       href={`/essays/${cat}/`}
-      class={`px-4 py-2 rounded-lg text-sm font-medium transition-all capitalize font-body ${
+      class={`px-4 py-2 text-sm font-code font-medium transition-all no-effect ${
         currentCategory === cat
-          ? 'bg-primary text-black'
-          : 'bg-black/20 text-muted hover:bg-black/40 hover:text-primary border border-gray-800'
+          ? ''
+          : 'hover:opacity-80'
       }`}
+      style={currentCategory === cat
+        ? `background: var(--v8-warm); color: var(--v8-void);`
+        : `background: var(--v8-surface); color: var(--v8-stone); border: 1px solid var(--v8-deep);`
+      }
     >
       {cat}
     </a>

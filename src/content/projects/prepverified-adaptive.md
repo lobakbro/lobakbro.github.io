@@ -1,47 +1,33 @@
 ---
-title: "PrepVerified — Adaptive Learning Platform"
-description: "Rethinking test preparation through spaced repetition, difficulty calibration, and learning outcome evaluation beyond traditional metrics."
+title: "Meridian — Adaptive Interview Prep"
+description: "An adaptive interview preparation system that maps your knowledge state across 68 skills and generates targeted practice to close gaps — built on skill-space decomposition ideas from the EarWorm project."
 date: 2024-09-15
-tech: [React, Node.js, PostgreSQL, ML, Spaced Repetition, Learning Analytics]
-status: completed
+tech: [SvelteKit, TypeScript, SQLite, Drizzle ORM, Python, Claude CLI]
+status: in-progress
 featured: true
 draft: false
 ---
 
-Most test prep is broken. Students drill through hundreds of practice questions without strategic spacing, without adaptive difficulty, and without feedback that actually improves learning. PrepVerified was an experiment in applying learning science to create more effective preparation systems.
+Most interview prep is broken. You drill through hundreds of practice questions without knowing which gaps actually matter, without adaptive difficulty, and without feedback that helps you grow rather than just tells you what you got wrong. Meridian is my attempt to fix that — an adaptive system I built and use for my own interview preparation.
 
-The core insight: traditional accuracy metrics miss what matters for learning. A system that gives students questions they'll answer correctly maximizes performance metrics while minimizing educational value. Real learning happens at the edge of ability—in the zone where failure is possible but success is achievable with effort.
+The core insight came from EarWorm, an earlier project where I used a hierarchical VQ-VAE to decompose the skill space of piano performance. The idea there was to escape the trap of synchronizing play-along to MIDI and instead understand a player's skill state from how they actually play. That skill-space decomposition thinking became the foundation for Meridian.
 
-## Learning-Driven Architecture
+## How It Works
 
-Instead of optimizing for engagement or completion rates, PrepVerified optimized for knowledge retention and transfer. The system tracked not just whether students answered questions correctly, but how their understanding evolved over time.
+Meridian maps interview preparation as a directed acyclic graph of 68 skills with 84 prerequisite edges. Instead of throwing random questions at you, it estimates where you are in the skill graph and targets the gaps that will unlock the most progress.
 
-**Spaced Repetition Engine**: Questions reappeared based on forgetting curves personalized to each student's retention patterns. Difficult concepts got more frequent review; mastered concepts got strategic reinforcement.
+**Adaptive Skill Targeting**: An engine with an 85% success rule, 5-tier recommendation priority, deadline proximity adaptation, and leech detection — the system finds the edge of your ability and keeps you there.
 
-**Adaptive Difficulty Calibration**: The system continuously adjusted question difficulty to maintain optimal challenge level—hard enough to promote learning, easy enough to avoid discouragement.
+**Claude-Generated Problems**: Problems are generated and graded by Claude via structured JSON prompts with behavioral protocol. Five rubric types (coding, system design, ML/research, behavioral, CodeSignal) with error taxonomy and confidence calibration.
 
-**Metacognitive Scaffolding**: Students received feedback not just on correct answers but on their confidence calibration and self-assessment accuracy.
+**Interactive Skill Graph**: A Cytoscape.js visualization showing mastery progression and prerequisite relationships in real time. You can see exactly where you are and where you need to go.
 
-## Evaluation Challenges
+**Session Debriefs**: After each practice session, the system surfaces prediction-vs-actual divergence — where you thought you were strong but weren't, and where you underestimated yourself.
 
-The hardest part wasn't building the system—it was evaluating whether it actually worked. Traditional ML metrics (accuracy, precision, recall) were pedagogically meaningless. Students could show high accuracy while learning poorly, or low accuracy while building deep understanding.
+## What I'm Learning
 
-We developed a multi-layer evaluation framework:
-- **Learning Outcomes**: Pre/post performance on external assessments
-- **Knowledge Durability**: Retention testing weeks after initial learning
-- **Transfer Effectiveness**: Performance on novel problems requiring application of learned concepts
-- **Behavioral Analysis**: Changes in study patterns and self-regulation over time
+Building something I actually use daily has changed how I think about adaptive systems. The feedback loop is immediate and honest — if the targeting is wrong, I feel it in the next session. Some things I've discovered:
 
-The results challenged common assumptions about optimal learning systems. Counter-intuitively, configurations that frustrated students initially (by providing challenging questions) led to better long-term outcomes than systems that maintained high satisfaction scores.
+The system's value isn't in making practice easier — it's in making practice more honest. Knowing exactly which skills are weak and why is uncomfortable but far more useful than a confidence-boosting drill session.
 
-## Lessons for Adaptive Systems
-
-Building PrepVerified taught me that personalization in learning requires fundamentally different design principles than personalization in other domains:
-
-**Productive Struggle is Essential**: Unlike entertainment or commerce systems that minimize friction, learning systems must carefully calibrate challenge to promote growth.
-
-**Long-term vs. Short-term Optimization**: Engagement metrics often conflict with learning outcomes. Students preferred easier questions that felt more rewarding in the moment but led to less durable knowledge.
-
-**Context Dependence**: What constitutes "adaptive" varies dramatically by subject domain, student background, and learning objectives. Generic personalization approaches miss critical pedagogical considerations.
-
-The project ultimately demonstrated both the potential and the complexity of evidence-based learning technology. The techniques are promising, but implementation requires deep integration of learning science with system design—not just machine learning applied to educational content.
+Confidence calibration matters as much as accuracy. The divergence between "I think I know this" and "I actually know this" is where the most important learning happens.

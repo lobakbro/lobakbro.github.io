@@ -12,10 +12,11 @@ const categories = [...new Set(allEssays.map((e) => e.data.category))].sort();
 ---
 
 <BaseLayout title="Essays" description="Writing on ML, music, philosophy, and life.">
-  <div class="max-w-5xl mx-auto px-4 sm:px-6 py-20">
-    <h1 class="text-4xl font-display font-semibold text-primary mb-6">Essays</h1>
-    <p class="text-lg font-body text-muted mb-12 max-w-3xl leading-relaxed">
-      Ideas at the intersection of technology, philosophy, and human experience. 
+  <div class="max-w-5xl mx-auto px-6 py-20">
+    <span class="section-label">// essays</span>
+    <h1 class="text-4xl font-display font-bold mt-4 mb-6" style="color: var(--v8-bone);">Essays</h1>
+    <p class="text-lg leading-relaxed mb-12 max-w-3xl" style="color: var(--v8-stone);">
+      Ideas at the intersection of technology, philosophy, and human experience.
       From agentic collaboration to meditation practice, from learning systems to classical music.
     </p>
 

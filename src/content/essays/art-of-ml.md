@@ -7,7 +7,7 @@ author: Kevin Ong
 category: ml
 tags: [machine-learning, craft]
 featured: true
-draft: false
+draft: true
 ---
 
 The art in ML

@@ -6,27 +6,19 @@ interface Props {
 
 const { currentEssay, allEssays } = Astro.props;
 
-// Find related essays by category and tags
-function findRelatedEssays(current, essays, limit = 3) {
+function findRelatedEssays(current: any, essays: any[], limit = 3) {
   return essays
-    .filter(essay => 
-      essay.id !== current.id && 
+    .filter(essay =>
+      essay.id !== current.id &&
       !essay.data.draft
     )
     .map(essay => {
       let score = 0;
-      
-      // Same category gets high score
-      if (essay.data.category === current.data.category) {
-        score += 10;
-      }
-      
-      // Shared tags get points
+      if (essay.data.category === current.data.category) score += 10;
       const currentTags = current.data.tags || [];
       const essayTags = essay.data.tags || [];
-      const sharedTags = currentTags.filter(tag => essayTags.includes(tag));
+      const sharedTags = currentTags.filter((tag: string) => essayTags.includes(tag));
       score += sharedTags.length * 5;
-      
       return { essay, score };
     })
     .filter(item => item.score > 0)
@@ -39,32 +31,26 @@ const relatedEssays = findRelatedEssays(currentEssay, allEssays);
 ---
 
 {relatedEssays.length > 0 && (
-  <section class="mt-20 pt-12 border-t border-gray-800">
-    <h3 class="text-xl font-display font-medium text-primary mb-8">
-      Related Essays
-    </h3>
-    
-    <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+  <section class="mt-20 pt-12" style="border-top: 1px solid var(--v8-deep);">
+    <span class="section-label">// related_essays</span>
+
+    <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 mt-6">
       {relatedEssays.map((essay) => (
         <article class="group">
           <a href={`/essays/${essay.id}/`} class="block no-effect">
-            <div class="p-4 rounded-lg bg-black/20 border border-gray-800 hover:border-gray-600 transition-all duration-300 hover:bg-black/40">
+            <div class="v8-card h-full">
               <div class="flex items-center gap-2 mb-2 text-xs">
-                <span class="category-pill text-xs">
-                  {essay.data.category}
-                </span>
+                <span class="category-pill">{essay.data.category}</span>
                 {essay.data.readingTime && (
-                  <span class="text-muted font-code">
+                  <span class="font-code text-xs" style="color: var(--v8-ash);">
                     {essay.data.readingTime}
                   </span>
                 )}
               </div>
-              
-              <h4 class="font-display font-medium text-primary group-hover:opacity-80 transition-opacity mb-2">
+              <h4 class="font-display font-semibold group-hover:opacity-80 transition-opacity mb-2" style="color: var(--v8-bone);">
                 {essay.data.title}
               </h4>
-              
-              <p class="text-sm font-body text-muted leading-relaxed line-clamp-2">
+              <p class="text-sm leading-relaxed line-clamp-2" style="color: var(--v8-stone);">
                 {essay.data.description}
               </p>
             </div>

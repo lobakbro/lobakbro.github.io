@@ -1,12 +1,12 @@
 ---
-// Reading progress component for essays
+// Reading progress bar for essays — V8 amber gradient
 ---
 
-<div id="reading-progress" class="fixed top-0 left-0 w-full h-1 z-50">
-  <div 
-    id="progress-bar" 
-    class="h-full bg-primary transition-all duration-150 ease-out" 
-    style="width: 0%; background: var(--color-primary);"
+<div id="reading-progress" class="fixed top-0 left-0 w-full h-0.5 z-50">
+  <div
+    id="progress-bar"
+    class="h-full transition-all duration-150 ease-out"
+    style="width: 0%; background: linear-gradient(90deg, var(--v8-warm), var(--v8-warm));"
   ></div>
 </div>
 
@@ -14,7 +14,7 @@
   function initReadingProgress() {
     const progressBar = document.getElementById('progress-bar');
     const article = document.querySelector('article');
-    
+
     if (!progressBar || !article) return;
 
     function updateProgress() {
@@ -22,11 +22,10 @@
       const articleTop = article.offsetTop;
       const windowHeight = window.innerHeight;
       const scrollTop = window.scrollY;
-      
-      // Calculate how far through the article we are
+
       const articleStart = articleTop;
       const articleEnd = articleTop + articleHeight - windowHeight;
-      
+
       if (scrollTop < articleStart) {
         progressBar.style.width = '0%';
       } else if (scrollTop > articleEnd) {
@@ -37,18 +36,16 @@
       }
     }
 
-    window.addEventListener('scroll', updateProgress);
+    window.addEventListener('scroll', updateProgress, { passive: true });
     window.addEventListener('resize', updateProgress);
-    updateProgress(); // Initial calculation
+    updateProgress();
   }
 
-  // Initialize on page load
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', initReadingProgress);
   } else {
     initReadingProgress();
   }
 
-  // Re-initialize after navigation (for Astro view transitions)
   document.addEventListener('astro:after-swap', initReadingProgress);
 </script>

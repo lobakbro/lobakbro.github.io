@@ -6,7 +6,7 @@ author: Kevin Ong
 category: philosophy
 tags: [programming, tea, craftsmanship, mindfulness]
 featured: false
-draft: false
+draft: true
 readingTime: "3 min read"
 ---
 

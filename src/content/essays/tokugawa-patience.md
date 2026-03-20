@@ -6,7 +6,7 @@ author: Kevin Ong
 category: philosophy
 tags: [strategy, patience, systems, longevity]
 featured: false
-draft: false
+draft: true
 readingTime: "4 min read"
 ---
 
