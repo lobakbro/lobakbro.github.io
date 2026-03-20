@@ -3,7 +3,7 @@ export const resume = {
   title: 'Software Engineer',
   location: 'San Francisco, CA',
   summary:
-    'I design and build production systems where nothing exists yet. Research foundation in neuroscience and ML, a track record of anticipating engineering problems before they surface, and the judgment that comes from shipping across experimental hardware, cloud infrastructure, and adaptive learning systems. Three companies, three zero-to-one builds, each taken from prototype to production.',
+    'I design and build production systems where nothing exists yet. Research background in neuroscience and ML. Three zero-to-one builds across experimental hardware, cloud infrastructure, and adaptive learning — each taken from prototype to production.',
 
   contact: {
     linkedin: 'https://www.linkedin.com/in/kevinmacong/',
@@ -15,7 +15,7 @@ export const resume = {
       role: 'Software Engineer & Technical Lead',
       period: 'Mar 2024 – Present',
       highlights: [
-        'Leading backend architecture for a team of 5 building educational Minecraft mods — immersive learning environments like clean room simulations delivered as game experiences',
+        'Built all backend architecture for educational Minecraft mods — immersive learning environments like clean room simulations delivered as game experiences',
         'Designed and built all cloud infrastructure from scratch: Azure Functions, CosmosDB, ACR, 4-environment Kubernetes (prod, QA, dev, canary)',
         'Architected proxy gateway serving as HTTP interface to game pods — handles auth, purchase gating, and seamless pod-to-pod player routing with state synchronization',
         'Low-latency pipe swapping in Go for invisible player transitions between experiences',

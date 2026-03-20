@@ -1,5 +1,5 @@
 ---
-// Floating sidebar nav — molt.church style with JS-driven smooth width animation
+// Floating sidebar nav — FLIP-animated expand/collapse
 ---
 
 <nav id="sidebar-nav" class="hidden lg:flex fixed left-6 top-1/2 -translate-y-1/2 z-40 flex-col floating-nav">
@@ -42,7 +42,6 @@
     letter-spacing: 0.05em;
     cursor: pointer;
     white-space: nowrap;
-    overflow: hidden;
     transition:
       border-color 0.3s ease,
       background 0.3s ease,
@@ -79,9 +78,18 @@
   }
 
   .nav-label {
-    overflow: hidden;
     display: inline-block;
     white-space: nowrap;
+    overflow: hidden;
+    max-width: 0;
+    opacity: 0;
+    margin-left: 0;
+  }
+
+  .nav-label.show {
+    max-width: 120px;
+    opacity: 1;
+    margin-left: 10px;
   }
 </style>
 
@@ -95,43 +103,23 @@
       return;
     }
 
-    const items = nav.querySelectorAll('.nav-item');
-    const labels = nav.querySelectorAll('.nav-label');
+    const items = nav.querySelectorAll<HTMLElement>('.nav-item');
+    const labels = nav.querySelectorAll<HTMLElement>('.nav-label');
     const sections = ['about', 'experience', 'projects', 'writing'];
 
-    // Measure natural label widths, then collapse them
-    const labelWidths: number[] = [];
-    labels.forEach((label) => {
-      const el = label as HTMLElement;
-      el.style.marginLeft = '10px';
-      el.style.width = 'auto';
-      labelWidths.push(el.offsetWidth);
-      el.style.width = '0px';
-      el.style.marginLeft = '0px';
-      el.style.opacity = '0';
-      el.style.transition = 'width 0.4s cubic-bezier(0.22, 1, 0.36, 1), margin-left 0.4s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.3s ease';
+    // Set up transition after initial render so there's no flash
+    requestAnimationFrame(() => {
+      labels.forEach((label) => {
+        label.style.transition = 'max-width 0.35s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.25s ease, margin-left 0.35s cubic-bezier(0.22, 1, 0.36, 1)';
+      });
     });
 
-    let expanded = false;
-
     nav.addEventListener('mouseenter', () => {
-      expanded = true;
-      labels.forEach((label, i) => {
-        const el = label as HTMLElement;
-        el.style.width = labelWidths[i] + 'px';
-        el.style.marginLeft = '10px';
-        el.style.opacity = '1';
-      });
+      labels.forEach((label) => label.classList.add('show'));
     });
 
     nav.addEventListener('mouseleave', () => {
-      expanded = false;
-      labels.forEach((label) => {
-        const el = label as HTMLElement;
-        el.style.width = '0px';
-        el.style.marginLeft = '0px';
-        el.style.opacity = '0';
-      });
+      labels.forEach((label) => label.classList.remove('show'));
     });
 
     // Intersection Observer for active state
