@@ -1,0 +1,41 @@
+---
+interface Props {
+  categories: string[];
+  currentCategory?: string;
+}
+
+const { categories, currentCategory } = Astro.props;
+---
+
+<nav class="flex flex-wrap gap-3 mb-12">
+  <a
+    href="/essays/"
+    class={`px-4 py-2 text-sm font-code font-medium transition-all no-effect ${
+      !currentCategory
+        ? ''
+        : 'hover:opacity-80'
+    }`}
+    style={!currentCategory
+      ? `background: var(--v8-warm); color: var(--v8-void);`
+      : `background: var(--v8-surface); color: var(--v8-stone); border: 1px solid var(--v8-deep);`
+    }
+  >
+    all
+  </a>
+  {categories.map((cat) => (
+    <a
+      href={`/essays/${cat}/`}
+      class={`px-4 py-2 text-sm font-code font-medium transition-all no-effect ${
+        currentCategory === cat
+          ? ''
+          : 'hover:opacity-80'
+      }`}
+      style={currentCategory === cat
+        ? `background: var(--v8-warm); color: var(--v8-void);`
+        : `background: var(--v8-surface); color: var(--v8-stone); border: 1px solid var(--v8-deep);`
+      }
+    >
+      {cat}
+    </a>
+  ))}
+</nav>

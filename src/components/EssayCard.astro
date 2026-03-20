@@ -1,0 +1,36 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  date: Date;
+  category: string;
+  slug: string;
+  readingTime?: string;
+}
+
+const { title, description, date, category, slug, readingTime } = Astro.props;
+
+const formattedDate = date.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
+---
+
+<a href={`/essays/${slug}/`} class="group block no-effect">
+  <article class="v8-card glow-on-hover h-full">
+    <div class="flex items-center gap-3 mb-3 text-sm">
+      <span class="category-pill">{category}</span>
+      <time class="font-code text-xs" style="color: var(--v8-ash);" datetime={date.toISOString()}>
+        {formattedDate}
+      </time>
+      {readingTime && (
+        <span class="font-code text-xs" style="color: var(--v8-ash);">
+          {readingTime}
+        </span>
+      )}
+    </div>
+    <h3 class="text-lg font-display font-semibold group-hover:opacity-80 transition-opacity mb-2" style="color: var(--v8-bone);">
+      {title}
+    </h3>
+    <p class="text-sm leading-relaxed line-clamp-2" style="color: var(--v8-stone);">
+      {description}
+    </p>
+  </article>
+</a>

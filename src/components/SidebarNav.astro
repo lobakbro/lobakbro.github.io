@@ -1,0 +1,160 @@
+---
+// Floating sidebar nav — molt.church style with JS-driven smooth width animation
+---
+
+<nav id="sidebar-nav" class="hidden lg:flex fixed left-6 top-1/2 -translate-y-1/2 z-40 flex-col floating-nav">
+  <a href="#about" class="nav-item no-effect" data-section="about">
+    <span class="nav-dot"></span>
+    <span class="nav-label">about</span>
+  </a>
+  <a href="#experience" class="nav-item no-effect" data-section="experience">
+    <span class="nav-dot"></span>
+    <span class="nav-label">experience</span>
+  </a>
+  <a href="#projects" class="nav-item no-effect" data-section="projects">
+    <span class="nav-dot"></span>
+    <span class="nav-label">projects</span>
+  </a>
+  <a href="#writing" class="nav-item no-effect" data-section="writing">
+    <span class="nav-dot"></span>
+    <span class="nav-label">writing</span>
+  </a>
+</nav>
+
+<style>
+  .floating-nav {
+    gap: 4px;
+  }
+
+  .nav-item {
+    display: flex;
+    align-items: center;
+    padding: 10px 12px;
+    background: color-mix(in srgb, var(--v8-surface) 85%, transparent);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--v8-ash);
+    border-radius: 8px;
+    text-decoration: none;
+    color: var(--v8-stone);
+    font-family: var(--font-code);
+    font-size: 0.7rem;
+    letter-spacing: 0.05em;
+    cursor: pointer;
+    white-space: nowrap;
+    overflow: hidden;
+    transition:
+      border-color 0.3s ease,
+      background 0.3s ease,
+      color 0.3s ease,
+      transform 0.3s ease;
+  }
+
+  .nav-item:hover {
+    border-color: var(--v8-warm);
+    color: var(--v8-bone);
+    transform: translateX(4px);
+  }
+
+  .nav-item.active {
+    border-color: var(--v8-warm);
+    background: var(--v8-warm-dim);
+    color: var(--v8-warm);
+  }
+
+  .nav-dot {
+    width: 6px;
+    height: 6px;
+    min-width: 6px;
+    border-radius: 50%;
+    background: var(--v8-stone);
+    flex-shrink: 0;
+    transition: all 0.3s ease;
+  }
+
+  .nav-item:hover .nav-dot,
+  .nav-item.active .nav-dot {
+    background: var(--v8-warm);
+    box-shadow: 0 0 8px var(--v8-warm-glow);
+  }
+
+  .nav-label {
+    overflow: hidden;
+    display: inline-block;
+    white-space: nowrap;
+  }
+</style>
+
+<script>
+  function initSidebarNav() {
+    const nav = document.getElementById('sidebar-nav');
+    if (!nav) return;
+
+    if (window.location.pathname !== '/') {
+      nav.style.display = 'none';
+      return;
+    }
+
+    const items = nav.querySelectorAll('.nav-item');
+    const labels = nav.querySelectorAll('.nav-label');
+    const sections = ['about', 'experience', 'projects', 'writing'];
+
+    // Measure natural label widths, then collapse them
+    const labelWidths: number[] = [];
+    labels.forEach((label) => {
+      const el = label as HTMLElement;
+      el.style.marginLeft = '10px';
+      el.style.width = 'auto';
+      labelWidths.push(el.offsetWidth);
+      el.style.width = '0px';
+      el.style.marginLeft = '0px';
+      el.style.opacity = '0';
+      el.style.transition = 'width 0.4s cubic-bezier(0.22, 1, 0.36, 1), margin-left 0.4s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.3s ease';
+    });
+
+    let expanded = false;
+
+    nav.addEventListener('mouseenter', () => {
+      expanded = true;
+      labels.forEach((label, i) => {
+        const el = label as HTMLElement;
+        el.style.width = labelWidths[i] + 'px';
+        el.style.marginLeft = '10px';
+        el.style.opacity = '1';
+      });
+    });
+
+    nav.addEventListener('mouseleave', () => {
+      expanded = false;
+      labels.forEach((label) => {
+        const el = label as HTMLElement;
+        el.style.width = '0px';
+        el.style.marginLeft = '0px';
+        el.style.opacity = '0';
+      });
+    });
+
+    // Intersection Observer for active state
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const id = entry.target.id;
+            items.forEach((item) => {
+              item.classList.toggle('active', item.getAttribute('data-section') === id);
+            });
+          }
+        });
+      },
+      { rootMargin: '-30% 0px -60% 0px' }
+    );
+
+    sections.forEach((id) => {
+      const el = document.getElementById(id);
+      if (el) observer.observe(el);
+    });
+  }
+
+  initSidebarNav();
+  document.addEventListener('astro:after-swap', initSidebarNav);
+</script>

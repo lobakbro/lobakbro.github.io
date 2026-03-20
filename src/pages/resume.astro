@@ -1,0 +1,154 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { resume } from '../data/resume';
+---
+
+<BaseLayout title="Resume" description={`${resume.name} — ${resume.title}`}>
+  <div class="max-w-4xl mx-auto px-6 py-20">
+    <div class="mb-12">
+      <span class="section-label">// resume</span>
+      <h1 class="text-4xl font-display font-bold mt-4" style="color: var(--v8-bone);">{resume.name}</h1>
+      <p class="font-code text-sm mt-3" style="color: var(--v8-stone);">
+        {resume.title} // {resume.location}
+      </p>
+      <div class="flex gap-6 mt-4">
+        <a href={resume.contact.linkedin} target="_blank" rel="noopener noreferrer" class="no-effect font-code text-sm hover:opacity-80 transition-opacity" style="color: var(--v8-warm);">
+          linkedin
+        </a>
+      </div>
+    </div>
+
+    {resume.summary && (
+      <section class="mb-16">
+        <p class="text-base leading-relaxed" style="color: var(--v8-stone);">{resume.summary}</p>
+      </section>
+    )}
+
+    <div class="gradient-divider mb-12"></div>
+
+    <!-- Experience -->
+    <section class="mb-16">
+      <span class="section-label">// experience</span>
+      <div class="space-y-6 mt-8">
+        {resume.experience.map((job) => (
+          <div class="v8-card" style="border-left: 3px solid var(--v8-warm);">
+            <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-3">
+              <h3 class="font-display font-semibold text-lg" style="color: var(--v8-bone);">{job.role}</h3>
+              <span class="font-code text-xs" style="color: var(--v8-ash);">{job.period}</span>
+            </div>
+            <p class="font-code text-sm mb-4" style="color: var(--v8-warm);">{job.company}</p>
+            <ul class="space-y-2">
+              {job.highlights.map((h) => (
+                <li class="text-sm leading-relaxed pl-4 relative" style="color: var(--v8-stone);">
+                  <span class="absolute left-0" style="color: var(--v8-warm);">→</span>
+                  {h}
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <div class="gradient-divider mb-12"></div>
+
+    <!-- Projects -->
+    <section class="mb-16">
+      <span class="section-label">// projects</span>
+      <div class="space-y-6 mt-8">
+        {resume.projects.map((project) => (
+          <div class="v8-card">
+            <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-2">
+              <h3 class="font-display font-semibold text-lg" style="color: var(--v8-bone);">
+                {project.link ? (
+                  <a href={project.link} target="_blank" rel="noopener noreferrer" class="no-effect hover:opacity-80 transition-opacity" style="color: var(--v8-bone);">
+                    {project.name}
+                  </a>
+                ) : (
+                  project.name
+                )}
+              </h3>
+            </div>
+            <p class="text-sm mb-3" style="color: var(--v8-stone);">{project.description}</p>
+            <div class="flex flex-wrap gap-2 mb-3">
+              {project.tech.map((t) => (
+                <span class="font-code text-xs px-2 py-0.5" style="color: var(--v8-ash); background: var(--v8-warm-dim);">
+                  {t}
+                </span>
+              ))}
+            </div>
+            <ul class="space-y-1">
+              {project.highlights.map((h) => (
+                <li class="text-sm pl-4 relative" style="color: var(--v8-stone);">
+                  <span class="absolute left-0" style="color: var(--v8-ash);">–</span>
+                  {h}
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <div class="gradient-divider mb-12"></div>
+
+    <!-- Skills -->
+    <section class="mb-16">
+      <span class="section-label">// skills</span>
+      <div class="grid sm:grid-cols-2 gap-6 mt-8">
+        {Object.entries(resume.skills).map(([category, items]) => (
+          <div>
+            <h3 class="font-code text-sm font-medium mb-3" style="color: var(--v8-bone);">{category}</h3>
+            <div class="flex flex-wrap gap-2">
+              {items.map((skill) => (
+                <span class="font-code text-xs px-2.5 py-1" style="background: var(--v8-surface); color: var(--v8-stone); border: 1px solid var(--v8-deep);">
+                  {skill}
+                </span>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <div class="gradient-divider mb-12"></div>
+
+    <!-- Education -->
+    <section class="mb-16">
+      <span class="section-label">// education</span>
+      <div class="space-y-6 mt-8">
+        {resume.education.map((edu) => (
+          <div>
+            <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-1">
+              <h3 class="font-display font-semibold" style="color: var(--v8-bone);">{edu.degree}</h3>
+              <span class="font-code text-xs" style="color: var(--v8-ash);">{edu.period}</span>
+            </div>
+            <p style="color: var(--v8-stone);">{edu.institution}</p>
+            {edu.details.length > 0 && (
+              <ul class="mt-1">
+                {edu.details.map((d) => (
+                  <li class="text-sm" style="color: var(--v8-stone);">{d}</li>
+                ))}
+              </ul>
+            )}
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <div class="gradient-divider mb-12"></div>
+
+    <!-- Certifications -->
+    <section class="mb-10">
+      <span class="section-label">// certifications</span>
+      <div class="space-y-3 mt-8">
+        {resume.certifications.map((cert) => (
+          <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between">
+            <span class="font-medium text-sm" style="color: var(--v8-bone);">{cert.name}</span>
+            <span class="font-code text-xs" style="color: var(--v8-ash);">{cert.issuer}</span>
+          </div>
+        ))}
+      </div>
+    </section>
+  </div>
+</BaseLayout>

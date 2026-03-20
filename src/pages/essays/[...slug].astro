@@ -1,0 +1,90 @@
+---
+import { getCollection, render } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ReadingProgress from '../../components/ReadingProgress.astro';
+import RelatedEssays from '../../components/RelatedEssays.astro';
+
+export async function getStaticPaths() {
+  const essays = await getCollection('essays');
+  return essays.map((essay) => ({
+    params: { slug: essay.id },
+    props: { essay, allEssays: essays },
+  }));
+}
+
+const { essay, allEssays } = Astro.props;
+const { Content } = await render(essay);
+
+const formattedDate = essay.data.date.toLocaleDateString('en-US', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+});
+
+const isMajorArticle = essay.data.featured;
+---
+
+<BaseLayout title={essay.data.title} description={essay.data.description} image={essay.data.heroImage}>
+  <ReadingProgress />
+  <article class="max-w-4xl mx-auto px-6 py-20">
+    <nav class="mb-12">
+      <a href="/essays/" class="no-effect font-code text-sm hover:opacity-80 transition-opacity" style="color: var(--v8-stone);">
+        ← back to essays
+      </a>
+    </nav>
+
+    <header class={`mb-16 ${isMajorArticle ? 'pb-12' : ''}`} style={isMajorArticle ? `border-bottom: 1px solid var(--v8-deep);` : ''}>
+      <div class="flex items-center gap-4 mb-6 text-sm">
+        <span class="category-pill">{essay.data.category}</span>
+        <time class="font-code text-xs" style="color: var(--v8-ash);" datetime={essay.data.date.toISOString()}>
+          {formattedDate}
+        </time>
+        {essay.data.readingTime && (
+          <span class="font-code text-xs" style="color: var(--v8-ash);">{essay.data.readingTime}</span>
+        )}
+      </div>
+
+      <h1 class={`font-display font-bold leading-tight ${
+        isMajorArticle ? 'text-4xl sm:text-5xl lg:text-6xl mb-8' : 'text-3xl sm:text-4xl mb-6'
+      }`} style="color: var(--v8-bone);">
+        {essay.data.title}
+      </h1>
+
+      {essay.data.description && (
+        <p class={`leading-relaxed ${
+          isMajorArticle ? 'text-xl sm:text-2xl max-w-4xl' : 'text-lg max-w-3xl'
+        }`} style="color: var(--v8-stone);">
+          {essay.data.description}
+        </p>
+      )}
+    </header>
+
+    {essay.data.draft && (
+      <div class="mb-12 p-6" style="background: var(--v8-warm-dim); border: 1px solid var(--v8-warm-glow); color: var(--v8-warm);">
+        <strong class="font-display">Draft:</strong> This essay is still being refined.
+      </div>
+    )}
+
+    <div class="prose max-w-none">
+      <Content />
+    </div>
+
+    <RelatedEssays currentEssay={essay} allEssays={allEssays} />
+
+    <footer class="mt-20 pt-12" style="border-top: 1px solid var(--v8-deep);">
+      <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
+        <p class="font-code text-xs" style="color: var(--v8-ash);">
+          published {formattedDate}
+        </p>
+        <div class="flex gap-6">
+          <a href="/essays/" class="no-effect font-code text-sm hover:opacity-80 transition-opacity" style="color: var(--v8-warm);">
+            ← more essays
+          </a>
+          <a href="/about/" class="no-effect font-code text-sm hover:opacity-80 transition-opacity" style="color: var(--v8-warm);">
+            about Kevin
+          </a>
+        </div>
+      </div>
+    </footer>
+  </article>
+</BaseLayout>

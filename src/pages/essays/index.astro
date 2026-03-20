@@ -1,0 +1,38 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import EssayCard from '../../components/EssayCard.astro';
+import CategoryNav from '../../components/CategoryNav.astro';
+
+const allEssays = await getCollection('essays', ({ data }) => {
+  return import.meta.env.PROD ? !data.draft : true;
+});
+const sorted = allEssays.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+const categories = [...new Set(allEssays.map((e) => e.data.category))].sort();
+---
+
+<BaseLayout title="Essays" description="Writing on ML, music, philosophy, and life.">
+  <div class="max-w-5xl mx-auto px-6 py-20">
+    <span class="section-label">// essays</span>
+    <h1 class="text-4xl font-display font-bold mt-4 mb-6" style="color: var(--v8-bone);">Essays</h1>
+    <p class="text-lg leading-relaxed mb-12 max-w-3xl" style="color: var(--v8-stone);">
+      Ideas at the intersection of technology, philosophy, and human experience.
+      From agentic collaboration to meditation practice, from learning systems to classical music.
+    </p>
+
+    <CategoryNav categories={categories} />
+
+    <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      {sorted.map((essay) => (
+        <EssayCard
+          title={essay.data.title}
+          description={essay.data.description}
+          date={essay.data.date}
+          category={essay.data.category}
+          slug={essay.id}
+          readingTime={essay.data.readingTime}
+        />
+      ))}
+    </div>
+  </div>
+</BaseLayout>

@@ -1,0 +1,64 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const gallery = [
+  { src: '/photos/princess/looking_fab.jpg', caption: 'looking fab' },
+  { src: '/photos/princess/get-up-human.jpg', caption: 'get up, human' },
+  { src: '/photos/princess/derp.jpg', caption: 'derp' },
+  { src: '/photos/princess/you_serious.jpg', caption: 'you serious?' },
+  { src: '/photos/princess/muderous.jpg', caption: 'murderous' },
+  { src: '/photos/princess/petite.jpg', caption: 'petite' },
+  { src: '/photos/princess/sun_kissed.jpg', caption: 'sun kissed' },
+  { src: '/photos/princess/smol.jpg', caption: 'smol' },
+  { src: '/photos/princess/button.jpg', caption: 'button' },
+  { src: '/photos/princess/derp-queen.jpg', caption: 'derp queen' },
+];
+
+const rest = gallery;
+---
+
+<BaseLayout title="Princess" description="The real boss. A ragdoll who runs the show.">
+  <div class="max-w-4xl mx-auto px-6 py-20">
+    <!-- Header -->
+    <span class="section-label">// the important stuff</span>
+    <h1 class="text-4xl sm:text-5xl font-display font-bold mt-4 mb-2" style="color: var(--v8-bone);">
+      Princess
+    </h1>
+    <p class="font-code text-sm mb-12" style="color: var(--v8-stone);">
+      ragdoll // san_francisco // actual boss
+    </p>
+
+    <!-- Intro text -->
+    <div class="text-base leading-relaxed mb-16" style="color: var(--v8-stone);">
+      <p data-reveal>
+        This is Princess. She's a ragdoll. She sits on whatever I'm working on
+        and headbutts the monitor when I've been at it too long.
+      </p>
+    </div>
+
+    <!-- Gallery -->
+    <span class="section-label" data-reveal>// gallery</span>
+    <div class="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-6">
+      {rest.map((photo, i) => (
+        <div class="group relative" data-reveal data-reveal-delay={String((i % 2) + 1)}>
+          <div class="overflow-hidden" style="border: 1px solid var(--v8-deep);">
+            <img
+              src={photo.src}
+              alt={photo.caption}
+              class="w-full aspect-square object-cover transition-transform duration-700 group-hover:scale-[1.05]"
+              loading="lazy"
+            />
+          </div>
+          <div class="absolute inset-0 flex items-start justify-start p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300" style="background: linear-gradient(to bottom, var(--v8-void), transparent 60%);">
+            <span class="font-code text-sm font-medium" style="color: var(--v8-bone);">{photo.caption}</span>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <!-- Closing -->
+    <div class="mt-20 text-center" data-reveal>
+      <div class="gradient-divider mb-8"></div>
+    </div>
+  </div>
+</BaseLayout>

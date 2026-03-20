@@ -2,22 +2,20 @@
   {
     "listing": "/index.html",
     "items": [
-      "/posts/current_state.html",
-      "/posts/omen.html",
-      "/posts/acing_ml_interview.html",
+      "/posts/kaggle_mushroom.html",
       "/posts/art_of_ml.html"
     ]
   },
   {
     "listing": "/hobbies.html",
-    "items": []
+    "items": [
+      "/hobbies/music_language.html"
+    ]
   },
   {
     "listing": "/projects.html",
     "items": [
-      "/posts/current_state.html",
-      "/posts/omen.html",
-      "/posts/acing_ml_interview.html",
+      "/posts/kaggle_mushroom.html",
       "/posts/art_of_ml.html"
     ]
   }

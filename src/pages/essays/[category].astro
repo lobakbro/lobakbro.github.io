@@ -1,0 +1,51 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import EssayCard from '../../components/EssayCard.astro';
+import CategoryNav from '../../components/CategoryNav.astro';
+
+export async function getStaticPaths() {
+  const essays = await getCollection('essays');
+  const categories = [...new Set(essays.map((e) => e.data.category))];
+  return categories.map((category) => ({
+    params: { category },
+    props: { category },
+  }));
+}
+
+const { category } = Astro.props;
+
+const allEssays = await getCollection('essays', ({ data }) => {
+  return import.meta.env.PROD ? !data.draft : true;
+});
+const filtered = allEssays
+  .filter((e) => e.data.category === category)
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+
+const categories = [...new Set(allEssays.map((e) => e.data.category))].sort();
+---
+
+<BaseLayout title={`${category} — Essays`} description={`Essays about ${category}.`}>
+  <div class="max-w-5xl mx-auto px-6 py-20">
+    <span class="section-label">// essays / {category}</span>
+    <h1 class="text-3xl font-display font-bold mt-4 mb-2 capitalize" style="color: var(--v8-bone);">{category}</h1>
+    <p class="font-code text-sm mb-8" style="color: var(--v8-ash);">
+      {filtered.length} essay{filtered.length !== 1 ? 's' : ''}
+    </p>
+
+    <CategoryNav categories={categories} currentCategory={category} />
+
+    <div class="grid gap-6 sm:grid-cols-2">
+      {filtered.map((essay) => (
+        <EssayCard
+          title={essay.data.title}
+          description={essay.data.description}
+          date={essay.data.date}
+          category={essay.data.category}
+          slug={essay.id}
+          readingTime={essay.data.readingTime}
+        />
+      ))}
+    </div>
+  </div>
+</BaseLayout>
