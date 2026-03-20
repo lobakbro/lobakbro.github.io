@@ -15,9 +15,9 @@
     <span class="nav-dot"></span>
     <span class="nav-label">projects</span>
   </a>
-  <a href="#writing" class="nav-item no-effect" data-section="writing">
+  <a href="#musings" class="nav-item no-effect" data-section="musings">
     <span class="nav-dot"></span>
-    <span class="nav-label">writing</span>
+    <span class="nav-label">musings</span>
   </a>
 </nav>
 
@@ -105,7 +105,7 @@
 
     const items = nav.querySelectorAll<HTMLElement>('.nav-item');
     const labels = nav.querySelectorAll<HTMLElement>('.nav-label');
-    const sections = ['about', 'experience', 'projects', 'writing'];
+    const sections = ['about', 'experience', 'projects', 'musings'];
 
     // Set up transition after initial render so there's no flash
     requestAnimationFrame(() => {
