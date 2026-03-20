@@ -3,7 +3,7 @@ export const resume = {
   title: 'Software Engineer',
   location: 'San Francisco, CA',
   summary:
-    'I design and build production systems where nothing exists yet. Research foundation in neuroscience and ML, a track record of anticipating engineering problems before they surface, and the architecture instincts that come from building in messy, dynamic environments — experimental hardware, cloud infrastructure, adaptive learning systems. Most useful when the team is small and the playbook hasn\'t been written.',
+    'I design and build production systems where nothing exists yet. Research foundation in neuroscience and ML, a track record of anticipating engineering problems before they surface, and the judgment that comes from shipping across experimental hardware, cloud infrastructure, and adaptive learning systems. Three companies, three zero-to-one builds, each taken from prototype to production.',
 
   contact: {
     linkedin: 'https://www.linkedin.com/in/kevinmacong/',
@@ -37,7 +37,7 @@ export const resume = {
       role: 'Automation Developer',
       period: 'Aug 2020 – Sep 2021',
       highlights: [
-        'Frontier effort bringing automation to a rapidly scaling security company',
+        'Built automation tooling for a 10,000+ employee security company scaling rapidly post-IPO',
         'Won company-wide hackathon: built ML pipeline scoring secret exposure risk (leak probability × impact severity) across repos, surfacing production secrets leaking across multiple services',
         'Developed NLP-based form extraction pipeline via GCP',
         'Built workflows automating processes across multiple departments',
