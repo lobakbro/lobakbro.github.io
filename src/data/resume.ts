@@ -15,7 +15,7 @@ export const resume = {
       role: 'Software Engineer & Technical Lead',
       period: 'Mar 2024 – Present',
       highlights: [
-        'Built all backend architecture for educational Minecraft mods — immersive learning environments like clean room simulations delivered as game experiences',
+        'Built all backend architecture for experiential gaming experiences — immersive learning environments like clean room simulations delivered as interactive game worlds',
         'Designed and built all cloud infrastructure from scratch: Azure Functions, CosmosDB, ACR, 4-environment Kubernetes (prod, QA, dev, canary)',
         'Architected proxy gateway serving as HTTP interface to game pods — handles auth, purchase gating, and seamless pod-to-pod player routing with state synchronization',
         'Low-latency pipe swapping in Go for invisible player transitions between experiences',
