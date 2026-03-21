@@ -1,6 +1,6 @@
 ---
 title: "EarWorm — Piano Skill Decomposition"
-description: "A hierarchical VQ-VAE trained on professional piano MIDI to decompose the skill space of piano performance into a learned codebook — the precursor to Meridian."
+description: "A hierarchical VQ-VAE trained on professional piano MIDI to decompose the skill space of piano performance into a learned codebook — the precursor to Constellation."
 date: 2024-07-31
 tech: [Python, VQ-VAE, MIDI Processing, ASAP Dataset]
 status: in-progress
@@ -22,6 +22,6 @@ From there, the goal was to generate targeted sheet music drills: exercises spec
 
 ## What It Became
 
-The skill-space decomposition thinking from EarWorm directly became the foundation for Meridian, my adaptive interview prep system. The insight transferred: don't measure against a reference, measure the learner's actual state, and then generate targeted practice to move them forward.
+The skill-space decomposition thinking from EarWorm directly became the foundation for Constellation, my adaptive learning system. The insight transferred: don't measure against a reference, measure the learner's actual state, and then generate targeted practice to move them forward.
 
-The 68-skill DAG in Meridian, the adaptive targeting engine, the focus on identifying gaps rather than drilling strengths — all of that traces back to the codebook idea from EarWorm. Different domain, same architecture of thinking.
+The skill graph in Constellation, the adaptive targeting engine, the focus on identifying gaps rather than drilling strengths — all of that traces back to the codebook idea from EarWorm. Different domain, same architecture of thinking.

@@ -74,35 +74,34 @@ export const resume = {
 
   projects: [
     {
-      name: 'Meridian',
+      name: 'Constellation',
       description:
-        'Adaptive interview prep system that maps your knowledge state across 68 skills and generates targeted practice to close gaps',
+        'Adaptive learning system that models knowledge as a constellation of mastered nodes in a skill graph, targeting the frontier of what you\'re ready to learn next',
       tech: [
         'SvelteKit',
         'TypeScript',
         'SQLite',
         'Drizzle ORM',
         'Python',
-        'Claude CLI',
+        'Claude API',
       ],
       highlights: [
-        'Interactive skill graph (Cytoscape.js) visualizing mastery progression and prerequisite relationships across 68 skills with 84 edges',
-        'Claude generates problems adapted to current skill level and grades responses via structured JSON with behavioral protocol',
-        'Adaptive engine with 85% success rule, 5-tier recommendation priority, deadline proximity adaptation, and leech detection',
-        '5 rubric types (coding, system design, ML/research, behavioral, CodeSignal) with confidence calibration and prediction-vs-actual divergence detection',
+        'Interactive skill graph (Cytoscape.js) visualizing mastery progression and prerequisite relationships across a DAG of skills',
+        'Claude generates problems adapted to current skill level and grades responses via structured evaluation',
+        'Adaptive engine using knowledge tracing and spaced repetition to target practice at the frontier of ability',
+        'Confidence calibration surfacing prediction-vs-actual divergence in session debriefs',
         'Session debriefs with mastery heatmaps and live practice sessions',
       ],
-      link: 'https://github.com/lobakbro/meridian',
     },
     {
       name: 'EarWorm',
       description:
-        'Hierarchical VQ-VAE trained on the ASAP dataset (professional piano MIDI) to decompose the skill space of piano performance — precursor to Meridian',
+        'Hierarchical VQ-VAE trained on the ASAP dataset (professional piano MIDI) to decompose the skill space of piano performance — precursor to Constellation',
       tech: ['Python', 'VQ-VAE', 'MIDI Processing'],
       highlights: [
         'Learned codebook representing discrete skill states from professional piano performances',
         'Goal: infer a player\'s skill state from how they play (not MIDI synchronization) and generate targeted sheet music drills to close skill gaps',
-        'Skill-space decomposition thinking became the foundation for Meridian\'s adaptive engine',
+        'Skill-space decomposition thinking became the foundation for Constellation\'s adaptive engine',
       ],
     },
   ],

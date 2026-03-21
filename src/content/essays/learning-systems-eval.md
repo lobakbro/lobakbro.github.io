@@ -12,7 +12,7 @@ readingTime: "6 min read"
 
 Most evaluation frameworks for learning systems measure the wrong thing. They optimize for prediction accuracy when they should optimize for learning outcomes. They measure performance on static datasets when they should measure adaptation to individual learners.
 
-I learned this building Meridian, an adaptive learning platform for test preparation. Our initial metrics looked great—high accuracy on question difficulty prediction, strong correlation with student performance on practice tests. But when we tracked actual student outcomes, the results were disappointing. Students weren't learning faster or retaining information better.
+I learned this building Constellation, an adaptive learning platform. Our initial metrics looked great—high accuracy on question difficulty prediction, strong correlation with student performance on practice tests. But when we tracked actual student outcomes, the results were disappointing. Students weren't learning faster or retaining information better.
 
 The problem wasn't our models. It was our evaluation framework.
 
@@ -54,7 +54,7 @@ These questions require qualitative research methods alongside quantitative metr
 
 ## A Better Framework
 
-Based on our experience with Meridian, here's the evaluation framework I now recommend for adaptive learning systems:
+Based on our experience with Constellation, here's the evaluation framework I now recommend for adaptive learning systems:
 
 **Layer 1: Learning Outcomes**
 - Pre/post assessments on external measures

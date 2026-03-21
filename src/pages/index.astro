@@ -14,7 +14,7 @@ const miniEssays = sortedEssays.filter((e) => !e.data.featured).slice(0, 4);
 const allProjects = await getCollection('projects', ({ data }) => {
   return import.meta.env.PROD ? !data.draft : true;
 });
-const topProject = allProjects.find((p) => p.data.title === 'Meridian') || allProjects.find((p) => p.data.title === 'PrepVerified') || allProjects[0];
+const topProject = allProjects.find((p) => p.data.title.startsWith('Constellation')) || allProjects[0];
 
 // Top 3 experience entries for homepage
 const topExperience = resume.experience.slice(0, 3);
@@ -40,7 +40,7 @@ const topExperience = resume.experience.slice(0, 3);
       </div>
 
       <p class="mt-8 text-base leading-relaxed max-w-2xl" style="color: var(--v8-stone);" data-reveal data-reveal-delay="3">
-        Engineer. Started in neuroscience research, now designing and delivering systems at scale. This site is where I write about what I'm learning along the way.
+        Engineer. Started in research, now designing and delivering systems at scale. My startup is using agents to build personalized coding teaching socratic tutor. This site is where I write about what I'm learning along the way.
       </p>
 
       <div class="mt-8 flex flex-wrap gap-6 font-code text-sm" data-reveal data-reveal-delay="4">
@@ -124,33 +124,28 @@ const topExperience = resume.experience.slice(0, 3);
       <span class="section-label" data-reveal>// projects</span>
 
       {topProject && (
-        <div class="mt-10 p-8" style="background: var(--v8-surface); border: 1px solid var(--v8-deep); border-left: 3px solid var(--v8-warm);" data-reveal>
+        <a href={`/projects/${topProject.id}/`} class="group block no-effect mt-10 p-8" style="background: var(--v8-surface); border: 1px solid var(--v8-deep); border-left: 3px solid var(--v8-warm);" data-reveal>
           <div class="flex items-start justify-between mb-4">
-            <h3 class="text-xl font-display font-bold" style="color: var(--v8-bone);">{topProject.data.title}</h3>
-            {topProject.data.repo && (
-              <a href={topProject.data.repo} target="_blank" rel="noopener noreferrer" class="no-effect font-code text-xs hover:opacity-80 transition-opacity" style="color: var(--v8-warm);">
-                view source ↗
-              </a>
-            )}
+            <h3 class="text-xl font-display font-bold group-hover:opacity-80 transition-opacity" style="color: var(--v8-bone);">{topProject.data.title}</h3>
           </div>
           <p class="text-sm leading-relaxed mb-6" style="color: var(--v8-stone);">
             {topProject.data.description}
           </p>
           <div class="flex flex-wrap gap-8 items-end">
             <div>
-              <span class="text-3xl font-display font-bold" style="color: var(--v8-warm);">68</span>
-              <p class="font-code text-xs mt-1" style="color: var(--v8-ash);">skill_nodes</p>
+              <span class="text-3xl font-display font-bold" style="color: var(--v8-warm);">BKT</span>
+              <p class="font-code text-xs mt-1" style="color: var(--v8-ash);">knowledge_tracing</p>
             </div>
             <div>
-              <span class="text-lg font-code font-semibold" style="color: var(--v8-bone);">adaptive</span>
-              <p class="font-code text-xs mt-1" style="color: var(--v8-ash);">skill_targeting</p>
+              <span class="text-lg font-code font-semibold" style="color: var(--v8-bone);">FSRS</span>
+              <p class="font-code text-xs mt-1" style="color: var(--v8-ash);">spaced_repetition</p>
             </div>
             <div>
               <span class="text-lg font-display font-semibold" style="color: var(--v8-bone);">Claude</span>
-              <p class="font-code text-xs mt-1" style="color: var(--v8-ash);">problem_gen</p>
+              <p class="font-code text-xs mt-1" style="color: var(--v8-ash);">drill_gen</p>
             </div>
           </div>
-        </div>
+        </a>
       )}
 
       {allProjects.length > 1 && (
