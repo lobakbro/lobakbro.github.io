@@ -46,7 +46,7 @@ const {
       // Theme initialization — runs before paint to prevent flash
       (function () {
         const stored = localStorage.getItem('theme');
-        if (stored === 'dark' || (!stored && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        if (stored === 'dark' || !stored) {
           document.documentElement.classList.add('dark');
         }
       })();

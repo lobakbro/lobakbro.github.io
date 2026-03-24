@@ -15,7 +15,7 @@
 
 /* ─── V8 Design Tokens ─── */
 :root {
-  --v8-void: #0A0908;
+  --v8-void: #000000;
   --v8-surface: #121110;
   --v8-surface-up: #161514;
   --v8-warm: #D4956A;

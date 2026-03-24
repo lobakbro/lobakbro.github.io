@@ -24,9 +24,52 @@ const topExperience = resume.experience.slice(0, 3);
   <div class="max-w-3xl mx-auto px-6">
     <!-- ═══ Hero ═══ -->
     <section id="about" class="pt-20 sm:pt-28 pb-16">
-      <h1 class="text-5xl sm:text-6xl lg:text-7xl font-display font-extrabold tracking-tight leading-[1.05]" style="color: var(--v8-bone);" data-reveal>
+      <h1 id="hero-name" class="text-5xl sm:text-6xl lg:text-7xl font-display font-extrabold tracking-tight leading-[1.05]" style="color: var(--v8-bone); opacity: 0;">
         Kevin M. Ong
       </h1>
+      <script is:inline>
+        (function () {
+          var el = document.getElementById('hero-name');
+          if (!el) return;
+          var original = el.textContent.trim();
+          var chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789@#$%&*';
+          var letters = original.split('');
+          var display = letters.map(function (c) {
+            return c === ' ' || c === '.' ? c : chars.charAt(Math.floor(Math.random() * chars.length));
+          });
+
+          // Show scrambled text immediately
+          el.textContent = display.join('');
+          el.style.opacity = '1';
+
+          var current = 0;
+          function revealNext() {
+            if (current >= letters.length) return;
+            var i = current;
+            current++;
+            if (letters[i] === ' ' || letters[i] === '.') {
+              setTimeout(revealNext, 40);
+              return;
+            }
+            var flips = 0;
+            var timer = setInterval(function () {
+              flips++;
+              if (flips >= 5) {
+                clearInterval(timer);
+                display[i] = letters[i];
+                el.textContent = display.join('');
+              } else {
+                display[i] = chars.charAt(Math.floor(Math.random() * chars.length));
+                el.textContent = display.join('');
+              }
+            }, 40);
+            setTimeout(revealNext, 50);
+          }
+
+          // Delay start so user sees the scrambled state first
+          setTimeout(revealNext, 400);
+        })();
+      </script>
       <p class="mt-4 font-code text-sm" style="color: var(--v8-stone);" data-reveal data-reveal-delay="1">
         software_engineer // san_francisco
       </p>
