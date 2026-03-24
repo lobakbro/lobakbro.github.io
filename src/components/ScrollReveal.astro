@@ -2,26 +2,28 @@
 // Scroll reveal — Intersection Observer for data-reveal elements
 ---
 
-<script>
-  function initScrollReveal() {
-    const elements = document.querySelectorAll('[data-reveal]');
-    if (!elements.length) return;
+<script is:inline>
+  (function () {
+    function initScrollReveal() {
+      var elements = document.querySelectorAll('[data-reveal]');
+      if (!elements.length) return;
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('revealed');
-            observer.unobserve(entry.target);
-          }
-        });
-      },
-      { threshold: 0.1, rootMargin: '0px 0px -50px 0px' }
-    );
+      var observer = new IntersectionObserver(
+        function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('revealed');
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.1, rootMargin: '0px 0px -50px 0px' }
+      );
 
-    elements.forEach((el) => observer.observe(el));
-  }
+      elements.forEach(function (el) { observer.observe(el); });
+    }
 
-  initScrollReveal();
-  document.addEventListener('astro:after-swap', initScrollReveal);
+    initScrollReveal();
+    document.addEventListener('astro:after-swap', initScrollReveal);
+  })();
 </script>

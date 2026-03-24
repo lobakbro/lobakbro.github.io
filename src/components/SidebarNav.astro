@@ -1,5 +1,5 @@
 ---
-// Floating sidebar nav — FLIP-animated expand/collapse
+// Floating sidebar nav — animated expand/collapse
 ---
 
 <nav id="sidebar-nav" class="hidden lg:flex fixed left-6 top-1/2 -translate-y-1/2 z-40 flex-col floating-nav">
@@ -79,70 +79,111 @@
 
   .nav-label {
     display: inline-block;
-    white-space: nowrap;
     overflow: hidden;
-    max-width: 0;
+    white-space: nowrap;
+    width: 0;
     opacity: 0;
     margin-left: 0;
   }
-
-  .nav-label.show {
-    max-width: 120px;
-    opacity: 1;
-    margin-left: 10px;
-  }
 </style>
 
-<script>
-  function initSidebarNav() {
-    const nav = document.getElementById('sidebar-nav');
-    if (!nav) return;
+<script is:inline>
+  (function () {
+    function initSidebarNav() {
+      var nav = document.getElementById('sidebar-nav');
+      if (!nav) return;
 
-    if (window.location.pathname !== '/') {
-      nav.style.display = 'none';
-      return;
+      if (window.location.pathname !== '/') {
+        nav.style.display = 'none';
+        return;
+      }
+
+      var items = nav.querySelectorAll('.nav-item');
+      var labels = nav.querySelectorAll('.nav-label');
+      var sections = ['about', 'experience', 'projects', 'musings'];
+
+      // Measure natural widths of labels
+      var targetWidths = [];
+      labels.forEach(function (label) {
+        label.style.width = 'auto';
+        label.style.opacity = '1';
+        label.style.marginLeft = '10px';
+        targetWidths.push(label.offsetWidth);
+        label.style.width = '0px';
+        label.style.opacity = '0';
+        label.style.marginLeft = '0px';
+      });
+
+      var animId = null;
+      var expanding = false;
+      var progress = 0; // 0 = collapsed, 1 = expanded
+      var DURATION = 200; // ms
+      var lastTime = null;
+
+      function easeOutCubic(t) {
+        return 1 - Math.pow(1 - t, 3);
+      }
+
+      function animate(timestamp) {
+        if (lastTime === null) lastTime = timestamp;
+        var dt = timestamp - lastTime;
+        lastTime = timestamp;
+
+        if (expanding) {
+          progress = Math.min(1, progress + dt / DURATION);
+        } else {
+          progress = Math.max(0, progress - dt / DURATION);
+        }
+
+        var eased = easeOutCubic(progress);
+
+        labels.forEach(function (label, i) {
+          label.style.width = (eased * targetWidths[i]) + 'px';
+          label.style.opacity = eased;
+          label.style.marginLeft = (eased * 10) + 'px';
+        });
+
+        if ((expanding && progress < 1) || (!expanding && progress > 0)) {
+          animId = requestAnimationFrame(animate);
+        } else {
+          animId = null;
+          lastTime = null;
+        }
+      }
+
+      function startAnim(expand) {
+        expanding = expand;
+        lastTime = null;
+        if (!animId) {
+          animId = requestAnimationFrame(animate);
+        }
+      }
+
+      nav.addEventListener('mouseenter', function () { startAnim(true); });
+      nav.addEventListener('mouseleave', function () { startAnim(false); });
+
+      // Intersection Observer for active state
+      var observer = new IntersectionObserver(
+        function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              var id = entry.target.id;
+              items.forEach(function (item) {
+                item.classList.toggle('active', item.getAttribute('data-section') === id);
+              });
+            }
+          });
+        },
+        { rootMargin: '-30% 0px -60% 0px' }
+      );
+
+      sections.forEach(function (id) {
+        var el = document.getElementById(id);
+        if (el) observer.observe(el);
+      });
     }
 
-    const items = nav.querySelectorAll<HTMLElement>('.nav-item');
-    const labels = nav.querySelectorAll<HTMLElement>('.nav-label');
-    const sections = ['about', 'experience', 'projects', 'musings'];
-
-    // Set up transition after initial render so there's no flash
-    requestAnimationFrame(() => {
-      labels.forEach((label) => {
-        label.style.transition = 'max-width 0.35s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.25s ease, margin-left 0.35s cubic-bezier(0.22, 1, 0.36, 1)';
-      });
-    });
-
-    nav.addEventListener('mouseenter', () => {
-      labels.forEach((label) => label.classList.add('show'));
-    });
-
-    nav.addEventListener('mouseleave', () => {
-      labels.forEach((label) => label.classList.remove('show'));
-    });
-
-    // Intersection Observer for active state
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            const id = entry.target.id;
-            items.forEach((item) => {
-              item.classList.toggle('active', item.getAttribute('data-section') === id);
-            });
-          }
-        });
-      },
-      { rootMargin: '-30% 0px -60% 0px' }
-    );
-
-    sections.forEach((id) => {
-      const el = document.getElementById(id);
-      if (el) observer.observe(el);
-    });
-  }
-
-  initSidebarNav();
-  document.addEventListener('astro:after-swap', initSidebarNav);
+    initSidebarNav();
+    document.addEventListener('astro:after-swap', initSidebarNav);
+  })();
 </script>
