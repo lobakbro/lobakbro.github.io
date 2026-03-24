@@ -5,9 +5,47 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 <BaseLayout title="About" description="The person behind the engineering.">
   <div class="max-w-3xl mx-auto px-6 py-20">
     <span class="section-label">// about</span>
-    <h1 class="text-4xl sm:text-5xl font-display font-bold mt-4 mb-12 leading-tight" style="color: var(--v8-bone);">
+    <h1 id="hero-name" class="text-4xl sm:text-5xl font-display font-bold mt-4 mb-12 leading-tight" style="color: var(--v8-bone); opacity: 0;">
       Kevin Ong
     </h1>
+    <script is:inline>
+      (function () {
+        var el = document.getElementById('hero-name');
+        if (!el) return;
+        var original = el.textContent.trim();
+        var chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789@#$%&*';
+        var letters = original.split('');
+        var display = letters.map(function (c) {
+          return c === ' ' || c === '.' ? c : chars.charAt(Math.floor(Math.random() * chars.length));
+        });
+        el.textContent = display.join('');
+        el.style.opacity = '1';
+        var current = 0;
+        function revealNext() {
+          if (current >= letters.length) return;
+          var i = current;
+          current++;
+          if (letters[i] === ' ' || letters[i] === '.') {
+            setTimeout(revealNext, 40);
+            return;
+          }
+          var flips = 0;
+          var timer = setInterval(function () {
+            flips++;
+            if (flips >= 5) {
+              clearInterval(timer);
+              display[i] = letters[i];
+              el.textContent = display.join('');
+            } else {
+              display[i] = chars.charAt(Math.floor(Math.random() * chars.length));
+              el.textContent = display.join('');
+            }
+          }, 40);
+          setTimeout(revealNext, 50);
+        }
+        setTimeout(revealNext, 400);
+      })();
+    </script>
 
     <div class="prose max-w-none space-y-6 text-base leading-relaxed" style="color: var(--v8-stone);">
       <p>

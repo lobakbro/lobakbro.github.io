@@ -7,7 +7,45 @@ import { resume } from '../data/resume';
   <div class="max-w-4xl mx-auto px-6 py-20">
     <div class="mb-12">
       <span class="section-label">// resume</span>
-      <h1 class="text-4xl font-display font-bold mt-4" style="color: var(--v8-bone);">{resume.name}</h1>
+      <h1 id="hero-name" class="text-4xl font-display font-bold mt-4" style="color: var(--v8-bone); opacity: 0;">{resume.name}</h1>
+      <script is:inline>
+        (function () {
+          var el = document.getElementById('hero-name');
+          if (!el) return;
+          var original = el.textContent.trim();
+          var chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789@#$%&*';
+          var letters = original.split('');
+          var display = letters.map(function (c) {
+            return c === ' ' || c === '.' ? c : chars.charAt(Math.floor(Math.random() * chars.length));
+          });
+          el.textContent = display.join('');
+          el.style.opacity = '1';
+          var current = 0;
+          function revealNext() {
+            if (current >= letters.length) return;
+            var i = current;
+            current++;
+            if (letters[i] === ' ' || letters[i] === '.') {
+              setTimeout(revealNext, 40);
+              return;
+            }
+            var flips = 0;
+            var timer = setInterval(function () {
+              flips++;
+              if (flips >= 5) {
+                clearInterval(timer);
+                display[i] = letters[i];
+                el.textContent = display.join('');
+              } else {
+                display[i] = chars.charAt(Math.floor(Math.random() * chars.length));
+                el.textContent = display.join('');
+              }
+            }, 40);
+            setTimeout(revealNext, 50);
+          }
+          setTimeout(revealNext, 400);
+        })();
+      </script>
       <p class="font-code text-sm mt-3" style="color: var(--v8-stone);">
         {resume.title} // {resume.location}
       </p>
