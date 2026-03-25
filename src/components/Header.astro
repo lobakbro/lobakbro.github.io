@@ -17,16 +17,15 @@ const currentPath = Astro.url.pathname;
       <span class="font-code text-sm font-medium" style="color: var(--v8-bone);">kevin_ong</span>
     </a>
 
-    <div class="flex items-center gap-6">
+    <div id="header-nav-links" class="flex items-center gap-6">
       {navLinks.map(({ href, label }) => (
         <a
           href={href}
-          class="text-sm font-code"
-          data-nav-link
-          data-nav-active={currentPath.startsWith(href) ? 'true' : undefined}
+          class="no-effect text-sm font-code"
+          data-nav-href={href}
           style={currentPath.startsWith(href)
-            ? 'color: var(--v8-warm); opacity: 1;'
-            : 'color: var(--v8-stone); opacity: 0.6;'}
+            ? 'color: var(--v8-warm); opacity: 1; padding: 4px 10px; border-radius: 6px; border: 1px solid rgba(212, 149, 106, 0.3); background: rgba(212, 149, 106, 0.15);'
+            : 'color: var(--v8-stone); opacity: 0.6; padding: 4px 10px; border-radius: 6px; border: 1px solid transparent;'}
         >
           {label}
         </a>
@@ -56,16 +55,41 @@ const currentPath = Astro.url.pathname;
 
 <script is:inline>
   (function () {
-    var links = document.querySelectorAll('[data-nav-link]');
+    var container = document.getElementById('header-nav-links');
+    if (!container) return;
+    var links = container.querySelectorAll('[data-nav-href]');
+    var currentPath = window.location.pathname;
+
     links.forEach(function (link) {
-      var isActive = link.hasAttribute('data-nav-active');
+      var href = link.getAttribute('data-nav-href');
+      var isActive = currentPath.startsWith(href);
+
+      // Set initial state via JS to guarantee it applies
+      if (isActive) {
+        link.style.color = 'var(--v8-warm)';
+        link.style.opacity = '1';
+        link.style.background = 'rgba(212, 149, 106, 0.15)';
+        link.style.borderColor = 'rgba(212, 149, 106, 0.3)';
+      } else {
+        link.style.color = 'var(--v8-stone)';
+        link.style.opacity = '0.6';
+        link.style.background = 'transparent';
+        link.style.borderColor = 'transparent';
+      }
+
       link.addEventListener('mouseenter', function () {
         link.style.color = 'var(--v8-warm)';
         link.style.opacity = '1';
       });
+
       link.addEventListener('mouseleave', function () {
-        link.style.color = isActive ? 'var(--v8-warm)' : 'var(--v8-stone)';
-        link.style.opacity = isActive ? '1' : '0.6';
+        if (isActive) {
+          link.style.color = 'var(--v8-warm)';
+          link.style.opacity = '1';
+        } else {
+          link.style.color = 'var(--v8-stone)';
+          link.style.opacity = '0.6';
+        }
       });
     });
 

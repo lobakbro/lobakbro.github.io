@@ -1,5 +1,5 @@
 ---
-title: "Constellation — Adaptive Learning System"
+title: "Constellation: Adaptive Learning System"
 description: "An intelligent tutoring system that knows what to teach you next, when you're ready for it, and how to tell if you actually learned it, with every piece of content generated on the fly by an LLM."
 date: 2026-3-15
 tech: [SvelteKit, TypeScript, SQLite, Drizzle ORM, Python, Claude API]
@@ -28,9 +28,9 @@ Not all errors are equal either. A conceptual misunderstanding ("I don't know wh
 
 That led to the architecture: four components working together.
 
-**The MAP — a knowledge-space deconstructed skill graph.** Every skill in the domain is a node. Prerequisite relationships are edges. The graph encodes what depends on what, so the system knows which skills are available to target based on what's already been mastered. This is the system's understanding of the domain itself.
+**The MAP, a knowledge-space deconstructed skill graph.** Every skill in the domain is a node. Prerequisite relationships are edges. The graph encodes what depends on what, so the system knows which skills are available to target based on what's already been mastered. This is the system's understanding of the domain itself.
 
-![Constellation's skill graph — nodes represent skills, edges encode prerequisites, colors indicate mastery state.](/constellation_example_graph.jpg)
+![Constellation's skill graph. Nodes represent skills, edges encode prerequisites, colors indicate mastery state.](/constellation_example_graph.jpg)
 
 **The learning state assessor.** Bayesian Knowledge Tracing gives a probabilistic estimate of mastery for each node. A correct answer doesn't necessarily mean mastery, it could be a guess. BKT works well for atomic skill checks where observations are frequent and binary. It breaks down for open-ended compound problems like "How would you design TikTok" where multiple skills are exercised simultaneously and the signal is harder to decompose. That's where the error severity taxonomy and embedded assessment checkpoints come in, extracting multiple mastery signals from a single complex problem.
 
@@ -54,6 +54,6 @@ Beyond that: good evals. How do you measure whether the system is actually produ
 
 ## Where This Started
 
-The thinking traces back to EarWorm — a project where I tried to train a hierarchical VQ-VAE 2 on professional piano MIDI datasets to decompose the skill space of piano performance. The hypothesis: can we hierarchically organize atomic units of piano playing skill from professionals, then apply that framework to amateurs to understand what they're attempting and how good they are at it? The system would move away from conventional MIDI monitoring — matching inputs to notation — and instead evaluate the performed skill level during a session.
+The thinking traces back to EarWorm, a project where I tried to train a hierarchical VQ-VAE 2 on professional piano MIDI datasets to decompose the skill space of piano performance. The hypothesis: can we hierarchically organize atomic units of piano playing skill from professionals, then apply that framework to amateurs to understand what they're attempting and how good they are at it? The system would move away from conventional MIDI monitoring (matching inputs to notation) and instead evaluate the performed skill level during a session.
 
-That skill-space decomposition in piano was especially challenging because we would have to pattern match these atomic units to human language. What I was getting at was knowledge space theory applied to performance piano. The components I envisioned for that agentic piano teacher — a skill graph, a state assessor, a policy engine, a drill generator — are the same four components that survive in Constellation today. Different domain, same architecture of thinking.
+That skill-space decomposition in piano was especially challenging because we would have to pattern match these atomic units to human language. What I was getting at was knowledge space theory applied to performance piano. The components I envisioned for that agentic piano teacher (a skill graph, a state assessor, a policy engine, a drill generator) are the same four components that survive in Constellation today. Different domain, same architecture of thinking.

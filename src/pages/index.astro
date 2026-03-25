@@ -87,8 +87,8 @@ const topExperience = resume.experience.slice(0, 3);
       </p>
 
       <div class="mt-8 flex flex-wrap gap-6 font-code text-sm" data-reveal data-reveal-delay="4">
-        <a href={resume.contact.linkedin} target="_blank" rel="noopener noreferrer" class="no-effect hover:opacity-80 transition-opacity" style="color: var(--v8-stone);">linkedin</a>
-        <a href="/resume/" class="no-effect hover:opacity-80 transition-opacity" style="color: var(--v8-stone);">resume</a>
+        <a href={resume.contact.linkedin} target="_blank" rel="noopener noreferrer" class="no-effect hover:opacity-80 transition-opacity" style="color: var(--v8-warm);">linkedin</a>
+        <a href="/resume/" class="no-effect hover:opacity-80 transition-opacity" style="color: var(--v8-warm);">resume</a>
       </div>
     </section>
 
@@ -100,14 +100,14 @@ const topExperience = resume.experience.slice(0, 3);
 
       <div class="mt-8 space-y-6 text-base leading-relaxed" style="color: var(--v8-stone);">
         <p data-reveal>
-          I got into engineering through brain probes — three years in Ed Boyden's lab at UTD and MIT McGovern, building electrode arrays and mapping neurons in 3D as a McDermott Scholar. The ML work there led to a research internship at Citi doing deep learning validation for mortgage stress testing, and that led to Palo Alto Networks where I did applied ML automation — won a company-wide hackathon building an ML pipeline that scored secret exposure risk across production repos.
+          I got into engineering through brain probes. Three years in Ed Boyden's lab at UTD and MIT McGovern, building electrode arrays and mapping neurons in 3D as a McDermott Scholar. The ML work there led to a research internship at Citi doing deep learning validation for mortgage stress testing, and that led to Palo Alto Networks where I did applied ML automation, winning a company-wide hackathon building an ML pipeline that scored secret exposure risk across production repos.
         </p>
         <p data-reveal>
-          At Desktop Metal I joined a tiny R&D team building a 3D printer nobody had made before — scrolling DLP projector, overlap artifacts at the hardware-software boundary, messy Python prototypes becoming production C++ APIs.
+          At Desktop Metal I joined a tiny R&D team building a 3D printer nobody had made before. Scrolling DLP projector, overlap artifacts at the hardware-software boundary, messy Python prototypes becoming production C++ APIs.
         </p>
         <div class="pl-6 py-3 my-4" style="border-left: 3px solid var(--v8-warm);" data-reveal>
           <p style="color: var(--v8-bone);">
-            Now at IvyBee I built all the backend for experiential gaming experiences — clean room simulations delivered as interactive game worlds. Designed the whole cloud stack: CosmosDB, Kubernetes, a proxy gateway that routes players between pods with state sync in Go.
+            Now at IvyBee I built all the backend for experiential gaming experiences. Clean room simulations delivered as interactive game worlds. Designed the whole cloud stack: CosmosDB, Kubernetes, a proxy gateway that routes players between pods with state sync in Go.
           </p>
         </div>
         <p data-reveal>
@@ -118,44 +118,6 @@ const topExperience = resume.experience.slice(0, 3);
       <div class="mt-8 flex flex-wrap gap-4 font-code text-xs" style="color: var(--v8-ash);" data-reveal>
         {['python', 'go', 'c++', 'typescript', 'kubernetes', 'azure', 'llms', 'signal_processing'].map((t) => (
           <span>{t}</span>
-        ))}
-      </div>
-    </section>
-
-    <div class="gradient-divider"></div>
-
-    <!-- ═══ Experience ═══ -->
-    <section id="experience" class="py-16">
-      <div class="flex items-center justify-between mb-10" data-reveal>
-        <span class="section-label">// experience</span>
-        <a href="/resume/" class="no-effect font-code text-xs hover:opacity-80 transition-opacity" style="color: var(--v8-warm);">
-          view full resume →
-        </a>
-      </div>
-
-      <div class="space-y-4">
-        {topExperience.map((job, i) => (
-          <div class="v8-card" data-reveal data-reveal-delay={String(i + 1)}>
-            <div class="flex flex-col sm:flex-row sm:items-start gap-4">
-              <span class="font-code text-xs shrink-0 pt-1" style="color: var(--v8-ash);">{job.period.split('–')[0].trim()} →</span>
-              <div class="flex-1">
-                <h3 class="font-display font-semibold" style="color: var(--v8-bone);">{job.role}</h3>
-                <p class="font-code text-xs mt-1" style="color: var(--v8-warm);">{job.company}</p>
-                <p class="text-sm mt-3 leading-relaxed" style="color: var(--v8-stone);">
-                  {job.highlights[0]}
-                </p>
-                {job.highlights.length > 1 && (
-                  <div class="mt-3 flex flex-wrap gap-2">
-                    {job.highlights.slice(1, 3).map((h) => (
-                      <span class="font-code text-xs px-2 py-0.5" style="color: var(--v8-ash); background: var(--v8-warm-dim);">
-                        {h.split(' ').slice(0, 4).join(' ')}...
-                      </span>
-                    ))}
-                  </div>
-                )}
-              </div>
-            </div>
-          </div>
         ))}
       </div>
     </section>
@@ -198,6 +160,44 @@ const topExperience = resume.experience.slice(0, 3);
           </a>
         </div>
       )}
+    </section>
+
+    <div class="gradient-divider"></div>
+
+    <!-- ═══ Experience ═══ -->
+    <section id="experience" class="py-16">
+      <div class="flex items-center justify-between mb-10" data-reveal>
+        <span class="section-label">// experience</span>
+        <a href="/resume/" class="no-effect font-code text-xs hover:opacity-80 transition-opacity" style="color: var(--v8-warm);">
+          view full resume →
+        </a>
+      </div>
+
+      <div class="space-y-4">
+        {topExperience.map((job, i) => (
+          <div class="v8-card" data-reveal data-reveal-delay={String(i + 1)}>
+            <div class="flex flex-col sm:flex-row sm:items-start gap-4">
+              <span class="font-code text-xs shrink-0 pt-1" style="color: var(--v8-ash);">{job.period.split('–')[0].trim()} →</span>
+              <div class="flex-1">
+                <h3 class="font-display font-semibold" style="color: var(--v8-bone);">{job.role}</h3>
+                <p class="font-code text-xs mt-1" style="color: var(--v8-warm);">{job.company}</p>
+                <p class="text-sm mt-3 leading-relaxed" style="color: var(--v8-stone);">
+                  {job.highlights[0]}
+                </p>
+                {job.highlights.length > 1 && (
+                  <div class="mt-3 flex flex-wrap gap-2">
+                    {job.highlights.slice(1, 3).map((h) => (
+                      <span class="font-code text-xs px-2 py-0.5" style="color: var(--v8-ash); background: var(--v8-warm-dim);">
+                        {h.split(' ').slice(0, 4).join(' ')}...
+                      </span>
+                    ))}
+                  </div>
+                )}
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
     </section>
 
     <div class="gradient-divider"></div>
@@ -257,7 +257,7 @@ const topExperience = resume.experience.slice(0, 3);
     <section class="py-16 pb-24">
       <div class="p-10 text-center" style="background: var(--v8-warm-dim); border: 1px solid var(--v8-warm-glow);" data-reveal>
         <p class="text-base italic leading-relaxed max-w-2xl mx-auto" style="color: var(--v8-stone);">
-          I want to work where AI makes the person better, not just the output better. If you're building learning tools, developer infrastructure, or something nobody's built before — I'd like to talk.
+          I want to work where AI makes the person better, not just the output better. If you're building learning tools, developer infrastructure, or something nobody's built before, I'd like to talk.
         </p>
         <div class="mt-8" data-reveal data-reveal-delay="1">
           <a href="mailto:kevin.mac.ong@gmail.com" class="cta-button no-effect text-base px-8 py-3">
