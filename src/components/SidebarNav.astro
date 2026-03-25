@@ -2,188 +2,224 @@
 // Floating sidebar nav — animated expand/collapse
 ---
 
-<nav id="sidebar-nav" class="hidden lg:flex fixed left-6 top-1/2 -translate-y-1/2 z-40 flex-col floating-nav">
-  <a href="#about" class="nav-item no-effect" data-section="about">
-    <span class="nav-dot"></span>
-    <span class="nav-label">about</span>
+<nav id="sidebar-nav" class="hidden lg:flex fixed left-6 top-1/2 -translate-y-1/2 z-40 flex-col" style="gap: 4px;">
+  <a href="#about" class="no-effect" data-section="about" style="display:flex;align-items:center;padding:8px 12px;background:transparent;backdrop-filter:blur(12px);border:1px solid var(--v8-ash);border-radius:8px;text-decoration:none;color:var(--v8-stone);font-family:var(--font-code);font-size:0.7rem;letter-spacing:0.05em;cursor:pointer;white-space:nowrap;">
+    <span class="sidebar-dot" style="width:6px;height:6px;min-width:6px;border-radius:50%;background:var(--v8-stone);flex-shrink:0;"></span>
+    <span class="sidebar-label" style="display:inline-block;overflow:hidden;white-space:nowrap;width:0;opacity:0;margin-left:0;">about</span>
   </a>
-  <a href="#experience" class="nav-item no-effect" data-section="experience">
-    <span class="nav-dot"></span>
-    <span class="nav-label">experience</span>
+  <a href="#projects" class="no-effect" data-section="projects" style="display:flex;align-items:center;padding:8px 12px;background:transparent;backdrop-filter:blur(12px);border:1px solid var(--v8-ash);border-radius:8px;text-decoration:none;color:var(--v8-stone);font-family:var(--font-code);font-size:0.7rem;letter-spacing:0.05em;cursor:pointer;white-space:nowrap;">
+    <span class="sidebar-dot" style="width:6px;height:6px;min-width:6px;border-radius:50%;background:var(--v8-stone);flex-shrink:0;"></span>
+    <span class="sidebar-label" style="display:inline-block;overflow:hidden;white-space:nowrap;width:0;opacity:0;margin-left:0;">projects</span>
   </a>
-  <a href="#projects" class="nav-item no-effect" data-section="projects">
-    <span class="nav-dot"></span>
-    <span class="nav-label">projects</span>
+  <a href="#experience" class="no-effect" data-section="experience" style="display:flex;align-items:center;padding:8px 12px;background:transparent;backdrop-filter:blur(12px);border:1px solid var(--v8-ash);border-radius:8px;text-decoration:none;color:var(--v8-stone);font-family:var(--font-code);font-size:0.7rem;letter-spacing:0.05em;cursor:pointer;white-space:nowrap;">
+    <span class="sidebar-dot" style="width:6px;height:6px;min-width:6px;border-radius:50%;background:var(--v8-stone);flex-shrink:0;"></span>
+    <span class="sidebar-label" style="display:inline-block;overflow:hidden;white-space:nowrap;width:0;opacity:0;margin-left:0;">experience</span>
   </a>
-  <a href="#musings" class="nav-item no-effect" data-section="musings">
-    <span class="nav-dot"></span>
-    <span class="nav-label">musings</span>
+  <a href="#musings" class="no-effect" data-section="musings" style="display:flex;align-items:center;padding:8px 12px;background:transparent;backdrop-filter:blur(12px);border:1px solid var(--v8-ash);border-radius:8px;text-decoration:none;color:var(--v8-stone);font-family:var(--font-code);font-size:0.7rem;letter-spacing:0.05em;cursor:pointer;white-space:nowrap;">
+    <span class="sidebar-dot" style="width:6px;height:6px;min-width:6px;border-radius:50%;background:var(--v8-stone);flex-shrink:0;"></span>
+    <span class="sidebar-label" style="display:inline-block;overflow:hidden;white-space:nowrap;width:0;opacity:0;margin-left:0;">musings</span>
   </a>
 </nav>
 
-<style>
-  .floating-nav {
-    gap: 4px;
-  }
-
-  .nav-item {
-    display: flex;
-    align-items: center;
-    padding: 10px 12px;
-    background: color-mix(in srgb, var(--v8-surface) 85%, transparent);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border: 1px solid var(--v8-ash);
-    border-radius: 8px;
-    text-decoration: none;
-    color: var(--v8-stone);
-    font-family: var(--font-code);
-    font-size: 0.7rem;
-    letter-spacing: 0.05em;
-    cursor: pointer;
-    white-space: nowrap;
-    transition:
-      border-color 0.3s ease,
-      background 0.3s ease,
-      color 0.3s ease,
-      transform 0.3s ease;
-  }
-
-  .nav-item:hover {
-    border-color: var(--v8-warm);
-    color: var(--v8-bone);
-    transform: translateX(4px);
-  }
-
-  .nav-item.active {
-    border-color: var(--v8-warm);
-    background: var(--v8-warm-dim);
-    color: var(--v8-warm);
-  }
-
-  .nav-dot {
-    width: 6px;
-    height: 6px;
-    min-width: 6px;
-    border-radius: 50%;
-    background: var(--v8-stone);
-    flex-shrink: 0;
-    transition: all 0.3s ease;
-  }
-
-  .nav-item:hover .nav-dot,
-  .nav-item.active .nav-dot {
-    background: var(--v8-warm);
-    box-shadow: 0 0 8px var(--v8-warm-glow);
-  }
-
-  .nav-label {
-    display: inline-block;
-    overflow: hidden;
-    white-space: nowrap;
-    width: 0;
-    opacity: 0;
-    margin-left: 0;
-  }
-</style>
-
 <script is:inline>
   (function () {
-    function initSidebarNav() {
-      var nav = document.getElementById('sidebar-nav');
-      if (!nav) return;
+    function init() {
+    var nav = document.getElementById('sidebar-nav');
+    if (!nav) return;
 
-      if (window.location.pathname !== '/') {
-        nav.style.display = 'none';
-        return;
-      }
-
-      var items = nav.querySelectorAll('.nav-item');
-      var labels = nav.querySelectorAll('.nav-label');
-      var sections = ['about', 'experience', 'projects', 'musings'];
-
-      // Measure natural widths of labels
-      var targetWidths = [];
-      labels.forEach(function (label) {
-        label.style.width = 'auto';
-        label.style.opacity = '1';
-        label.style.marginLeft = '10px';
-        targetWidths.push(label.offsetWidth);
-        label.style.width = '0px';
-        label.style.opacity = '0';
-        label.style.marginLeft = '0px';
-      });
-
-      var animId = null;
-      var expanding = false;
-      var progress = 0; // 0 = collapsed, 1 = expanded
-      var DURATION = 200; // ms
-      var lastTime = null;
-
-      function easeOutCubic(t) {
-        return 1 - Math.pow(1 - t, 3);
-      }
-
-      function animate(timestamp) {
-        if (lastTime === null) lastTime = timestamp;
-        var dt = timestamp - lastTime;
-        lastTime = timestamp;
-
-        if (expanding) {
-          progress = Math.min(1, progress + dt / DURATION);
-        } else {
-          progress = Math.max(0, progress - dt / DURATION);
-        }
-
-        var eased = easeOutCubic(progress);
-
-        labels.forEach(function (label, i) {
-          label.style.width = (eased * targetWidths[i]) + 'px';
-          label.style.opacity = eased;
-          label.style.marginLeft = (eased * 10) + 'px';
-        });
-
-        if ((expanding && progress < 1) || (!expanding && progress > 0)) {
-          animId = requestAnimationFrame(animate);
-        } else {
-          animId = null;
-          lastTime = null;
-        }
-      }
-
-      function startAnim(expand) {
-        expanding = expand;
-        lastTime = null;
-        if (!animId) {
-          animId = requestAnimationFrame(animate);
-        }
-      }
-
-      nav.addEventListener('mouseenter', function () { startAnim(true); });
-      nav.addEventListener('mouseleave', function () { startAnim(false); });
-
-      // Intersection Observer for active state
-      var observer = new IntersectionObserver(
-        function (entries) {
-          entries.forEach(function (entry) {
-            if (entry.isIntersecting) {
-              var id = entry.target.id;
-              items.forEach(function (item) {
-                item.classList.toggle('active', item.getAttribute('data-section') === id);
-              });
-            }
-          });
-        },
-        { rootMargin: '-30% 0px -60% 0px' }
-      );
-
-      sections.forEach(function (id) {
-        var el = document.getElementById(id);
-        if (el) observer.observe(el);
-      });
+    if (window.location.pathname !== '/') {
+      nav.style.display = 'none';
+      return;
     }
 
-    initSidebarNav();
-    document.addEventListener('astro:after-swap', initSidebarNav);
+    var items = nav.querySelectorAll('[data-section]');
+    var labels = nav.querySelectorAll('.sidebar-label');
+
+    // Measure natural widths of labels
+    var targetWidths = [];
+    labels.forEach(function (label) {
+      label.style.width = 'auto';
+      label.style.opacity = '1';
+      label.style.marginLeft = '10px';
+      targetWidths.push(label.offsetWidth);
+      label.style.width = '0px';
+      label.style.opacity = '0';
+      label.style.marginLeft = '0px';
+    });
+
+    // Label slide animation
+    var animId = null;
+    var expanding = false;
+    var progress = 0;
+    var DURATION = 200;
+    var lastTime = null;
+
+    function easeOutCubic(t) {
+      return 1 - Math.pow(1 - t, 3);
+    }
+
+    function animate(timestamp) {
+      if (lastTime === null) lastTime = timestamp;
+      var dt = timestamp - lastTime;
+      lastTime = timestamp;
+      if (expanding) {
+        progress = Math.min(1, progress + dt / DURATION);
+      } else {
+        progress = Math.max(0, progress - dt / DURATION);
+      }
+      var eased = easeOutCubic(progress);
+      labels.forEach(function (label, i) {
+        label.style.width = (eased * targetWidths[i]) + 'px';
+        label.style.opacity = String(eased);
+        label.style.marginLeft = (eased * 10) + 'px';
+      });
+      if ((expanding && progress < 1) || (!expanding && progress > 0)) {
+        animId = requestAnimationFrame(animate);
+      } else {
+        animId = null;
+        lastTime = null;
+      }
+    }
+
+    function startAnim(expand) {
+      expanding = expand;
+      lastTime = null;
+      if (!animId) {
+        animId = requestAnimationFrame(animate);
+      }
+    }
+
+    nav.addEventListener('mouseenter', function () { startAnim(true); });
+    nav.addEventListener('mouseleave', function () { startAnim(false); });
+
+    // Active pill state with gradual transition
+    var activeId = 'about';
+    var scrollLock = false;
+    var itemStates = {};
+    items.forEach(function (item) {
+      itemStates[item.getAttribute('data-section')] = { progress: 0, item: item };
+    });
+    itemStates['about'].progress = 1;
+
+    var pillAnimId = null;
+
+    function lerpColor(t) {
+      // stone rgb(138,138,146) -> warm rgb(212,149,106)
+      var r = Math.round(138 + (212 - 138) * t);
+      var g = Math.round(138 + (149 - 138) * t);
+      var b = Math.round(146 + (106 - 146) * t);
+      return 'rgb(' + r + ',' + g + ',' + b + ')';
+    }
+
+    function lerpBorder(t) {
+      // ash rgb(90,90,98) -> warm-accent rgba(212,149,106,0.4)
+      var r = Math.round(90 + (212 - 90) * t);
+      var g = Math.round(90 + (149 - 90) * t);
+      var b = Math.round(98 + (106 - 98) * t);
+      return 'rgb(' + r + ',' + g + ',' + b + ')';
+    }
+
+    function applyPillState(section, t) {
+      var item = itemStates[section].item;
+      var dot = item.querySelector('.sidebar-dot');
+      item.style.borderColor = lerpBorder(t);
+      item.style.background = t > 0.01 ? 'rgba(212, 149, 106, ' + (0.15 * t) + ')' : 'transparent';
+      item.style.color = lerpColor(t);
+      dot.style.background = lerpColor(t);
+      dot.style.boxShadow = t > 0.01 ? '0 0 8px rgba(212, 149, 106, ' + (0.4 * t) + ')' : 'none';
+    }
+
+    function animatePills() {
+      var needsFrame = false;
+      for (var key in itemStates) {
+        var state = itemStates[key];
+        var target = key === activeId ? 1 : 0;
+        if (Math.abs(state.progress - target) > 0.01) {
+          state.progress += (target - state.progress) * 0.15;
+          if (Math.abs(state.progress - target) < 0.01) state.progress = target;
+          needsFrame = true;
+        }
+        applyPillState(key, state.progress);
+      }
+      if (needsFrame) {
+        pillAnimId = requestAnimationFrame(animatePills);
+      } else {
+        pillAnimId = null;
+      }
+    }
+
+    function setActive(id) {
+      activeId = id;
+      if (!pillAnimId) {
+        pillAnimId = requestAnimationFrame(animatePills);
+      }
+    }
+
+    // Click to immediately activate
+    items.forEach(function (item) {
+      item.addEventListener('click', function () {
+        setActive(item.getAttribute('data-section'));
+        item.style.transform = '';
+        scrollLock = true;
+        setTimeout(function () { scrollLock = false; }, 600);
+      });
+    });
+
+    // Hover accent on individual items
+    items.forEach(function (item) {
+      var dot = item.querySelector('.sidebar-dot');
+      item.addEventListener('mouseenter', function () {
+        var section = item.getAttribute('data-section');
+        if (section !== activeId) {
+          item.style.borderColor = 'rgba(212, 149, 106, 0.4)';
+          item.style.color = '#D4956A';
+          dot.style.background = '#D4956A';
+          dot.style.boxShadow = '0 0 8px rgba(212, 149, 106, 0.4)';
+          item.style.transform = 'translateX(4px)';
+        }
+      });
+      item.addEventListener('mouseleave', function () {
+        var section = item.getAttribute('data-section');
+        if (section !== activeId) {
+          var t = itemStates[section].progress;
+          applyPillState(section, t);
+          item.style.transform = '';
+        }
+      });
+    });
+
+    // Apply initial state
+    applyPillState('about', 1);
+
+    // Scroll tracking — sort sections by their actual DOM position
+    var sectionEls = ['about', 'projects', 'experience', 'musings']
+      .map(function (id) { return { id: id, el: document.getElementById(id) }; })
+      .filter(function (s) { return s.el; })
+      .sort(function (a, b) { return a.el.offsetTop - b.el.offsetTop; });
+
+    function onScroll() {
+      if (scrollLock) return;
+      var scrollY = window.scrollY + window.innerHeight * 0.4;
+      var current = sectionEls[0].id;
+      for (var i = 0; i < sectionEls.length; i++) {
+        if (sectionEls[i].el.offsetTop <= scrollY) {
+          current = sectionEls[i].id;
+        }
+      }
+      if (current !== activeId) {
+        setActive(current);
+      }
+    }
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', init);
+    } else {
+      init();
+    }
+    document.addEventListener('astro:after-swap', init);
   })();
 </script>
