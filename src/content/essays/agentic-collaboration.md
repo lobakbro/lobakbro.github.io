@@ -10,7 +10,7 @@ draft: true
 readingTime: "8 min read"
 ---
 
-The question is no longer whether AI will transform how we work—it already has. The question is whether we'll design systems that amplify human creativity or reduce us to supervisors of digital servants.
+The question is no longer whether AI will transform how we work. It already has. The question is whether we'll design systems that amplify human creativity or reduce us to supervisors of digital servants.
 
 I've spent the last year building systems where humans and AI collaborate on complex problems: code review, architectural design, research synthesis. What I've learned is that the most productive partnerships emerge not from perfect prompts, but from thoughtfully designed interaction patterns that preserve human agency while leveraging AI's unique strengths.
 
@@ -38,7 +38,7 @@ The magic happens when these capabilities compose rather than compete.
 
 ## Designing for Agency
 
-True collaboration requires that both parties have agency—the ability to influence the direction of the work. This has design implications.
+True collaboration requires that both parties have agency: the ability to influence the direction of the work. This has design implications.
 
 **Transparency over Efficiency**: A system that shows its reasoning process, even if slower, enables better collaboration than a black box that produces perfect outputs. The human partner needs to understand the AI's perspective to build on it effectively.
 
@@ -60,7 +60,7 @@ Each pattern preserves human creative control while leveraging AI's computationa
 
 ## The Future of Work
 
-As these systems mature, I expect the nature of knowledge work to shift from execution to orchestration. The most valuable skill will be designing productive collaborations—knowing when to rely on AI capabilities, when to assert human judgment, and how to structure interactions that compound rather than compete.
+As these systems mature, I expect the nature of knowledge work to shift from execution to orchestration. The most valuable skill will be designing productive collaborations, knowing when to rely on AI capabilities, when to assert human judgment, and how to structure interactions that compound rather than compete.
 
 We're building the tools that will shape how humans and AI work together for decades. The choices we make now about agency, transparency, and control will determine whether AI amplifies human creativity or reduces it.
 

@@ -8,7 +8,7 @@ featured: true
 draft: false
 ---
 
-Constellation is an intelligent tutoring system that knows what to teach you next, when you're ready for it, and how to tell if you actually learned it. Every piece of content is generated on the fly by an LLM. The system deconstructs a learning objective into atomic skill requirements, maps their prerequisite relationships as a knowledge space graph, and uses that structure to drive personalized instruction.
+Constellation is an intelligent tutoring system that delivers dynamic interactable experiences in context of what to teach you next, when you're ready for it, and how to tell if you actually learned it. Every piece of content is generated on the fly by an LLM. The system deconstructs a learning objective into atomic skill requirements, maps their prerequisite relationships as a knowledge space graph, and uses that structure to drive personalized instruction.
 
 ## The Gap
 
@@ -40,9 +40,11 @@ That led to the architecture: four components working together.
 
 ## What I'm Learning From Using It
 
-Trust. I need to trust the system to want to use it. I need to trust it knows me. I need to trust it knows the material. And when it works, it's insightful red flags to avoid, green flags to remember, it's not a wall of text, it seems to have plans within each module, it shakes things up and at the end of the session I can tell it how I felt about the session and next time I trust the experience will be even better.
+Trust. I need to trust the system to want to use it. I need to trust it knows what I know. I need to trust it knows the material. And when it works, it's insightful red flags to avoid, green flags to remember, it's not a wall of text, it seems to have plans within each module, it shakes things up and at the end of the session I can tell it how I felt about the session and next time I trust the experience will be even better.
 
 The first version of the system technically worked. The engine selected topics, generated drills, tracked mastery. But using it daily revealed problems that the architecture alone couldn't predict. The pedagogy felt off and I couldn't tell *why*. Was the phase selection wrong? Were the mastery estimates drifting? Was the content too easy? I had no way to see inside the system's decisions. That sent me back to build observability and iterability infrastructure: mastery state dashboards, selector decision logs, trajectory views, parameter tuning with replay so I could test changes against historical data without running live sessions. The system needed to be inspectable before it could be trustworthy.
+
+Behaviorial control has been a huge headache. I'm trying to integrate all these best practices of learning science like interleaving and also usign llms to generate the ideal quantity and type of content during a learning session.  A Learn modality module needs enough interactions to go from "never seen" to "tried once with help." A Practice modlaity module needs enough to go from "tried with help" to "can articulate and implement." The quantity isn't fixed; it depends on the complexity of the skill and maybe how the learner is doing within the module. Monitoring and adjusting these behaviors is complex and requires a robust evaluation and iteration infrastructure to sustain rapid development.
 
 As a singular user and dogfooder there are real limitations. I can't A/B test at scale. I can't separate "this works for me" from "this works." But being the learner and the builder at the same time creates a tight feedback loop that theory alone can't replicate. Every session is a usability test and a pedagogical experiment and building out this infrastructure allows me to rapidly see changes and tune behavior.
 

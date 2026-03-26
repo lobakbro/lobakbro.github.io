@@ -3,7 +3,7 @@ export const resume = {
   title: 'Software Engineer',
   location: 'San Francisco, CA',
   summary:
-    'I design and build production systems where nothing exists yet. Research background in neuroscience and ML. Three zero-to-one builds across experimental hardware, cloud infrastructure, and adaptive learning — each taken from prototype to production.',
+    'I design and build production systems where nothing exists yet. Research background in neuroscience and ML. Three zero-to-one builds across experimental hardware, cloud infrastructure, and adaptive learning, each taken from prototype to production.',
 
   contact: {
     linkedin: 'https://www.linkedin.com/in/kevinmacong/',
@@ -15,9 +15,9 @@ export const resume = {
       role: 'Software Engineer & Technical Lead',
       period: 'Mar 2024 – Present',
       highlights: [
-        'Built all backend architecture for experiential gaming experiences — immersive learning environments like clean room simulations delivered as interactive game worlds',
+        'Built all backend architecture for experiential gaming experiences: immersive learning environments like clean room simulations delivered as interactive game worlds',
         'Designed and built all cloud infrastructure from scratch: Azure Functions, CosmosDB, ACR, 4-environment Kubernetes (prod, QA, dev, canary)',
-        'Architected proxy gateway serving as HTTP interface to game pods — handles auth, purchase gating, and seamless pod-to-pod player routing with state synchronization',
+        'Architected proxy gateway serving as HTTP interface to game pods, handling auth, purchase gating, and seamless pod-to-pod player routing with state synchronization',
         'Low-latency pipe swapping in Go for invisible player transitions between experiences',
       ],
     },
@@ -27,7 +27,7 @@ export const resume = {
       period: 'Sep 2021 – Mar 2024',
       highlights: [
         'Core member of 2–4 person R&D team building an experimental top-down DLP 3D printer with scrolling non-static projector system',
-        'Solved overlap/artifacting where angled DLP projector regions intersected — signal processing at the hardware-software boundary',
+        'Solved overlap/artifacting where angled DLP projector regions intersected through signal processing at the hardware-software boundary',
         'Segmented layer image files into synchronized video streams for scrolling print process',
         'Converted experimental prototypes (Python) into production-ready C++ API for manufacturing hardware',
       ],
@@ -65,7 +65,7 @@ export const resume = {
       role: 'Research Assistant',
       period: '2016 – 2019',
       highlights: [
-        'Neural computer interface research — built and tested electrode arrays (Utah arrays) for brain-computer interfaces',
+        'Neural computer interface research: built and tested electrode arrays (Utah arrays) for brain-computer interfaces',
         'PCA-based 3D neuron localization from multi-electrode recordings',
         'Investigated glass transition polymer substrates for implantable probes; tested in vivo at MIT McGovern Institute',
       ],
@@ -96,7 +96,7 @@ export const resume = {
     {
       name: 'EarWorm',
       description:
-        'Hierarchical VQ-VAE trained on the ASAP dataset (professional piano MIDI) to decompose the skill space of piano performance — precursor to Constellation',
+        'Hierarchical VQ-VAE trained on the ASAP dataset (professional piano MIDI) to decompose the skill space of piano performance, precursor to Constellation',
       tech: ['Python', 'VQ-VAE', 'MIDI Processing'],
       highlights: [
         'Learned codebook representing discrete skill states from professional piano performances',
@@ -112,8 +112,8 @@ export const resume = {
       degree: 'BS Electrical Engineering',
       period: '2016 – 2020',
       details: [
-        'Eugene McDermott Scholar — one of the most selective undergraduate merit awards in the nation; full scholarship with leadership training and cultural enrichment',
-        'TAMS at UNT (Texas Academy of Math and Science) — early college program; completed BS requirements early, program required graduate coursework and research internships',
+        'Eugene McDermott Scholar: one of the most selective undergraduate merit awards in the nation; full scholarship with leadership training and cultural enrichment',
+        'TAMS at UNT (Texas Academy of Math and Science): early college program; completed BS requirements early, program required graduate coursework and research internships',
         'Activities: IEEE, Biomedical Engineering Research, Management Consulting',
       ],
     },

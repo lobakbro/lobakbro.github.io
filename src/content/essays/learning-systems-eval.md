@@ -12,7 +12,7 @@ readingTime: "6 min read"
 
 Most evaluation frameworks for learning systems measure the wrong thing. They optimize for prediction accuracy when they should optimize for learning outcomes. They measure performance on static datasets when they should measure adaptation to individual learners.
 
-I learned this building Constellation, an adaptive learning platform. Our initial metrics looked great—high accuracy on question difficulty prediction, strong correlation with student performance on practice tests. But when we tracked actual student outcomes, the results were disappointing. Students weren't learning faster or retaining information better.
+I learned this building Constellation, an adaptive learning platform. Our initial metrics looked great: high accuracy on question difficulty prediction, strong correlation with student performance on practice tests. But when we tracked actual student outcomes, the results were disappointing. Students weren't learning faster or retaining information better.
 
 The problem wasn't our models. It was our evaluation framework.
 
@@ -22,7 +22,7 @@ Traditional machine learning evaluation assumes a static world: train on histori
 
 A learning system that achieves 90% accuracy at predicting which questions a student will answer correctly might still be pedagogically useless. If it only gives students questions they're likely to get right, it maximizes accuracy while minimizing learning.
 
-The better system might have lower prediction accuracy because it's deliberately challenging students at the edge of their abilities—the zone where learning actually happens.
+The better system might have lower prediction accuracy because it's deliberately challenging students at the edge of their abilities, the zone where learning actually happens.
 
 ## Designing for Learning Outcomes
 
@@ -85,7 +85,7 @@ This framework is more expensive and time-intensive than traditional ML evaluati
 - Mixed-methods research capabilities
 - Product metrics that align with learning outcomes
 
-But for learning systems that claim to improve educational outcomes, these investments are necessary. Optimizing for the wrong metrics doesn't just waste engineering effort—it can actively harm learners.
+But for learning systems that claim to improve educational outcomes, these investments are necessary. Optimizing for the wrong metrics doesn't just waste engineering effort. It can actively harm learners.
 
 ## The Path Forward
 

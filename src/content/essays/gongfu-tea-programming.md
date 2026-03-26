@@ -12,7 +12,7 @@ readingTime: "3 min read"
 
 I've been brewing gongfu tea for three years and writing code for much longer. Only recently did I realize they follow the same principles.
 
-Gongfu tea is the antithesis of the tea bag. Every parameter is intentional: water temperature, leaf-to-water ratio, steeping time, the shape of the pot. You make small adjustments based on how the previous cup tasted. The goal isn't efficiency—it's optimization through deliberate iteration.
+Gongfu tea is the antithesis of the tea bag. Every parameter is intentional: water temperature, leaf-to-water ratio, steeping time, the shape of the pot. You make small adjustments based on how the previous cup tasted. The goal isn't efficiency. It's optimization through deliberate iteration.
 
 This sounds exactly like how the best programmers work.
 
@@ -20,7 +20,7 @@ This sounds exactly like how the best programmers work.
 
 In gongfu brewing, every variable has a purpose. Water too hot? The tea becomes bitter. Too cool? The flavors don't extract. Steeping too long? Astringent. Too short? Weak.
 
-Good code follows the same discipline. Every variable name, every function boundary, every abstraction layer should be chosen deliberately. The difference between experienced and novice programmers isn't just technical skill—it's the awareness of which parameters matter and why.
+Good code follows the same discipline. Every variable name, every function boundary, every abstraction layer should be chosen deliberately. The difference between experienced and novice programmers isn't just technical skill. It's the awareness of which parameters matter and why.
 
 ## Iterative Refinement
 
@@ -30,7 +30,7 @@ This is exactly how I approach complex programming problems now. Write a terribl
 
 ## Attention to Process
 
-Tea ceremony forces you to be present. You can't scroll through your phone while timing a 30-second steep. The ritual—warming the pot, rinsing the leaves, pouring in circles—creates focused attention.
+Tea ceremony forces you to be present. You can't scroll through your phone while timing a 30-second steep. The ritual (warming the pot, rinsing the leaves, pouring in circles) creates focused attention.
 
 Programming benefits from similar rituals. Reading the existing code before making changes. Writing tests before implementing. Running the full test suite before committing. These aren't bureaucratic overhead; they're attention-focusing practices.
 

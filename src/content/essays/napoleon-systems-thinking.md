@@ -10,7 +10,7 @@ draft: true
 readingTime: "5 min read"
 ---
 
-Napoleon conquered most of Europe before the internet, before telegraph, before even reliable postal service. His secret weapon wasn't superior firepower—it was superior information architecture.
+Napoleon conquered most of Europe before the internet, before telegraph, before even reliable postal service. His secret weapon wasn't superior firepower. It was superior information architecture.
 
 I've been studying how Napoleon designed information systems that enabled coordinated action across hundreds of thousands of soldiers and thousands of miles. The principles translate directly to modern product design, especially for teams building complex systems.
 
@@ -24,11 +24,11 @@ Modern product teams face the same challenge. Market conditions change rapidly. 
 
 Napoleon's military machine operated on several information design principles:
 
-**Standardized Formats**: All military reports followed identical structures. Location, enemy strength, supply status, troop morale—always in the same order, using the same terminology. This enabled rapid processing at headquarters.
+**Standardized Formats**: All military reports followed identical structures. Location, enemy strength, supply status, troop morale, always in the same order, using the same terminology. This enabled rapid processing at headquarters.
 
 **Redundant Channels**: Critical information traveled via multiple routes. Couriers, signal fires, captured enemy dispatches. No single point of failure could blind command.
 
-**Hierarchical Filtering**: Lower commanders reported only relevant details to higher levels. Company commanders didn't send raw soldier counts to Napoleon—they sent interpreted intelligence about capability and readiness.
+**Hierarchical Filtering**: Lower commanders reported only relevant details to higher levels. Company commanders didn't send raw soldier counts to Napoleon. They sent interpreted intelligence about capability and readiness.
 
 **Exception-Based Reporting**: Routine situations required no communication. Only deviations from expected patterns triggered reports. This kept information channels clear for truly important signals.
 
@@ -46,7 +46,7 @@ These principles map remarkably well to product development:
 
 ## Decision-Making Velocity
 
-Napoleon's information system enabled what military historians call "tempo"—the speed of the decision cycle. Observe, orient, decide, act. The faster you complete this cycle, the more you can disrupt opponents who are still completing the previous cycle.
+Napoleon's information system enabled what military historians call "tempo": the speed of the decision cycle. Observe, orient, decide, act. The faster you complete this cycle, the more you can disrupt opponents who are still completing the previous cycle.
 
 Product teams need similar tempo:
 
@@ -78,7 +78,7 @@ Start with Napoleon's approach: identify the minimal viable information set that
 
 Build systems to collect, standardize, and surface this information reliably. Then gradually expand the sophistication of analysis and the speed of response.
 
-The goal isn't perfect information—it's fast-enough information to out-tempo the competition.
+The goal isn't perfect information. It's fast-enough information to out-tempo the competition.
 
 Napoleon never fought with complete knowledge of enemy positions. But he consistently fought with better and faster intelligence than his opponents. In a world of imperfect information, the advantage goes to those who are slightly less blind, slightly faster to adapt.
 

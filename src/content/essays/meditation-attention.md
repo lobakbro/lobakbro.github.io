@@ -1,6 +1,6 @@
 ---
 title: "The Attention Economy Needs Better Meditation"
-description: "Most mindfulness apps treat attention like a muscle to be trained. But attention is more like a skill to be cultivated—and that changes everything."
+description: "Most mindfulness apps treat attention like a muscle to be trained. But attention is more like a skill to be cultivated, and that changes everything."
 date: 2024-11-15
 author: Kevin Ong
 category: philosophy
@@ -20,7 +20,7 @@ But attention isn't a muscle. It's a skill. And skills require different kinds o
 
 Real meditation practice is about learning to see clearly: noticing thoughts without getting caught in them, observing emotions without being controlled by them, developing what Buddhist teacher Shinzen Young calls "equanimity with impermanence."
 
-This isn't a fitness routine. It's more like learning a musical instrument—progress is non-linear, breakthroughs come unexpectedly, and the deepest insights often arise during periods that feel like stagnation.
+This isn't a fitness routine. It's more like learning a musical instrument. Progress is non-linear, breakthroughs come unexpectedly, and the deepest insights often arise during periods that feel like stagnation.
 
 You can't gamify this kind of development. The meditation app that congratulates you for maintaining a 30-day streak is missing the point entirely. Some days, the most valuable practice is noticing you don't want to meditate and exploring that resistance.
 
@@ -44,7 +44,7 @@ Better meditation technology would support the cultivation of insight rather tha
 
 ## The Long Game
 
-The real benefit of meditation isn't stress reduction or improved focus—though these often arise naturally. It's the development of a different relationship to experience itself. Learning to see thoughts as mental events rather than absolute truths. Recognizing that emotions arise and pass away rather than defining who you are.
+The real benefit of meditation isn't stress reduction or improved focus, though these often arise naturally. It's the development of a different relationship to experience itself. Learning to see thoughts as mental events rather than absolute truths. Recognizing that emotions arise and pass away rather than defining who you are.
 
 This kind of understanding takes years to develop and can't be rushed or optimized. It requires the kind of patient, non-goal-oriented practice that most meditation apps actively discourage.
 
@@ -56,6 +56,6 @@ This research orientation is what's missing from most contemporary mindfulness a
 
 Real practice is messier, more personal, and ultimately more transformative than any app can deliver.
 
-The attention economy has trained us to treat consciousness as another resource to be optimized. But consciousness isn't a resource—it's the ground in which all resources appear.
+The attention economy has trained us to treat consciousness as another resource to be optimized. But consciousness isn't a resource. It's the ground in which all resources appear.
 
 Learning to see this directly is what meditation is actually for.

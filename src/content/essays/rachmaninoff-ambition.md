@@ -10,13 +10,13 @@ draft: true
 readingTime: "3 min read"
 ---
 
-Rachmaninoff's Third Piano Concerto is often called the most difficult piece in the standard repertoire. Not just technically—though the technical demands are extraordinary—but emotionally. It's 40 minutes of unrelenting intensity, with no place to hide.
+Rachmaninoff's Third Piano Concerto is often called the most difficult piece in the standard repertoire. Not just technically (though the technical demands are extraordinary) but emotionally. It's 40 minutes of unrelenting intensity, with no place to hide.
 
 I think about this piece when I'm working on difficult projects. There's something about the relationship between ambition and execution that Rachmaninoff understood better than almost any composer.
 
 ## The Burden of Vision
 
-Rachmaninoff had enormous hands—he could span a 12th on the piano, where most people struggle with an octave. This physical gift enabled musical ideas that were literally impossible for other pianists to execute. But it also created a burden: his musical imagination exceeded what most humans could achieve.
+Rachmaninoff had enormous hands. He could span a 12th on the piano, where most people struggle with an octave. This physical gift enabled musical ideas that were literally impossible for other pianists to execute. But it also created a burden: his musical imagination exceeded what most humans could achieve.
 
 This is the ambition paradox for creators: the bigger your vision, the larger the gap between what you can imagine and what you can execute. Most people solve this by scaling down their ambitions. Rachmaninoff solved it by writing music that pushed performers to their absolute limits.
 
@@ -56,6 +56,6 @@ The Third Concerto exists because Rachmaninoff believed music was capable of mor
 
 This is why I'm drawn to projects at the edge of what current technology can support. Not because difficulty is inherently valuable, but because the gap between vision and current capability often contains the most interesting problems.
 
-The concerto reminds me that ambition isn't just about personal achievement—it's about discovering what's possible when you refuse to accept current limitations as permanent.
+The concerto reminds me that ambition isn't just about personal achievement. It's about discovering what's possible when you refuse to accept current limitations as permanent.
 
 Sometimes the most useful thing you can do is write music that's too hard to play, then trust that performers will grow into it.

@@ -16,13 +16,13 @@ In a world optimized for quarterly earnings and monthly active users, Tokugawa's
 
 ## The Patient Foundation
 
-When Tokugawa finally achieved power in 1603, he didn't rush to exploit it. He spent decades designing institutions that would outlast him. The Tokugawa shogunate wasn't built for his personal glory—it was engineered for systemic stability.
+When Tokugawa finally achieved power in 1603, he didn't rush to exploit it. He spent decades designing institutions that would outlast him. The Tokugawa shogunate wasn't built for his personal glory; it was engineered for systemic stability.
 
 Key principles:
 
 **Distributed power structure**: Regional domains retained autonomy within strict boundaries. Total control creates total responsibility; shared control creates resilience.
 
-**Redundant legitimacy**: The shogunate derived authority from multiple sources—military strength, imperial endorsement, economic control, social tradition. No single pillar could topple the system.
+**Redundant legitimacy**: The shogunate derived authority from multiple sources: military strength, imperial endorsement, economic control, social tradition. No single pillar could topple the system.
 
 **Controlled change**: Innovation was permitted within carefully defined limits. The system adapted continuously but never revolutionized.
 
@@ -96,7 +96,7 @@ The technology industry optimizes for rapid iteration and fast scaling. This cre
 
 Tokugawa's model suggests an alternative: build systems designed for longevity, then adapt rapidly within stable foundations.
 
-This requires a different relationship to time—seeing long-term success as more valuable than short-term optimization, stability as more important than growth rate.
+This requires a different relationship to time: seeing long-term success as more valuable than short-term optimization, stability as more important than growth rate.
 
 Not every situation calls for this approach. But for projects meant to last decades rather than quarters, Tokugawa's strategic patience offers a proven framework.
 

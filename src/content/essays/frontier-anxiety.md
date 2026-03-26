@@ -30,7 +30,7 @@ The planning paradox: you need to plan carefully enough to make progress, but lo
 
 **Prototype relentlessly.** The cost of being wrong about what's possible is high when you're betting months of development time. Build small tests constantly. Most will fail, but the ones that succeed reveal the actual shape of the possible.
 
-**Maintain theoretical debt.** In normal development, you pay down technical debt. In frontier development, you sometimes need to accumulate what I call theoretical debt—building systems based on incomplete understanding of the underlying capabilities, with the expectation of refinancing that debt as theory catches up to practice.
+**Maintain theoretical debt.** In normal development, you pay down technical debt. In frontier development, you sometimes need to accumulate what I call theoretical debt: building systems based on incomplete understanding of the underlying capabilities, with the expectation of refinancing that debt as theory catches up to practice.
 
 **Optimize for learning speed.** The bottleneck isn't development velocity; it's learning velocity. How quickly can you discover what actually works? How fast can you update your mental model of what's feasible?
 
