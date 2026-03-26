@@ -33,41 +33,45 @@ const topExperience = resume.experience.slice(0, 3);
           if (!el) return;
           var original = el.textContent.trim();
           var chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789@#$%&*';
-          var letters = original.split('');
-          var display = letters.map(function (c) {
-            return c === ' ' || c === '.' ? c : chars.charAt(Math.floor(Math.random() * chars.length));
-          });
+          var running = false;
 
-          // Show scrambled text immediately
-          el.textContent = display.join('');
-          el.style.opacity = '1';
-
-          var current = 0;
-          function revealNext() {
-            if (current >= letters.length) return;
-            var i = current;
-            current++;
-            if (letters[i] === ' ' || letters[i] === '.') {
-              setTimeout(revealNext, 40);
-              return;
-            }
-            var flips = 0;
-            var timer = setInterval(function () {
-              flips++;
-              if (flips >= 5) {
-                clearInterval(timer);
-                display[i] = letters[i];
-                el.textContent = display.join('');
-              } else {
-                display[i] = chars.charAt(Math.floor(Math.random() * chars.length));
-                el.textContent = display.join('');
+          function scramble(delay) {
+            if (running) return;
+            running = true;
+            var letters = original.split('');
+            var display = letters.map(function (c) {
+              return c === ' ' || c === '.' ? c : chars.charAt(Math.floor(Math.random() * chars.length));
+            });
+            el.textContent = display.join('');
+            el.style.opacity = '1';
+            var current = 0;
+            function revealNext() {
+              if (current >= letters.length) { running = false; return; }
+              var i = current;
+              current++;
+              if (letters[i] === ' ' || letters[i] === '.') {
+                setTimeout(revealNext, 40);
+                return;
               }
-            }, 40);
-            setTimeout(revealNext, 50);
+              var flips = 0;
+              var timer = setInterval(function () {
+                flips++;
+                if (flips >= 5) {
+                  clearInterval(timer);
+                  display[i] = letters[i];
+                  el.textContent = display.join('');
+                } else {
+                  display[i] = chars.charAt(Math.floor(Math.random() * chars.length));
+                  el.textContent = display.join('');
+                }
+              }, 40);
+              setTimeout(revealNext, 50);
+            }
+            setTimeout(revealNext, delay);
           }
 
-          // Delay start so user sees the scrambled state first
-          setTimeout(revealNext, 400);
+          scramble(400);
+          el.addEventListener('mouseenter', function () { scramble(0); });
         })();
       </script>
       <p class="mt-4 font-code text-sm" style="color: var(--v8-stone);" data-reveal data-reveal-delay="1">
@@ -166,14 +170,9 @@ const topExperience = resume.experience.slice(0, 3);
 
     <!-- ═══ Experience ═══ -->
     <section id="experience" class="py-16">
-      <div class="flex items-center justify-between mb-10" data-reveal>
-        <span class="section-label">// experience</span>
-        <a href="/resume/" class="no-effect font-code text-xs hover:opacity-80 transition-opacity" style="color: var(--v8-warm);">
-          view full resume →
-        </a>
-      </div>
+      <span class="section-label" data-reveal>// experience</span>
 
-      <div class="space-y-4">
+      <div class="mt-10 space-y-4">
         {topExperience.map((job, i) => (
           <div class="v8-card" data-reveal data-reveal-delay={String(i + 1)}>
             <div class="flex flex-col sm:flex-row sm:items-start gap-4">
@@ -197,6 +196,12 @@ const topExperience = resume.experience.slice(0, 3);
             </div>
           </div>
         ))}
+      </div>
+
+      <div class="mt-4 text-right">
+        <a href="/resume/" class="no-effect font-code text-xs hover:opacity-80 transition-opacity" style="color: var(--v8-warm);">
+          view full resume →
+        </a>
       </div>
     </section>
 
@@ -226,7 +231,6 @@ const topExperience = resume.experience.slice(0, 3);
 
       {miniEssays.length > 0 && (
         <div class="mt-6">
-          <span class="section-label" data-reveal>// mini essays</span>
           <div class="mt-4 grid gap-3 sm:grid-cols-2" data-reveal>
             {miniEssays.map((essay) => (
               <a

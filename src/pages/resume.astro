@@ -14,36 +14,43 @@ import { resume } from '../data/resume';
           if (!el) return;
           var original = el.textContent.trim();
           var chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789@#$%&*';
-          var letters = original.split('');
-          var display = letters.map(function (c) {
-            return c === ' ' || c === '.' ? c : chars.charAt(Math.floor(Math.random() * chars.length));
-          });
-          el.textContent = display.join('');
-          el.style.opacity = '1';
-          var current = 0;
-          function revealNext() {
-            if (current >= letters.length) return;
-            var i = current;
-            current++;
-            if (letters[i] === ' ' || letters[i] === '.') {
-              setTimeout(revealNext, 40);
-              return;
-            }
-            var flips = 0;
-            var timer = setInterval(function () {
-              flips++;
-              if (flips >= 5) {
-                clearInterval(timer);
-                display[i] = letters[i];
-                el.textContent = display.join('');
-              } else {
-                display[i] = chars.charAt(Math.floor(Math.random() * chars.length));
-                el.textContent = display.join('');
+          var running = false;
+          function scramble(delay) {
+            if (running) return;
+            running = true;
+            var letters = original.split('');
+            var display = letters.map(function (c) {
+              return c === ' ' || c === '.' ? c : chars.charAt(Math.floor(Math.random() * chars.length));
+            });
+            el.textContent = display.join('');
+            el.style.opacity = '1';
+            var current = 0;
+            function revealNext() {
+              if (current >= letters.length) { running = false; return; }
+              var i = current;
+              current++;
+              if (letters[i] === ' ' || letters[i] === '.') {
+                setTimeout(revealNext, 40);
+                return;
               }
-            }, 40);
-            setTimeout(revealNext, 50);
+              var flips = 0;
+              var timer = setInterval(function () {
+                flips++;
+                if (flips >= 5) {
+                  clearInterval(timer);
+                  display[i] = letters[i];
+                  el.textContent = display.join('');
+                } else {
+                  display[i] = chars.charAt(Math.floor(Math.random() * chars.length));
+                  el.textContent = display.join('');
+                }
+              }, 40);
+              setTimeout(revealNext, 50);
+            }
+            setTimeout(revealNext, delay);
           }
-          setTimeout(revealNext, 400);
+          scramble(400);
+          el.addEventListener('mouseenter', function () { scramble(0); });
         })();
       </script>
       <p class="font-code text-sm mt-3" style="color: var(--v8-stone);">
