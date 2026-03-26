@@ -6,7 +6,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   <div class="max-w-3xl mx-auto px-6 py-20">
     <span class="section-label">// about</span>
     <h1 id="hero-name" class="text-4xl sm:text-5xl font-display font-bold mt-4 mb-12 leading-tight" style="color: var(--v8-bone); opacity: 0;">
-      Kevin Ong
+      Kevin M. Ong
     </h1>
     <script is:inline>
       (function () {
@@ -14,36 +14,43 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         if (!el) return;
         var original = el.textContent.trim();
         var chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789@#$%&*';
-        var letters = original.split('');
-        var display = letters.map(function (c) {
-          return c === ' ' || c === '.' ? c : chars.charAt(Math.floor(Math.random() * chars.length));
-        });
-        el.textContent = display.join('');
-        el.style.opacity = '1';
-        var current = 0;
-        function revealNext() {
-          if (current >= letters.length) return;
-          var i = current;
-          current++;
-          if (letters[i] === ' ' || letters[i] === '.') {
-            setTimeout(revealNext, 40);
-            return;
-          }
-          var flips = 0;
-          var timer = setInterval(function () {
-            flips++;
-            if (flips >= 5) {
-              clearInterval(timer);
-              display[i] = letters[i];
-              el.textContent = display.join('');
-            } else {
-              display[i] = chars.charAt(Math.floor(Math.random() * chars.length));
-              el.textContent = display.join('');
+        var running = false;
+        function scramble(delay) {
+          if (running) return;
+          running = true;
+          var letters = original.split('');
+          var display = letters.map(function (c) {
+            return c === ' ' || c === '.' ? c : chars.charAt(Math.floor(Math.random() * chars.length));
+          });
+          el.textContent = display.join('');
+          el.style.opacity = '1';
+          var current = 0;
+          function revealNext() {
+            if (current >= letters.length) { running = false; return; }
+            var i = current;
+            current++;
+            if (letters[i] === ' ' || letters[i] === '.') {
+              setTimeout(revealNext, 40);
+              return;
             }
-          }, 40);
-          setTimeout(revealNext, 50);
+            var flips = 0;
+            var timer = setInterval(function () {
+              flips++;
+              if (flips >= 5) {
+                clearInterval(timer);
+                display[i] = letters[i];
+                el.textContent = display.join('');
+              } else {
+                display[i] = chars.charAt(Math.floor(Math.random() * chars.length));
+                el.textContent = display.join('');
+              }
+            }, 40);
+            setTimeout(revealNext, 50);
+          }
+          setTimeout(revealNext, delay);
         }
-        setTimeout(revealNext, 400);
+        scramble(400);
+        el.addEventListener('mouseenter', function () { scramble(0); });
       })();
     </script>
 
@@ -58,7 +65,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         I've worked across neuroscience, finance, cybersecurity, experimental hardware,
         and edtech. I've always been more interested in getting better at getting better
         than in any single domain. The scientific method, OODA loops, Buddhism,
-        deliberate practice — I'll try anything if there's evidence it works.
+        deliberate practice. I'll try anything if there's evidence it works.
       </p>
 
       <div class="pl-6 py-4 my-4" style="border-left: 3px solid var(--v8-warm);">
