@@ -26,7 +26,11 @@ So the system doesn't just select a topic. It selects a (topic, phase, scaffold 
 
 The mastery model accounts for scaffolding too. A correct answer with hints and starter code (L1) gets a guess probability of 40%. The same correct answer under time pressure with no support (L4) gets 5%. The BKT parameters shift based on how much help was given, so hint-assisted successes carry less signal than independent ones. This is what makes mastery estimates trustworthy instead of inflated.
 
+![A comprehension question during a Learn phase session on ThreadPoolExecutor. The system provides an analogy as scaffolding, then checks understanding with a targeted question.](/constellation_short_example.jpg)
+
 Not all errors are equal either. A conceptual misunderstanding ("I don't know why we need concurrency") is a fundamentally different signal than a syntax mistake (wrong import path). The grading system classifies errors into severity tiers and weights mastery impact accordingly. Leech detection only triggers on conceptual and design-level failures, not recall slips.
+
+![Graded feedback after a correct answer. The system confirms the response, adds nuance the learner missed, and feeds the result back into mastery estimation.](/constellation_graded_example.jpg)
 
 That led to the architecture: four components working together.
 
@@ -50,7 +54,9 @@ Trust. I need to trust the system to want to use it. I need to trust it knows wh
 
 The first version technically worked. The engine selected topics, generated drills, tracked mastery. But using it daily revealed problems the architecture couldn't predict. The pedagogy felt off and I couldn't tell why. Was the phase selection wrong? Were the mastery estimates drifting? Was the content too easy? I had no way to see inside the system's decisions. So I built observability infrastructure: mastery state dashboards, selector decision logs with full scoring breakdowns, trajectory views, parameter tuning with replay against historical data. Every mastery update carries an audit trail, every selection decision logs its rationale, every LLM call records duration and token count.
 
-That infrastructure started paying for itself immediately. The selector logs showed that without multi-session penalties, the system would grind the same skill repeatedly in a single day, diminishing returns masked by rising mastery numbers. The confidence calibration tracking surfaced a pattern I hadn't noticed in myself: consistent overconfidence on concurrency topics, where I'd rate myself high and then fail. The system now tracks that signal explicitly, overconfident answers where self-rated confidence is high but the grade is a fail, so the next session can target the gap between what I think I know and what I actually know.
+That infrastructure started paying for itself immediately. The selector logs showed that without multi-session penalties, the system would grind the same skill repeatedly in a single day, diminishing returns masked by rising mastery numbers. LRU cache is the clearest example: 16 attempts across two sessions, mastery still at 0.35 with a 4-fail streak. The system correctly flagged it as a leech, a skill where observation count is high but mastery isn't climbing, which means the teaching approach needs to change, not just the repetition count. That's a finding I wouldn't have reached by feel alone. The mastery dashboard makes it visible at a glance: every skill's probability of mastery, effective mastery, retrievability, stability, phase, scaffold level, and observation count in one table.
+
+![The mastery dashboard. Each skill shows its BKT state, FSRS scheduling parameters, current phase, and observation count. LRU cache is visible at the bottom as a leech.](/constellation_example_mastery.jpg)
 
 Behavioral control has been a huge headache. I'm trying to integrate learning science best practices like interleaving while using LLMs to generate the right quantity and type of content during a session. A Learn module needs enough interactions to go from "never seen" to "tried once with help." A Practice module needs enough to go from "tried with help" to "can articulate and implement." The quantity isn't fixed; it depends on the skill complexity and how the learner is doing within the module. Getting this right requires the evaluation and iteration infrastructure to see what's happening and tune it quickly.
 
