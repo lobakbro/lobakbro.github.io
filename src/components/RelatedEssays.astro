@@ -1,12 +1,14 @@
 ---
+import type { CollectionEntry } from 'astro:content';
+
 interface Props {
-  currentEssay: any;
-  allEssays: any[];
+  currentEssay: CollectionEntry<'essays'>;
+  allEssays: CollectionEntry<'essays'>[];
 }
 
 const { currentEssay, allEssays } = Astro.props;
 
-function findRelatedEssays(current: any, essays: any[], limit = 3) {
+function findRelatedEssays(current: CollectionEntry<'essays'>, essays: CollectionEntry<'essays'>[], limit = 3) {
   return essays
     .filter(essay =>
       essay.id !== current.id &&

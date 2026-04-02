@@ -2,6 +2,7 @@
 import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import EssayCard from '../components/EssayCard.astro';
+import ScrambleText from '../components/ScrambleText.astro';
 import { resume } from '../data/resume';
 
 const allEssays = await getCollection('essays', ({ data }) => {
@@ -24,56 +25,12 @@ const topExperience = resume.experience.slice(0, 3);
   <div class="max-w-3xl mx-auto px-6">
     <!-- ═══ Hero ═══ -->
     <section id="about" class="pt-20 sm:pt-28 pb-16">
-      <h1 id="hero-name" class="text-5xl sm:text-6xl lg:text-7xl font-display font-extrabold tracking-tight leading-[1.05]" style="color: var(--v8-bone); opacity: 0;">
-        Kevin M. Ong
-      </h1>
-      <script is:inline>
-        (function () {
-          var el = document.getElementById('hero-name');
-          if (!el) return;
-          var original = el.textContent.trim();
-          var chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789@#$%&*';
-          var running = false;
-
-          function scramble(delay) {
-            if (running) return;
-            running = true;
-            var letters = original.split('');
-            var display = letters.map(function (c) {
-              return c === ' ' || c === '.' ? c : chars.charAt(Math.floor(Math.random() * chars.length));
-            });
-            el.textContent = display.join('');
-            el.style.opacity = '1';
-            var current = 0;
-            function revealNext() {
-              if (current >= letters.length) { running = false; return; }
-              var i = current;
-              current++;
-              if (letters[i] === ' ' || letters[i] === '.') {
-                setTimeout(revealNext, 40);
-                return;
-              }
-              var flips = 0;
-              var timer = setInterval(function () {
-                flips++;
-                if (flips >= 5) {
-                  clearInterval(timer);
-                  display[i] = letters[i];
-                  el.textContent = display.join('');
-                } else {
-                  display[i] = chars.charAt(Math.floor(Math.random() * chars.length));
-                  el.textContent = display.join('');
-                }
-              }, 40);
-              setTimeout(revealNext, 50);
-            }
-            setTimeout(revealNext, delay);
-          }
-
-          scramble(400);
-          el.addEventListener('mouseenter', function () { scramble(0); });
-        })();
-      </script>
+      <ScrambleText
+        text="Kevin M. Ong"
+        id="hero-name"
+        class="text-5xl sm:text-6xl lg:text-7xl font-display font-extrabold tracking-tight leading-[1.05]"
+        style="color: var(--v8-bone);"
+      />
       <p class="mt-4 font-code text-sm" style="color: var(--v8-stone);" data-reveal data-reveal-delay="1">
         software_engineer // san_francisco
       </p>
@@ -81,8 +38,7 @@ const topExperience = resume.experience.slice(0, 3);
       <div class="mt-10 relative pl-10" data-reveal data-reveal-delay="2">
         <span class="absolute left-0 top-0 font-display text-5xl leading-none" style="color: var(--v8-warm); opacity: 0.4;">"</span>
         <p class="text-xl sm:text-2xl font-display font-medium leading-snug" style="color: var(--v8-bone);">
-          Every big problem is just a bunch of small problems.<br/>
-          Just solve the small problems.
+          Science is about knowing; engineering is about doing.
         </p>
       </div>
 
@@ -172,9 +128,9 @@ const topExperience = resume.experience.slice(0, 3);
     <section id="experience" class="py-16">
       <span class="section-label" data-reveal>// experience</span>
 
-      <div class="mt-10 space-y-4">
+      <div class="mt-10 space-y-4" data-reveal-group>
         {topExperience.map((job, i) => (
-          <div class="v8-card" data-reveal data-reveal-delay={String(i + 1)}>
+          <div class="v8-card" data-reveal>
             <div class="flex flex-col sm:flex-row sm:items-start gap-4">
               <span class="font-code text-xs shrink-0 pt-1" style="color: var(--v8-ash);">{job.period.split('–')[0].trim()} →</span>
               <div class="flex-1">
@@ -212,9 +168,9 @@ const topExperience = resume.experience.slice(0, 3);
       <span class="section-label" data-reveal>// musings</span>
 
       {featured.length > 0 && (
-        <div class="mt-10 grid gap-6 sm:grid-cols-2" data-reveal>
+        <div class="mt-10 grid gap-6 sm:grid-cols-2" data-reveal-group>
           {featured.map((essay) => (
-            <a href={`/essays/${essay.id}/`} class="group block no-effect v8-card">
+            <a href={`/essays/${essay.id}/`} class="group block no-effect v8-card" data-reveal>
               <div class="flex items-center gap-2 mb-3">
                 <span class="category-pill">{essay.data.category}</span>
                 <span class="font-code text-xs" style="color: var(--v8-ash);">
@@ -231,12 +187,13 @@ const topExperience = resume.experience.slice(0, 3);
 
       {miniEssays.length > 0 && (
         <div class="mt-6">
-          <div class="mt-4 grid gap-3 sm:grid-cols-2" data-reveal>
+          <div class="mt-4 grid gap-3 sm:grid-cols-2" data-reveal-group>
             {miniEssays.map((essay) => (
               <a
                 href={`/essays/${essay.id}/`}
                 class="no-effect group flex items-center gap-3 py-3 px-4 transition-all hover:translate-x-1"
                 style="background: var(--v8-surface); border: 1px solid var(--v8-deep);"
+                data-reveal
               >
                 <span class="font-code text-xs shrink-0" style="color: var(--v8-ash);">→</span>
                 <span class="text-sm font-medium group-hover:opacity-80 transition-opacity" style="color: var(--v8-bone);">

@@ -1,0 +1,80 @@
+---
+interface Props {
+  text: string;
+  tag?: 'h1' | 'h2' | 'span';
+  class?: string;
+  style?: string;
+  id?: string;
+}
+
+const { text, tag: Tag = 'h1', class: className = '', style = '', id } = Astro.props;
+const scrambleId = id || `scramble-${Math.random().toString(36).slice(2, 8)}`;
+---
+
+<Tag id={scrambleId} class={className} style={`${style} opacity: 0;`} data-scramble={text}>
+  {text}
+</Tag>
+
+<script is:inline define:vars={{ scrambleId }}>
+  (function () {
+    var el = document.getElementById(scrambleId);
+    if (!el) return;
+    var original = el.getAttribute('data-scramble') || el.textContent.trim();
+    var chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789@#$%&*';
+    var running = false;
+    var timers = [];
+
+    function cleanup() {
+      timers.forEach(function (id) { clearInterval(id); clearTimeout(id); });
+      timers = [];
+    }
+
+    function scramble(delay) {
+      if (running) return;
+      running = true;
+      cleanup();
+      var letters = original.split('');
+      var display = letters.map(function (c) {
+        return c === ' ' || c === '.' ? c : chars.charAt(Math.floor(Math.random() * chars.length));
+      });
+      el.textContent = display.join('');
+      el.style.opacity = '1';
+      var current = 0;
+
+      function revealNext() {
+        if (current >= letters.length) { running = false; return; }
+        var i = current;
+        current++;
+        if (letters[i] === ' ' || letters[i] === '.') {
+          var t = setTimeout(revealNext, 40);
+          timers.push(t);
+          return;
+        }
+        var flips = 0;
+        var timer = setInterval(function () {
+          flips++;
+          if (flips >= 5) {
+            clearInterval(timer);
+            display[i] = letters[i];
+            el.textContent = display.join('');
+          } else {
+            display[i] = chars.charAt(Math.floor(Math.random() * chars.length));
+            el.textContent = display.join('');
+          }
+        }, 40);
+        timers.push(timer);
+        var t = setTimeout(revealNext, 50);
+        timers.push(t);
+      }
+
+      var t = setTimeout(revealNext, delay);
+      timers.push(t);
+    }
+
+    scramble(400);
+    el.addEventListener('mouseenter', function () { scramble(0); });
+
+    // Cleanup on Astro page transitions
+    document.addEventListener('astro:before-swap', cleanup, { once: true });
+  })();
+</script>

@@ -21,11 +21,7 @@ const currentPath = Astro.url.pathname;
       {navLinks.map(({ href, label }) => (
         <a
           href={href}
-          class="no-effect text-sm font-code"
-          data-nav-href={href}
-          style={currentPath.startsWith(href)
-            ? 'color: var(--v8-warm); opacity: 1; padding: 4px 10px; border-radius: 6px; border: 1px solid rgba(212, 149, 106, 0.3); background: rgba(212, 149, 106, 0.15);'
-            : 'color: var(--v8-stone); opacity: 0.6; padding: 4px 10px; border-radius: 6px; border: 1px solid transparent;'}
+          class={`nav-link no-effect text-sm font-code ${currentPath.startsWith(href) ? 'nav-link--active' : ''}`}
         >
           {label}
         </a>
@@ -55,44 +51,6 @@ const currentPath = Astro.url.pathname;
 
 <script is:inline>
   (function () {
-    var container = document.getElementById('header-nav-links');
-    if (!container) return;
-    var links = container.querySelectorAll('[data-nav-href]');
-    var currentPath = window.location.pathname;
-
-    links.forEach(function (link) {
-      var href = link.getAttribute('data-nav-href');
-      var isActive = currentPath.startsWith(href);
-
-      // Set initial state via JS to guarantee it applies
-      if (isActive) {
-        link.style.color = 'var(--v8-warm)';
-        link.style.opacity = '1';
-        link.style.background = 'rgba(212, 149, 106, 0.15)';
-        link.style.borderColor = 'rgba(212, 149, 106, 0.3)';
-      } else {
-        link.style.color = 'var(--v8-stone)';
-        link.style.opacity = '0.6';
-        link.style.background = 'transparent';
-        link.style.borderColor = 'transparent';
-      }
-
-      link.addEventListener('mouseenter', function () {
-        link.style.color = 'var(--v8-warm)';
-        link.style.opacity = '1';
-      });
-
-      link.addEventListener('mouseleave', function () {
-        if (isActive) {
-          link.style.color = 'var(--v8-warm)';
-          link.style.opacity = '1';
-        } else {
-          link.style.color = 'var(--v8-stone)';
-          link.style.opacity = '0.6';
-        }
-      });
-    });
-
     function setupThemeToggle() {
       var btn = document.getElementById('theme-toggle');
       if (!btn) return;
