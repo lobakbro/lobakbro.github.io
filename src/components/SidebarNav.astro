@@ -199,6 +199,13 @@
 
     function onScroll() {
       if (scrollLock) return;
+      // If scrolled to bottom, activate last section
+      var atBottom = (window.innerHeight + window.scrollY) >= (document.body.scrollHeight - 50);
+      if (atBottom && sectionEls.length > 0) {
+        var last = sectionEls[sectionEls.length - 1].id;
+        if (last !== activeId) setActive(last);
+        return;
+      }
       var scrollY = window.scrollY + window.innerHeight * 0.4;
       var current = sectionEls[0].id;
       for (var i = 0; i < sectionEls.length; i++) {
