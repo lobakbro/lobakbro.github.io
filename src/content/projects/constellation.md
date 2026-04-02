@@ -26,17 +26,26 @@ So the system doesn't just select a topic. It selects a (topic, phase, scaffold 
 
 The mastery model accounts for scaffolding too. A correct answer with hints and starter code (L1) gets a guess probability of 40%. The same correct answer under time pressure with no support (L4) gets 5%. The BKT parameters shift based on how much help was given, so hint-assisted successes carry less signal than independent ones. This is what makes mastery estimates trustworthy instead of inflated.
 
-![A comprehension question during a Learn phase session on ThreadPoolExecutor. The system provides an analogy as scaffolding, then checks understanding with a targeted question.](/constellation_short_example.jpg)
+<figure>
+  <img src="/constellation_short_example.jpg" alt="A comprehension question during a Learn phase session on ThreadPoolExecutor" />
+  <figcaption>Learn phase, L1 scaffold. The system opens with an analogy (restaurant kitchen → thread pool), explains the concept, then checks understanding with a targeted comprehension question before moving on.</figcaption>
+</figure>
 
 Not all errors are equal either. A conceptual misunderstanding ("I don't know why we need concurrency") is a fundamentally different signal than a syntax mistake (wrong import path). The grading system classifies errors into severity tiers and weights mastery impact accordingly. Leech detection only triggers on conceptual and design-level failures, not recall slips.
 
-![Graded feedback after a correct answer. The system confirms the response, adds nuance the learner missed, and feeds the result back into mastery estimation.](/constellation_graded_example.jpg)
+<figure>
+  <img src="/constellation_graded_example.jpg" alt="Graded feedback after a correct answer on ThreadPoolExecutor" />
+  <figcaption>Feedback card after submission. The system confirms the answer, adds nuance the learner missed (tasks queue beyond the limit), and feeds the grade back into BKT mastery estimation.</figcaption>
+</figure>
 
 That led to the architecture: four components working together.
 
 **The MAP, a knowledge-space deconstructed skill graph.** Every skill in the domain is a node. Prerequisite relationships are edges. The graph encodes what depends on what, so the system knows which skills are available to target based on what's already been mastered. This is the system's understanding of the domain itself.
 
-![Constellation's skill graph. Nodes represent skills, edges encode prerequisites, colors indicate mastery state.](/constellation_example_graph.jpg)
+<figure>
+  <img src="/constellation_example_graph.jpg" alt="Constellation's skill graph with nodes representing skills and edges encoding prerequisites" />
+  <figcaption>The MAP. Each node is a skill, edges encode prerequisite relationships, colors indicate mastery state (green = mastered, blue = in progress, orange = fading, gray = untouched). The system only targets skills whose prerequisites are sufficiently mastered.</figcaption>
+</figure>
 
 **The learning state assessor.** Bayesian Knowledge Tracing gives a probabilistic estimate of mastery for each node. A correct answer doesn't necessarily mean mastery, it could be a guess. BKT works well for atomic skill checks where observations are frequent and binary. It breaks down for open-ended compound problems like "How would you design TikTok" where multiple skills are exercised simultaneously and the signal is harder to decompose. That's where the error severity taxonomy and embedded assessment checkpoints come in, extracting multiple mastery signals from a single complex problem.
 
@@ -56,7 +65,10 @@ The first version technically worked. The engine selected topics, generated dril
 
 That infrastructure started paying for itself immediately. The selector logs showed that without multi-session penalties, the system would grind the same skill repeatedly in a single day, diminishing returns masked by rising mastery numbers. LRU cache is the clearest example: 16 attempts across two sessions, mastery still at 0.35 with a 4-fail streak. The system correctly flagged it as a leech, a skill where observation count is high but mastery isn't climbing, which means the teaching approach needs to change, not just the repetition count. That's a finding I wouldn't have reached by feel alone. The mastery dashboard makes it visible at a glance: every skill's probability of mastery, effective mastery, retrievability, stability, phase, scaffold level, and observation count in one table.
 
-![The mastery dashboard. Each skill shows its BKT state, FSRS scheduling parameters, current phase, and observation count. LRU cache is visible at the bottom as a leech.](/constellation_example_mastery.jpg)
+<figure>
+  <img src="/constellation_example_mastery.jpg" alt="Mastery dashboard showing BKT state, FSRS parameters, and leech detection across 49 skills" />
+  <figcaption>The mastery dashboard. P(M) is probability of mastery, Eff.M adjusts for observation count (low observations = low confidence), Ret. is FSRS retrievability (memory decay), Stab. is memory stability. LRU cache at the bottom: leech status, 0.35 mastery despite 8 observations.</figcaption>
+</figure>
 
 Behavioral control has been a huge headache. I'm trying to integrate learning science best practices like interleaving while using LLMs to generate the right quantity and type of content during a session. A Learn module needs enough interactions to go from "never seen" to "tried once with help." A Practice module needs enough to go from "tried with help" to "can articulate and implement." The quantity isn't fixed; it depends on the skill complexity and how the learner is doing within the module. Getting this right requires the evaluation and iteration infrastructure to see what's happening and tune it quickly.
 
