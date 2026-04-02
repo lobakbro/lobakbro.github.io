@@ -24,3 +24,16 @@ pnpm-debug.log*
 # IDE
 .idea/
 .vscode/
+
+# Claude Code
+.claude/
+
+# BMad
+_bmad/
+bmad-builder-creations/
+
+# Drafts (application essays, personal notes)
+_drafts/
+
+# Crash dumps
+*.stackdump
