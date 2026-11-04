@@ -34,6 +34,6 @@ Astro 6 static site deployed to GitHub Pages via `.github/workflows/deploy.yml` 
 
 **Projects** frontmatter: `title`, `description`, `date`, `tech[]`, `status` (active | completed | archived | in-progress), `featured`, `draft`. Optional: `repo`, `demo`, `heroImage`.
 
-## Repo Labels
+## Tracker
 
-This repo is tagged `repo:lobakbro` in Linear.
+Lific project: SITE (local Lific, `lific` MCP server). Linear is retired and read-only.
